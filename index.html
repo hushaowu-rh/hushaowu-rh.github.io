@@ -50,6 +50,7 @@
         .info a:hover { text-decoration: underline; }
         .abstract { font-size: 0.92em; color: #555; margin-top: 20px; padding: 15px; background: #f0f4ff; border-radius: 4px; }
         footer { margin-top: 50px; padding-top: 20px; border-top: 1px solid #ddd; color: #999; font-size: 0.85em; }
+        .dl-count { color: #999; font-size: 0.82em; margin-left: 8px; }
 
     </style>
     <script data-goatcounter="https://hushaowu.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
@@ -77,7 +78,7 @@
     <div class="paper-meta">Shaowu Hu, 2026</div>
     <span class="paper-status status-review">Under review — Commun. Math. Phys.</span><br>
     <div class="paper-meta">The five axioms of quantum mechanics (Hilbert space, self-adjoint observables, Born rule, unitary evolution, tensor product) are derived as theorems from the BC algebra with zero additional assumptions.</div>
-    <a class="pdf-link" href="papers/qm_pure_bc_en.pdf">📄 PDF (English)</a>
+    <a class="pdf-link" href="papers/qm_pure_bc_en.pdf">📄 PDF (English)</a><span class="dl-count" id="ct-qm"></span>
 </div>
 
 <div class="paper">
@@ -85,7 +86,7 @@
     <div class="paper-meta">Shaowu Hu, 2026</div>
     <span class="paper-status status-review">Under review — Commun. Math. Phys.</span><br>
     <div class="paper-meta">The CRT decomposition of (ℤ/7ℤ)* uniquely yields the Standard Model gauge group SU(3)×SU(2)×U(1) and emergent gravity from KMS thermodynamics.</div>
-    <a class="pdf-link" href="papers/four_forces_en.pdf">📄 PDF (English)</a>
+    <a class="pdf-link" href="papers/four_forces_en.pdf">📄 PDF (English)</a><span class="dl-count" id="ct-forces"></span>
 </div>
 
 <div class="paper">
@@ -93,7 +94,7 @@
     <div class="paper-meta">Shaowu Hu, 2026</div>
     <span class="paper-status status-review">Under review — Phys. Rev. D</span><br>
     <div class="paper-meta">All 12 fermion masses, the CKM matrix (|V<sub>us</sub>|, |V<sub>cb</sub>|, |V<sub>ub</sub>| to &lt;2.5%), and the Koide formula are derived from BC characters and Jacobi sums.</div>
-    <a class="pdf-link" href="papers/mass_spectrum_en.pdf">📄 PDF (English)</a>
+    <a class="pdf-link" href="papers/mass_spectrum_en.pdf">📄 PDF (English)</a><span class="dl-count" id="ct-mass"></span>
 </div>
 
 <div class="paper">
@@ -101,7 +102,7 @@
     <div class="paper-meta">Shaowu Hu, 2026</div>
     <span class="paper-status status-review">Under review — Phys. Rev. D</span><br>
     <div class="paper-meta">Black holes as β = 1 phase transitions in the BC system, with emergent Bekenstein–Hawking entropy and an area law with logarithmic corrections.</div>
-    <a class="pdf-link" href="papers/black_holes_en.pdf">📄 PDF (English)</a>
+    <a class="pdf-link" href="papers/black_holes_en.pdf">📄 PDF (English)</a><span class="dl-count" id="ct-bh"></span>
 </div>
 
 <div class="paper">
@@ -109,7 +110,7 @@
     <div class="paper-meta">Shaowu Hu, 2026</div>
     <span class="paper-status status-review">Under review — Phys. Rev. D</span><br>
     <div class="paper-meta">Neutrino mass hierarchy R = 33.0 and δ<sub>CP</sub> = −90° predicted from Hecke three-cycle closure. Testable by JUNO (2026–2027).</div>
-    <a class="pdf-link" href="papers/neutrino_en.pdf">📄 PDF (English)</a>
+    <a class="pdf-link" href="papers/neutrino_en.pdf">📄 PDF (English)</a><span class="dl-count" id="ct-nu"></span>
 </div>
 
 <h2>Key Predictions</h2>
@@ -137,7 +138,38 @@
     &copy; 2026 Shaowu Hu. All rights reserved. Last updated: April 2026.
 </footer>
 
+<script>
+const pdfMap = {
+    'qm': '/papers/qm_pure_bc_en.pdf',
+    'forces': '/papers/four_forces_en.pdf',
+    'mass': '/papers/mass_spectrum_en.pdf',
+    'bh': '/papers/black_holes_en.pdf',
+    'nu': '/papers/neutrino_en.pdf'
+};
 
+async function loadCounts() {
+    try {
+        for (const [key, path] of Object.entries(pdfMap)) {
+            const r = await fetch('https://hushaowu.goatcounter.com/counter/' + encodeURIComponent(path) + '.json');
+            if (r.ok) {
+                const d = await r.json();
+                const el = document.getElementById('ct-' + key);
+                if (el && d.count) el.textContent = d.count + ' views';
+            }
+        }
+    } catch(e) {}
+}
+
+document.querySelectorAll('.pdf-link').forEach(function(link) {
+    link.addEventListener('click', function() {
+        if (window.goatcounter && window.goatcounter.count) {
+            window.goatcounter.count({ path: link.getAttribute('href'), event: true });
+        }
+    });
+});
+
+loadCounts();
+</script>
 
 </body>
 </html>
