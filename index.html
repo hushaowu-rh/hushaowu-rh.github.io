@@ -148,16 +148,18 @@ const pdfMap = {
 };
 
 async function loadCounts() {
-    try {
-        for (const [key, path] of Object.entries(pdfMap)) {
-            const r = await fetch('https://hushaowu.goatcounter.com/counter/' + encodeURIComponent(path) + '.json');
-            if (r.ok) {
-                const d = await r.json();
-                const el = document.getElementById('ct-' + key);
-                if (el && d.count) el.textContent = d.count + ' views';
-            }
-        }
-    } catch(e) {}
+    var fetches = Object.entries(pdfMap).map(function(entry) {
+        var key = entry[0], path = entry[1];
+        return fetch('https://hushaowu.goatcounter.com/counter/' + encodeURIComponent(path) + '.json')
+            .then(function(r) { return r.ok ? r.json() : null; })
+            .then(function(d) {
+                if (d && d.count) {
+                    var el = document.getElementById('ct-' + key);
+                    if (el) el.textContent = d.count + ' views';
+                }
+            }).catch(function(){});
+    });
+    await Promise.all(fetches);
 }
 
 document.querySelectorAll('.pdf-link').forEach(function(link) {
@@ -168,7 +170,8 @@ document.querySelectorAll('.pdf-link').forEach(function(link) {
     });
 });
 
-loadCounts();
+// 延迟加载计数，不阻塞页面渲染
+setTimeout(loadCounts, 500);
 </script>
 
 </body>
