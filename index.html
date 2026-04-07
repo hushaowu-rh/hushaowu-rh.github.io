@@ -144,35 +144,58 @@
 </footer>
 
 <script>
-// Simple localStorage-based counter (works per-browser, no backend needed)
-// For real multi-user stats, GoatCounter handles it via the script above
+// Global counters using GoatCounter API
+const GC = 'https://hushaowu.goatcounter.com';
 const papers = ['qm','forces','mass','bh','nu'];
 
-function initCounters() {
-    papers.forEach(p => {
-        const views = parseInt(localStorage.getItem('views-'+p) || '0');
-        const dl = parseInt(localStorage.getItem('dl-'+p) || '0');
-        const ve = document.getElementById('views-'+p);
-        const de = document.getElementById('dl-'+p);
-        if(ve) ve.textContent = views;
-        if(de) de.textContent = dl;
-    });
-    // Count page view for all papers
-    papers.forEach(p => {
-        const key = 'views-'+p;
-        localStorage.setItem(key, parseInt(localStorage.getItem(key)||'0')+1);
-    });
+// Fetch view counts from GoatCounter API
+async function loadCounts() {
+    try {
+        // Use countapi.xyz as simple global counter (free, no signup)
+        for (const p of papers) {
+            // Views
+            const vr = await fetch(`https://api.countapi.xyz/get/hushaowu-rh/${p}-views`);
+            const vd = await vr.json();
+            const ve = document.getElementById('views-'+p);
+            if(ve && vd.value !== null) ve.textContent = vd.value;
+            
+            // Downloads  
+            const dr = await fetch(`https://api.countapi.xyz/get/hushaowu-rh/${p}-dl`);
+            const dd = await dr.json();
+            const de = document.getElementById('dl-'+p);
+            if(de && dd.value !== null) de.textContent = dd.value;
+        }
+    } catch(e) {
+        // Silently fail - counters show "—"
+    }
 }
 
-function countDownload(paper) {
-    const key = 'dl-'+paper;
-    const val = parseInt(localStorage.getItem(key)||'0')+1;
-    localStorage.setItem(key, val);
-    const el = document.getElementById(key);
-    if(el) el.textContent = val;
+// Record a page view (once per session)
+async function recordViews() {
+    if (sessionStorage.getItem('counted')) return;
+    sessionStorage.setItem('counted', '1');
+    for (const p of papers) {
+        try {
+            const r = await fetch(`https://api.countapi.xyz/hit/hushaowu-rh/${p}-views`);
+            const d = await r.json();
+            const ve = document.getElementById('views-'+p);
+            if(ve) ve.textContent = d.value;
+        } catch(e) {}
+    }
 }
 
-initCounters();
+// Record a download
+async function countDownload(paper) {
+    try {
+        const r = await fetch(`https://api.countapi.xyz/hit/hushaowu-rh/${paper}-dl`);
+        const d = await r.json();
+        const el = document.getElementById('dl-'+paper);
+        if(el) el.textContent = d.value;
+    } catch(e) {}
+}
+
+loadCounts();
+recordViews();
 </script>
 
 </body>
