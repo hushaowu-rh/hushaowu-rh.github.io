@@ -118,25 +118,54 @@
     <a class="pdf-link" href="papers/neutrino_en.pdf" target="_blank">📄 PDF (English)</a>
 </div>
 
-<h2>Key Predictions</h2>
+<h2>Key Questions</h2>
 
 <div class="paper" style="border-left-color: #059669;">
-    <div class="paper-meta">
-        <strong>13 parameter-free predictions from a single input (p = 7):</strong><br><br>
-        • |V<sub>us</sub>| = 0.222 (exp. 0.2245, dev. 1.1%)<br>
-        • |V<sub>cb</sub>| = 0.040 (exp. 0.0412, dev. 2.3%)<br>
-        • |V<sub>ub</sub>| = 0.00365 (exp. 0.00361, dev. 1.0%)<br>
-        • Koide Q = 2/3 (exact)<br>
-        • Neutrino mass ratio R = 33.0 (exp. 33.5, dev. 1.5%)<br>
-        • δ<sub>CP</sub>(neutrino) = −90°<br>
-        • sin²θ<sub>W</sub> = 3/8 at GUT scale<br>
-        • α<sub>s</sub>(M<sub>Z</sub>) = 0.119 (exp. 0.1179, dev. 0.2%)<br>
-        • SU(3)×SU(2)×U(1) uniquely from CRT<br>
-        • Exactly 3 generations<br>
-        • Strong CP: θ̄ = 0<br>
-        • Normal mass ordering<br>
-        • Proton lifetime τ<sub>p</sub> ~ 4.5 × 10<sup>36</sup> years (Hyper-K testable)
-    </div>
+    <div class="paper-title" style="cursor:pointer" onclick="toggleAbs('q-forces',this.parentNode.querySelector('.expand-btn'))">Why are there exactly four fundamental forces?</div>
+    <div class="abstract-wrap"><div class="abstract-text" id="q-forces">The CRT decomposition of (ℤ/7ℤ)* ≅ ℤ/2ℤ × ℤ/3ℤ uniquely determines the gauge group (U(1) × SU(2) × SU(3))/ℤ₆ — the exact gauge group of the three non-gravitational forces. Gravity emerges separately from the KMS thermodynamic structure: the modular Hamiltonian K = βH yields a matter–geometry duality through the von Mangoldt explicit formula. Four forces, two projections, one algebra.</div><button class="expand-btn" onclick="toggleAbs('q-forces',this)">Show more</button></div>
+    <div class="paper-meta">Paper II</div>
+</div>
+
+<div class="paper" style="border-left-color: #059669;">
+    <div class="paper-title" style="cursor:pointer" onclick="toggleAbs('q-gen',this.parentNode.querySelector('.expand-btn'))">Why exactly three generations of particles?</div>
+    <div class="abstract-wrap"><div class="abstract-text" id="q-gen">The involution ι(a) = 7−a pairs the six elements of (ℤ/7ℤ)* into three doublets: D₁={1,6}, D₂={2,5}, D₃={3,4}. Each doublet corresponds to one generation. The number three is not a parameter — it is forced by the structure of ℤ/3ℤ in the CRT decomposition. A fourth generation would require a prime p with φ(p) divisible by 8, and p=7 does not allow it.</div><button class="expand-btn" onclick="toggleAbs('q-gen',this)">Show more</button></div>
+    <div class="paper-meta">Paper IV</div>
+</div>
+
+<div class="paper" style="border-left-color: #059669;">
+    <div class="paper-title" style="cursor:pointer" onclick="toggleAbs('q-mass',this.parentNode.querySelector('.expand-btn'))">Where do particle masses come from?</div>
+    <div class="abstract-wrap"><div class="abstract-text" id="q-mass">Masses arise from the characters and Jacobi sums of the BC algebra. The Koide formula Q=2/3 (exact), the CKM matrix elements |V<sub>us</sub>|=0.222 (1.1%), |V<sub>cb</sub>|=0.040 (2.3%), |V<sub>ub</sub>|=0.00365 (1.0%), the neutrino mass ratio R=33.0 (1.5%), δ<sub>CP</sub>=−90°, sin²θ<sub>W</sub>=3/8, α<sub>s</sub>(M<sub>Z</sub>)=0.119 (0.2%), strong CP θ̄=0, normal mass ordering, and proton lifetime τ<sub>p</sub> ~ 4.5×10<sup>36</sup> years — all derived from a single algebraic structure with zero free parameters.</div><button class="expand-btn" onclick="toggleAbs('q-mass',this)">Show more</button></div>
+    <div class="paper-meta">Paper IV</div>
+</div>
+
+<div class="paper" style="border-left-color: #059669;">
+    <div class="paper-title" style="cursor:pointer" onclick="toggleAbs('q-qm',this.parentNode.querySelector('.expand-btn'))">Why does quantum mechanics have these axioms?</div>
+    <div class="abstract-wrap"><div class="abstract-text" id="q-qm">The five axioms of quantum mechanics (Hilbert space, self-adjoint observables, Born rule P=|c|<sup>2</sup>, unitary evolution, tensor product) are not independent postulates — they are theorems of the BC algebra. Hilbert space from C*-positivity. Born rule from the Cauchy functional equation with non-negative pinching. Tensor product from the fundamental theorem of arithmetic. No measurement postulate, no observer, no collapse.</div><button class="expand-btn" onclick="toggleAbs('q-qm',this)">Show more</button></div>
+    <div class="paper-meta">Paper I</div>
+</div>
+
+<div class="paper" style="border-left-color: #059669;">
+    <div class="paper-title" style="cursor:pointer" onclick="toggleAbs('q-time',this.parentNode.querySelector('.expand-btn'))">Why does time have a direction?</div>
+    <div class="abstract-wrap"><div class="abstract-text" id="q-time">The fundamental equations of standard physics are all time-reversible. The arrow of time requires an additional assumption. The BC system does not — the inverse temperature β can only flow from 1 to ∞. The direction of time is a mathematical theorem of the partition function, not a statistical tendency. The KMS phase transition at β=1 is irreversible: the system cools but never reheats past the critical point.</div><button class="expand-btn" onclick="toggleAbs('q-time',this)">Show more</button></div>
+    <div class="paper-meta">Paper VI (in preparation)</div>
+</div>
+
+<div class="paper" style="border-left-color: #059669;">
+    <div class="paper-title" style="cursor:pointer" onclick="toggleAbs('q-space',this.parentNode.querySelector('.expand-btn'))">Why is spacetime discrete?</div>
+    <div class="abstract-wrap"><div class="abstract-text" id="q-space">The BC Hamiltonian H|n⟩ = (log n)|n⟩ has a discrete spectrum on the positive integers. The continuous four-dimensional manifold is not fundamental — it is an emergent approximation of the discrete arithmetic structure in the coarse-grained limit. The discrete metric d(n,pn) = 1/log p is more fundamental. The three pathologies of general relativity (singularities, cosmological constant problem, non-renormalizability) may all be artifacts of the continuum approximation.</div><button class="expand-btn" onclick="toggleAbs('q-space',this)">Show more</button></div>
+    <div class="paper-meta">Paper V (in preparation)</div>
+</div>
+
+<div class="paper" style="border-left-color: #059669;">
+    <div class="paper-title" style="cursor:pointer" onclick="toggleAbs('q-bh',this.parentNode.querySelector('.expand-btn'))">What is a black hole?</div>
+    <div class="abstract-wrap"><div class="abstract-text" id="q-bh">A quasi-black hole is a finite BC system with N ≫ 1 degrees of freedom near the β=1 crossover. No singularity, no information paradox. Entropy S = ψ(N) = log lcm(1,...,N) with exact ζ-zero corrections. Evaporation proceeds by KMS detailed balance and terminates at the Planck ground state N=1. The Bekenstein–Hawking formula is recovered as an approximation in the N → ∞ limit.</div><button class="expand-btn" onclick="toggleAbs('q-bh',this)">Show more</button></div>
+    <div class="paper-meta">Paper VII</div>
+</div>
+
+<div class="paper" style="border-left-color: #059669;">
+    <div class="paper-title" style="cursor:pointer" onclick="toggleAbs('q-nu',this.parentNode.querySelector('.expand-btn'))">Why do neutrinos have mass?</div>
+    <div class="abstract-wrap"><div class="abstract-text" id="q-nu">The Legendre character χ₃ has a purely imaginary Gauss sum τ(χ₃) = i√7 — its real part is exactly zero. This forces tree-level neutrino masses to vanish. Nonzero masses arise from the Euler product correction: the collective contribution of all primes generates a small but finite mass via the seesaw mechanism. The mass ratio R = 33.0 and CP phase δ<sub>CP</sub> = −90° are testable by JUNO (2026–2027) and DUNE.</div><button class="expand-btn" onclick="toggleAbs('q-nu',this)">Show more</button></div>
+    <div class="paper-meta">Paper XII</div>
 </div>
 
 <footer>
