@@ -45,6 +45,10 @@
             font-size: 0.9em;
         }
         .pdf-link:hover { text-decoration: underline; }
+        .abstract-text { font-size: 0.88em; color: #555; margin-top: 6px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.6; }
+        .abstract-text.expanded { -webkit-line-clamp: unset; overflow: visible; }
+        .expand-btn { font-size: 0.82em; color: #2563eb; cursor: pointer; margin-top: 3px; display: inline-block; border: none; background: none; padding: 0; }
+        .expand-btn:hover { text-decoration: underline; }
         .info { margin: 10px 0; }
         .info a { color: #2563eb; text-decoration: none; }
         .info a:hover { text-decoration: underline; }
@@ -77,7 +81,8 @@
     <div class="paper-title">Quantum Mechanics and the Arithmetic Structure of the Bost–Connes System</div>
     <div class="paper-meta">Shaowu Hu, 2026</div>
     <span class="paper-status status-review">Under review — Commun. Math. Phys.</span><br>
-    <div class="paper-meta">The five axioms of quantum mechanics (Hilbert space, self-adjoint observables, Born rule, unitary evolution, tensor product) are derived as theorems from the BC algebra with zero additional assumptions.</div>
+    <div class="abstract-text" id="abs-qm">Starting from the arithmetic structure of the Bost–Connes (BC) system, we systematically investigate the arithmetic origins of each of the five von Neumann axioms of quantum mechanics. The main results are: (I) The Hilbert space structure is uniquely constructed from C*-positivity; (II) Self-adjointness is an intrinsic feature of the C*-algebraic framework; (III) The numerical form of the Born rule P = |cₙ|² is uniquely determined by the overlap relation between KMS states; (IV) Unitary evolution is uniquely determined by the strict monotonicity of ζ; (V) The tensor product decomposition is a direct consequence of the fundamental theorem of arithmetic. The derivation introduces no measurement, observer, or wave function collapse. Probability emerges naturally within the BC framework as an objective relational property between two KMS states.</div>
+    <button class="expand-btn" onclick="toggleAbs('abs-qm',this)">Show more</button>
     <a class="pdf-link" href="papers/qm_pure_bc_en.pdf" target="_blank">📄 PDF (English)</a>
 </div>
 
@@ -85,7 +90,8 @@
     <div class="paper-title">Unification of the Four Forces from the Bost–Connes System</div>
     <div class="paper-meta">Shaowu Hu, 2026</div>
     <span class="paper-status status-review">Under review — Commun. Math. Phys.</span><br>
-    <div class="paper-meta">The CRT decomposition of (ℤ/7ℤ)* uniquely yields the Standard Model gauge group SU(3)×SU(2)×U(1) and emergent gravity from KMS thermodynamics.</div>
+    <div class="abstract-text" id="abs-forces">We prove that the single Bost–Connes C*-algebra reveals, via two canonical projections, the structural correspondences of all four fundamental forces. (i) Algebraic projection (Chinese Remainder Theorem): The local factor (ℤ/7ℤ)* ≅ ℤ/2ℤ × ℤ/3ℤ canonically decomposes the group algebra as ℂ[(ℤ/7ℤ)*] ≅ ℂ² ⊗ ℂ³, whose local unitary group is (U(1)ₙ × SU(2) × SU(3))/ℤ₆, the gauge group of the three non-gravitational interactions. (ii) Thermodynamic projection (KMS modular flow): The Hamiltonian H|n⟩ = (log n)|n⟩ equips ℤ₋₀ with the multiplicative metric d(m,n) = |log(m/n)|; the von Mangoldt explicit formula constitutes a matter–geometry duality identity. The prime p = 7 is singled out by a uniqueness theorem: it is the smallest prime for which the multiplicative group admits a non-trivial CRT tensor-product decomposition.</div>
+    <button class="expand-btn" onclick="toggleAbs('abs-forces',this)">Show more</button>
     <a class="pdf-link" href="papers/four_forces_en.pdf" target="_blank">📄 PDF (English)</a>
 </div>
 
@@ -93,7 +99,8 @@
     <div class="paper-title">Arithmetic Structure of the Standard Model Mass Spectrum and the Bost–Connes Algebra</div>
     <div class="paper-meta">Shaowu Hu, 2026</div>
     <span class="paper-status status-review">Under review — Phys. Rev. D</span><br>
-    <div class="paper-meta">All 12 fermion masses, the CKM matrix (|V<sub>us</sub>|, |V<sub>cb</sub>|, |V<sub>ub</sub>| to &lt;2.5%), and the Koide formula are derived from BC characters and Jacobi sums.</div>
+    <div class="abstract-text" id="abs-mass">The Standard Model is experimentally extraordinarily successful. However, its fermion mass spectrum appears as intrinsic free parameters. This paper proposes an alternative route: starting from the local arithmetic structure of the Bost–Connes algebra at the prime p=7, we carry out a unified derivation of the Standard Model mass hierarchy, the three-generation structure, the decay hierarchy, and certain coupling constants. The CRT decomposition (ℤ/7ℤ)* ≅ ℤ/2ℤ × ℤ/3ℤ simultaneously encodes the particle doublet structure and the three-generation cycle; the six characters yield six classes of fermion sectors; the doublet tension |a−(7−a)|={5,3,1} accounts for the stability ordering. The leptonic Koide formula, the neutrino mass-squared difference ratio, the d-type quark mass relations, and the weak mixing angle at the GUT scale can all be derived within the same arithmetic framework. From the single input p=7, the principal hierarchical structure of the Standard Model mass spectrum can be derived step by step.</div>
+    <button class="expand-btn" onclick="toggleAbs('abs-mass',this)">Show more</button>
     <a class="pdf-link" href="papers/mass_spectrum_en.pdf" target="_blank">📄 PDF (English)</a>
 </div>
 
@@ -101,7 +108,8 @@
     <div class="paper-title">Quasi-Black Holes and the Bost–Connes System</div>
     <div class="paper-meta">Shaowu Hu, 2026</div>
     <span class="paper-status status-review">Under review — Phys. Rev. D</span><br>
-    <div class="paper-meta">Black holes as β = 1 phase transitions in the BC system, with emergent Bekenstein–Hawking entropy and an area law with logarithmic corrections.</div>
+    <div class="abstract-text" id="abs-bh">The Bost–Connes algebra is a C*-dynamical system whose partition function is the Riemann ζ function; its unique phase transition at β = 1 is a product of the thermodynamic limit N → ∞. Physical compact objects have finitely many degrees of freedom N < ∞, so their truncated partition function Zₙ(β) is analytic for all β > 0 — no pole, no sharp phase transition, no sharp horizon. We define a quasi-black hole as a finite system with N ≫ 1 and effective inverse temperature β lying in the BC crossover region. Main results: (i) the discrete entropy is S = ψ(N) = log lcm(1,...,N), with exact ζ-zero corrections; (ii) evaporation direction and rate are determined by KMS detailed balance; (iii) evaporation terminates at the stable Planck ground state N = 1. The Bekenstein–Hawking entropy and Hawking temperature are recovered as approximations in the N → ∞ continuum limit.</div>
+    <button class="expand-btn" onclick="toggleAbs('abs-bh',this)">Show more</button>
     <a class="pdf-link" href="papers/black_holes_en.pdf" target="_blank">📄 PDF (English)</a>
 </div>
 
@@ -109,7 +117,8 @@
     <div class="paper-title">Arithmetic Structure of the Neutrino Mass Spectrum and the Bost–Connes Algebra</div>
     <div class="paper-meta">Shaowu Hu, 2026</div>
     <span class="paper-status status-review">Under review — Phys. Rev. D</span><br>
-    <div class="paper-meta">Neutrino mass hierarchy R = 33.0 and δ<sub>CP</sub> = −90° predicted from Hecke three-cycle closure. Testable by JUNO (2026–2027).</div>
+    <div class="abstract-text" id="abs-nu">The discovery of neutrino oscillations (1998) confirmed that neutrinos possess nonzero masses, yet no theory to date has derived the mass parameters from first principles. Starting from the Legendre character χ₃ of the Bost–Connes algebra, this paper provides a complete arithmetic derivation of the neutrino mass spectrum. Core results: (1) The Gauss sum τ(χ₃)=i√7 (purely imaginary) furnishes the algebraic origin for tree-level mass vanishing; (2) S₃ symmetry yields the tri-bimaximal mixing matrix; (3) Two successive breakings of S₃ yield the reactor angle θ₁₃, the mass-squared ratio R = Δm²₃₁/Δm²₂₁ = 33.0 (experiment 33.5, deviation 1.5%), and the CP-violating phase δ_CP = −90°. With only one experimental input (Δm²₃₁), Δm²₂₁ = 7.66×10⁻⁵ eV² (experiment 7.53×10⁻⁵, deviation 1.7%) emerges automatically as a prediction.</div>
+    <button class="expand-btn" onclick="toggleAbs('abs-nu',this)">Show more</button>
     <a class="pdf-link" href="papers/neutrino_en.pdf" target="_blank">📄 PDF (English)</a>
 </div>
 
@@ -141,6 +150,17 @@
 
 
 <script>
+function toggleAbs(id, btn) {
+    var el = document.getElementById(id);
+    if (el.classList.contains('expanded')) {
+        el.classList.remove('expanded');
+        btn.textContent = 'Show more';
+    } else {
+        el.classList.add('expanded');
+        btn.textContent = 'Show less';
+    }
+}
+
 document.querySelectorAll('.pdf-link').forEach(function(link) {
     link.addEventListener('click', function(e) {
         var href = link.getAttribute('href');
