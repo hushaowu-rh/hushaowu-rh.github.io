@@ -18,7 +18,7 @@
             color: #3a2f23;
             display: flex;
             overflow: auto;
-            font-size: clamp(13px, 2.8vw, 21px);
+            font-size: clamp(14px, 3vw, 22px);
         }
         .scroll {
             writing-mode: vertical-rl;
@@ -26,34 +26,53 @@
             border: 1px solid rgba(155, 84, 63, .55);
             outline: 1px solid rgba(155, 84, 63, .3);
             outline-offset: 5px;
-            padding: 2.4em 1.8em;
+            padding: 2.4em 2em;
             background: rgba(255, 252, 242, .4);
         }
-        .title {
-            font-size: 1.2em;
-            font-weight: normal;
-            letter-spacing: .35em;
-            margin-block-end: 1.6em;
-            color: #4a3b28;
-        }
         .stanza p {
-            font-size: 1.55em;
-            line-height: 1.9;
-            letter-spacing: .18em;
+            font-size: 1.6em;
+            line-height: 1.95;
+            letter-spacing: .2em;
         }
-        .stanza + .stanza { margin-block-start: 1.1em; }
         .count {
-            font-size: .9em;
             margin-block-start: 2em;
-            padding-top: 2em;
+            padding-top: 2.2em;
             color: #6b5a41;
             letter-spacing: .15em;
-            line-height: 2;
-            min-height: 1em;
         }
+        .count p { font-size: .85em; line-height: 2; }
+        .seal2 {
+            writing-mode: horizontal-tb;
+            display: inline-grid;
+            grid-template-areas: "c3 c1" "c4 c2";
+            gap: 3px;
+            background: #f7f1e3;
+            border: 3px solid #b23a2a;
+            border-radius: .14em;
+            padding: 3px;
+            margin-top: .7em;
+            box-shadow: 0 1px 3px rgba(90, 40, 20, .25);
+        }
+        .seal2 span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.9em;
+            height: 1.9em;
+            background: #b23a2a;
+            color: #f7f1e3;
+            font-size: .95em;
+            letter-spacing: 0;
+            overflow: hidden;
+        }
+        .seal2 .c1 { grid-area: c1; }
+        .seal2 .c2 { grid-area: c2; }
+        .seal2 .c3 { grid-area: c3; }
+        .seal2 .c4 { grid-area: c4; }
+        .seal2 .tight { font-size: .62em; }
         .sig {
-            margin-block-start: 1.6em;
-            padding-top: 4.2em;
+            margin-block-start: 1.8em;
+            padding-top: 4.4em;
             font-size: .78em;
             color: #8a765a;
             letter-spacing: .12em;
@@ -76,20 +95,22 @@
 </head>
 <body>
     <div class="scroll">
-        <h1 class="title">卜算子・山径</h1>
         <div class="stanza">
-            <p>翻过几重山</p>
-            <p>回望路如线</p>
-            <p>一纸书藏石径幽</p>
-            <p>只待来人见</p>
+            <p>一径入云深</p>
+            <p>万象秋毫静</p>
+            <p>新雨洗空翠</p>
+            <p>千峰各自晴</p>
         </div>
-        <div class="stanza">
-            <p>足印日添新</p>
-            <p>苔色知深浅</p>
-            <p>他日君临数到时</p>
-            <p>我已翻山远</p>
+        <div class="count">
+            <p>足印</p>
+            <div class="seal2" id="countSeal" hidden>
+                <span class="c1">柒</span>
+                <span class="c2" id="sc2"></span>
+                <span class="c3">余</span>
+                <span class="c4" id="sc4"></span>
+            </div>
+            <p id="line"></p>
         </div>
-        <p class="count" id="line"></p>
         <div class="sig">
             <p>时丙午年夏</p>
             <p>胡邵武偕猫斑斑</p>
@@ -99,7 +120,8 @@
 
     <script>
     (function () {
-        var el = document.getElementById('line');
+        var lineEl = document.getElementById('line');
+        var sealEl = document.getElementById('countSeal');
 
         function toCn(n) {
             var d = '\u96f6\u4e00\u4e8c\u4e09\u56db\u4e94\u516d\u4e03\u516b\u4e5d';
@@ -121,7 +143,6 @@
                         }
                         m = Math.floor(m / 10); j++;
                     }
-                    if (i > 0 && seg < 1000 && s) segs = segs; // segment boundary
                     s = segs + bigs[i] + s;
                 }
                 n = Math.floor(n / 10000); i++;
@@ -129,21 +150,38 @@
             return s.replace(/^\u4e00\u5341/, '\u5341');
         }
 
-        fetch('https://hushaowu.goatcounter.com/counter//hill/.json')
-            .then(function (r) { return r.json(); })
-            .then(function (d) {
-                var n = parseInt(String(d.count || '0').replace(/[^0-9]/g, ''), 10) + 1;
-                el.textContent = '\u5c71\u5f84\u81f3\u6b64\u3000\u8db3\u5370\u51e1' + toCn(n) + '\u679a';
-            })
-            .catch(function () {
-                el.textContent = '\u5c71\u5f84\u4e4b\u4e0a\u3000\u590d\u6dfb\u8db3\u5370\u4e00\u679a';
-            })
-            .finally(function () {
-                try {
-                    var img = new Image();
-                    img.src = 'https://hushaowu.goatcounter.com/count?p=%2Fhill%2F&t=' + encodeURIComponent('\u7ffb\u8fc7\u5c71\u4e18') + '&rnd=' + Math.random();
-                } catch (e) {}
-            });
+        function showSeal(n) {
+            var e = 0;
+            while (Math.pow(7, e + 1) <= n) e++;
+            var r = n - Math.pow(7, e);
+            var c2 = document.getElementById('sc2');
+            var c4 = document.getElementById('sc4');
+            c2.textContent = toCn(e);
+            c4.textContent = toCn(r);
+            if (c2.textContent.length > 1) c2.className = 'c2 tight';
+            if (c4.textContent.length > 1) c4.className = 'c4 tight';
+            sealEl.hidden = false;
+        }
+
+        var forced = parseInt((location.hash || '').slice(1), 10);
+        if (!isNaN(forced) && forced > 0) {
+            showSeal(forced);
+        } else {
+            fetch('https://hushaowu.goatcounter.com/counter//hill/.json')
+                .then(function (r) { return r.json(); })
+                .then(function (d) {
+                    var n = parseInt(String(d.count || '0').replace(/[^0-9]/g, ''), 10) + 1;
+                    showSeal(n);
+                })
+                .catch(function () {
+                    lineEl.textContent = '\u590d\u6dfb\u4e00\u679a';
+                });
+        }
+
+        try {
+            var img = new Image();
+            img.src = 'https://hushaowu.goatcounter.com/count?p=%2Fhill%2F&t=' + encodeURIComponent('\u7ffb\u8fc7\u5c71\u4e18') + '&rnd=' + Math.random();
+        } catch (e) {}
     })();
     </script>
 </body>
