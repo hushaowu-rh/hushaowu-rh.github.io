@@ -106,7 +106,7 @@
             <div class="seal2" id="countSeal" hidden>
                 <span class="c1">柒</span>
                 <span class="c2" id="sc2"></span>
-                <span class="c3">余</span>
+                <span class="c3" id="sc3"></span>
                 <span class="c4" id="sc4"></span>
             </div>
             <p id="line"></p>
@@ -150,15 +150,23 @@
             return s.replace(/^\u4e00\u5341/, '\u5341');
         }
 
+        function digitsCn(n) {
+            var d = '\u3007\u4e00\u4e8c\u4e09\u56db\u4e94\u516d\u4e03\u516b\u4e5d';
+            return String(n).replace(/[0-9]/g, function (c) { return d[+c]; });
+        }
+
         function showSeal(n) {
             var e = 0;
             while (Math.pow(7, e + 1) <= n) e++;
             var r = n - Math.pow(7, e);
+            var es = String(e);
+            if (es.length < 2) es = '0' + es;
             var c2 = document.getElementById('sc2');
+            var c3 = document.getElementById('sc3');
             var c4 = document.getElementById('sc4');
-            c2.textContent = toCn(e);
-            c4.textContent = toCn(r);
-            if (c2.textContent.length > 1) c2.className = 'c2 tight';
+            c2.textContent = digitsCn(es[0]);
+            c3.textContent = digitsCn(es[1]);
+            c4.textContent = digitsCn(r);
             if (c4.textContent.length > 1) c4.className = 'c4 tight';
             sealEl.hidden = false;
         }
