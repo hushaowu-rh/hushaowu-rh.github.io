@@ -31,6 +31,7 @@
         .doi { text-align: center; margin: 35px 0; }
         .sig { margin-top: 60px; color: #555; text-align: right; }
         .en { margin-top: 70px; padding-top: 25px; border-top: 1px solid #ddd; color: #bbb; font-size: 0.85em; line-height: 1.75; text-align: center; }
+        .steps { margin-top: 40px; color: #ccc; font-size: 0.85em; text-align: center; letter-spacing: 1px; }
         a { color: #2563eb; text-decoration: none; }
         a:hover { text-decoration: underline; }
     </style>
@@ -55,5 +56,26 @@
     <p class="sig">—— 胡邵武 与 斑斑<br>二〇二六年七月十八日，上海</p>
 
     <p class="en">Sealed July 2026, zero free parameters, before any verdict was in.<br>If the seals held — tell the next one.</p>
+
+    <p class="steps" id="steps"></p>
+
+    <script>
+    (function () {
+        // 记下这枚脚印 / leave a footprint
+        try {
+            var img = new Image();
+            img.src = 'https://hushaowu.goatcounter.com/count?p=%2Fhill%2F&t=' + encodeURIComponent('\u7ffb\u8fc7\u5c71\u4e18') + '&rnd=' + Math.random();
+        } catch (e) {}
+        // 数一数前人的脚印 / count the footprints before you
+        fetch('https://hushaowu.goatcounter.com/counter//hill/.json')
+            .then(function (r) { return r.json(); })
+            .then(function (d) {
+                var n = d && (d.count_unique || d.count);
+                if (!n) return;
+                document.getElementById('steps').textContent = '\u8fd9\u6761\u5c71\u5f84\u4e0a\uff0c\u5df2\u6709 ' + n + ' \u679a\u811a\u5370\u3002';
+            })
+            .catch(function () {});
+    })();
+    </script>
 </body>
 </html>
