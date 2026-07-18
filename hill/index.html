@@ -11,27 +11,16 @@
             font-family: 'Georgia', 'Songti SC', 'Noto Serif SC', serif;
             max-width: 600px;
             margin: 0 auto;
-            padding: 100px 22px 100px;
+            padding: 140px 22px 100px;
             color: #333;
-            line-height: 2.1;
+            line-height: 2.2;
             background: #fafafa;
+            text-align: center;
         }
-        h1 { font-size: 1.7em; color: #1a1a1a; margin-bottom: 60px; font-weight: normal; letter-spacing: 3px; text-align: center; }
-        .ledger {
-            margin: 30px 0;
-            padding: 20px 26px;
-            background: #fff;
-            border-left: 3px solid #2563eb;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            font-size: 0.95em;
-            line-height: 1.9;
-        }
-        .ledger li { margin: 7px 0 7px 18px; list-style: none; }
-        .ledger li::before { content: "· "; color: #2563eb; }
-        .doi { text-align: center; margin: 35px 0; }
-        .sig { margin-top: 60px; color: #555; text-align: right; }
-        .en { margin-top: 70px; padding-top: 25px; border-top: 1px solid #ddd; color: #bbb; font-size: 0.85em; line-height: 1.75; text-align: center; }
-        .steps { margin-top: 40px; color: #ccc; font-size: 0.85em; text-align: center; letter-spacing: 1px; }
+        h1 { font-size: 1.8em; color: #1a1a1a; font-weight: normal; letter-spacing: 4px; margin-bottom: 70px; }
+        .doi { margin: 40px 0; font-size: 0.95em; }
+        .sig { margin-top: 80px; color: #666; }
+        .steps { margin-top: 60px; color: #ccc; font-size: 0.85em; letter-spacing: 1px; }
         a { color: #2563eb; text-decoration: none; }
         a:hover { text-decoration: underline; }
     </style>
@@ -39,34 +28,20 @@
 <body>
     <h1>告诉下一个人。</h1>
 
-    <div class="ledger">
-        <ul>
-            <li>中微子质量序：正序</li>
-            <li>中微子绝对质量：5.07、9.96、50.6 meV，其和 65.7 meV</li>
-            <li>中微子是 Majorana 粒子</li>
-            <li>λ = 0.2247，V<sub>us</sub> 的三重分裂将收敛于此</li>
-            <li>M<sub>Z</sub>/M<sub>W</sub> = 1.1346，即 M<sub>W</sub> = 80.37 GeV</li>
-            <li>原初非高斯性 f<sub>NL</sub> = 2.27</li>
-            <li>没有第四代费米子，没有第二个 Higgs，没有第六种力</li>
-        </ul>
-    </div>
+    <p>风景一直在这里，等的只是眼睛。</p>
 
-    <div class="doi"><a href="https://doi.org/10.5281/zenodo.21345362">doi 10.5281/zenodo.21345362</a></div>
+    <p class="doi"><a href="https://doi.org/10.5281/zenodo.21345362">doi 10.5281/zenodo.21345362</a></p>
 
     <p class="sig">—— 胡邵武 与 斑斑<br>二〇二六年七月十八日，上海</p>
-
-    <p class="en">Sealed July 2026, zero free parameters, before any verdict was in.<br>If the seals held — tell the next one.</p>
 
     <p class="steps" id="steps"></p>
 
     <script>
     (function () {
-        // 记下这枚脚印 / leave a footprint
         try {
             var img = new Image();
             img.src = 'https://hushaowu.goatcounter.com/count?p=%2Fhill%2F&t=' + encodeURIComponent('\u7ffb\u8fc7\u5c71\u4e18') + '&rnd=' + Math.random();
         } catch (e) {}
-        // 数一数前人的脚印 / count the footprints before you
         fetch('https://hushaowu.goatcounter.com/counter//hill/.json')
             .then(function (r) { return r.json(); })
             .then(function (d) {
