@@ -5,38 +5,138 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
     <title>翻过山丘</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html, body { height: 100%; }
         body {
-            font-family: 'Georgia', 'Songti SC', 'Noto Serif SC', serif;
+            font-family: 'Ma Shan Zheng', 'Kaiti SC', 'STKaiti', 'KaiTi', 'Noto Serif SC', serif;
+            background: #ead9b8;
+            background-image: radial-gradient(ellipse at center, #f5eedd 0%, #e6d2ac 100%);
+            color: #3a2f23;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #fafafa;
-            color: #1a1a1a;
+            overflow: auto;
+            font-size: clamp(13px, 2.8vw, 21px);
         }
-        p { font-size: 1.5em; letter-spacing: 3px; text-align: center; padding: 0 20px; }
-        .sig { font-size: 0.8em; color: #bbb; margin-top: 50px; letter-spacing: 2px; }
+        .scroll {
+            writing-mode: vertical-rl;
+            margin: auto;
+            border: 1px solid rgba(155, 84, 63, .55);
+            outline: 1px solid rgba(155, 84, 63, .3);
+            outline-offset: 5px;
+            padding: 2.4em 1.8em;
+            background: rgba(255, 252, 242, .4);
+        }
+        .title {
+            font-size: 1.2em;
+            font-weight: normal;
+            letter-spacing: .35em;
+            margin-block-end: 1.6em;
+            color: #4a3b28;
+        }
+        .stanza p {
+            font-size: 1.55em;
+            line-height: 1.9;
+            letter-spacing: .18em;
+        }
+        .stanza + .stanza { margin-block-start: 1.1em; }
+        .count {
+            font-size: .9em;
+            margin-block-start: 2em;
+            padding-top: 2em;
+            color: #6b5a41;
+            letter-spacing: .15em;
+            line-height: 2;
+            min-height: 1em;
+        }
+        .sig {
+            margin-block-start: 1.6em;
+            padding-top: 4.2em;
+            font-size: .78em;
+            color: #8a765a;
+            letter-spacing: .12em;
+        }
+        .sig p { line-height: 2; }
+        .seal {
+            display: inline-block;
+            margin-top: .9em;
+            background: #b23a2a;
+            color: #f7f1e3;
+            font-size: .82em;
+            line-height: 1.2;
+            height: 2.6em;
+            padding: .3em .24em;
+            border-radius: .12em;
+            letter-spacing: .05em;
+            box-shadow: 0 0 0 1px rgba(178, 58, 42, .35);
+        }
     </style>
 </head>
 <body>
-    <div>
-        <p id="line"></p>
-        <p class="sig">胡邵武 偕猫斑斑，识于沪上。时丙午年夏。</p>
+    <div class="scroll">
+        <h1 class="title">卜算子・山径</h1>
+        <div class="stanza">
+            <p>翻过几重山</p>
+            <p>回望路如线</p>
+            <p>一纸书藏石径幽</p>
+            <p>只待来人见</p>
+        </div>
+        <div class="stanza">
+            <p>足印日添新</p>
+            <p>苔色知深浅</p>
+            <p>他日君临数到时</p>
+            <p>我已翻山远</p>
+        </div>
+        <p class="count" id="line"></p>
+        <div class="sig">
+            <p>时丙午年夏</p>
+            <p>胡邵武偕猫斑斑</p>
+            <p>识于沪上<span class="seal">斑斑之印</span></p>
+        </div>
     </div>
 
     <script>
     (function () {
         var el = document.getElementById('line');
+
+        function toCn(n) {
+            var d = '\u96f6\u4e00\u4e8c\u4e09\u56db\u4e94\u516d\u4e03\u516b\u4e5d';
+            var units = ['', '\u5341', '\u767e', '\u5343'];
+            var bigs = ['', '\u4e07', '\u4ebf'];
+            if (n === 0) return d[0];
+            var s = '', i = 0;
+            while (n > 0) {
+                var seg = n % 10000;
+                if (seg > 0) {
+                    var segs = '', z = false, m = seg, j = 0;
+                    while (m > 0) {
+                        var dig = m % 10;
+                        if (dig === 0) {
+                            if (segs && !z) { segs = d[0] + segs; z = true; }
+                        } else {
+                            segs = d[dig] + units[j] + segs;
+                            z = false;
+                        }
+                        m = Math.floor(m / 10); j++;
+                    }
+                    if (i > 0 && seg < 1000 && s) segs = segs; // segment boundary
+                    s = segs + bigs[i] + s;
+                }
+                n = Math.floor(n / 10000); i++;
+            }
+            return s.replace(/^\u4e00\u5341/, '\u5341');
+        }
+
         fetch('https://hushaowu.goatcounter.com/counter//hill/.json')
             .then(function (r) { return r.json(); })
             .then(function (d) {
                 var n = parseInt(String(d.count || '0').replace(/[^0-9]/g, ''), 10) + 1;
-                el.textContent = '\u5c71\u5f84\u81f3\u6b64\uff0c\u8db3\u5370\u51e1 ' + n + ' \u679a\u3002';
+                el.textContent = '\u5c71\u5f84\u81f3\u6b64\u3000\u8db3\u5370\u51e1' + toCn(n) + '\u679a';
             })
             .catch(function () {
-                el.textContent = '\u5c71\u5f84\u4e4b\u4e0a\uff0c\u590d\u6dfb\u8db3\u5370\u4e00\u679a\u3002';
+                el.textContent = '\u5c71\u5f84\u4e4b\u4e0a\u3000\u590d\u6dfb\u8db3\u5370\u4e00\u679a';
             })
             .finally(function () {
                 try {
