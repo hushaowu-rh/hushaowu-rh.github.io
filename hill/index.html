@@ -44,32 +44,25 @@
         .seal2 {
             writing-mode: horizontal-tb;
             display: inline-grid;
-            grid-template-areas: "c3 c1" "c4 c2";
             gap: 3px;
             background: #f7f1e3;
             border: 3px solid #b23a2a;
             border-radius: .14em;
             padding: 3px;
-            margin-top: .7em;
+            margin: .5em 0;
             box-shadow: 0 1px 3px rgba(90, 40, 20, .25);
+            letter-spacing: 0;
         }
         .seal2 span {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 1.9em;
-            height: 1.9em;
+            width: 1.7em;
+            height: 1.7em;
             background: #b23a2a;
             color: #f7f1e3;
-            font-size: .95em;
-            letter-spacing: 0;
-            overflow: hidden;
+            font-size: .8em;
         }
-        .seal2 .c1 { grid-area: c1; }
-        .seal2 .c2 { grid-area: c2; }
-        .seal2 .c3 { grid-area: c3; }
-        .seal2 .c4 { grid-area: c4; }
-        .seal2 .tight { font-size: .62em; }
         .sig {
             margin-block-start: 1.8em;
             padding-top: 4.4em;
@@ -78,19 +71,6 @@
             letter-spacing: .12em;
         }
         .sig p { line-height: 2; }
-        .seal {
-            display: inline-block;
-            margin-top: .9em;
-            background: #b23a2a;
-            color: #f7f1e3;
-            font-size: .82em;
-            line-height: 1.2;
-            height: 2.6em;
-            padding: .3em .24em;
-            border-radius: .12em;
-            letter-spacing: .05em;
-            box-shadow: 0 0 0 1px rgba(178, 58, 42, .35);
-        }
     </style>
 </head>
 <body>
@@ -102,87 +82,63 @@
             <p>千峰各自晴</p>
         </div>
         <div class="count">
-            <p>足印</p>
-            <div class="seal2" id="countSeal" hidden>
-                <span class="c1">柒</span>
-                <span class="c2" id="sc2"></span>
-                <span class="c3" id="sc3"></span>
-                <span class="c4" id="sc4"></span>
-            </div>
-            <p id="line"></p>
+            <p>山径至此</p>
+            <p id="countLine">足印凡<span class="seal2" id="countSeal" hidden></span>枚</p>
         </div>
         <div class="sig">
             <p>时丙午年夏</p>
             <p>胡邵武偕猫斑斑</p>
-            <p>识于沪上<span class="seal">斑斑之印</span></p>
+            <p>识于沪上</p>
         </div>
     </div>
 
     <script>
     (function () {
-        var lineEl = document.getElementById('line');
         var sealEl = document.getElementById('countSeal');
+        var lineEl = document.getElementById('countLine');
+        var DIG = '\u96f6\u58f9\u8cb3\u53c4\u8086\u4f0d\u9678'; // 零壹貳叄肆伍陸
 
-        function toCn(n) {
-            var d = '\u96f6\u4e00\u4e8c\u4e09\u56db\u4e94\u516d\u4e03\u516b\u4e5d';
-            var units = ['', '\u5341', '\u767e', '\u5343'];
-            var bigs = ['', '\u4e07', '\u4ebf'];
-            if (n === 0) return d[0];
-            var s = '', i = 0;
-            while (n > 0) {
-                var seg = n % 10000;
-                if (seg > 0) {
-                    var segs = '', z = false, m = seg, j = 0;
-                    while (m > 0) {
-                        var dig = m % 10;
-                        if (dig === 0) {
-                            if (segs && !z) { segs = d[0] + segs; z = true; }
-                        } else {
-                            segs = d[dig] + units[j] + segs;
-                            z = false;
-                        }
-                        m = Math.floor(m / 10); j++;
-                    }
-                    s = segs + bigs[i] + s;
-                }
-                n = Math.floor(n / 10000); i++;
+        function buildSeal(n) {
+            var chars = ['\u67d2']; // 柒
+            var s = n.toString(7);
+            for (var i = 0; i < s.length; i++) chars.push(DIG[+s[i]]);
+            var total = chars.length;
+            var rows = Math.ceil(Math.sqrt(total));
+            var cols = Math.ceil(total / rows);
+            var pad = rows * cols - total;
+            if (pad === 1) {
+                chars.push('\u5370'); // 印
+            } else if (pad >= 2) {
+                while (chars.length < rows * cols - 2) chars.push('');
+                chars.push('\u4e4b', '\u5370'); // 之印
             }
-            return s.replace(/^\u4e00\u5341/, '\u5341');
-        }
-
-        function digitsCn(n) {
-            var d = '\u3007\u4e00\u4e8c\u4e09\u56db\u4e94\u516d\u4e03\u516b\u4e5d';
-            return String(n).replace(/[0-9]/g, function (c) { return d[+c]; });
-        }
-
-        function showSeal(n) {
-            var e = 0;
-            while (Math.pow(7, e + 1) <= n) e++;
-            var r = n - Math.pow(7, e);
-            var es = String(e);
-            if (es.length < 2) es = '0' + es;
-            var c2 = document.getElementById('sc2');
-            var c3 = document.getElementById('sc3');
-            var c4 = document.getElementById('sc4');
-            c2.textContent = digitsCn(es[0]);
-            c3.textContent = digitsCn(es[1]);
-            c4.textContent = digitsCn(r);
-            if (c4.textContent.length > 1) c4.className = 'c4 tight';
+            sealEl.innerHTML = '';
+            sealEl.style.gridTemplateRows = 'repeat(' + rows + ', 1.7em)';
+            sealEl.style.gridTemplateColumns = 'repeat(' + cols + ', 1.7em)';
+            for (var k = 0; k < chars.length; k++) {
+                var cell = document.createElement('span');
+                cell.textContent = chars[k];
+                var col = Math.floor(k / rows);
+                var row = k % rows;
+                cell.style.gridColumn = String(cols - col);
+                cell.style.gridRow = String(row + 1);
+                sealEl.appendChild(cell);
+            }
             sealEl.hidden = false;
         }
 
         var forced = parseInt((location.hash || '').slice(1), 10);
         if (!isNaN(forced) && forced > 0) {
-            showSeal(forced);
+            buildSeal(forced);
         } else {
             fetch('https://hushaowu.goatcounter.com/counter//hill/.json')
                 .then(function (r) { return r.json(); })
                 .then(function (d) {
                     var n = parseInt(String(d.count || '0').replace(/[^0-9]/g, ''), 10) + 1;
-                    showSeal(n);
+                    buildSeal(n);
                 })
                 .catch(function () {
-                    lineEl.textContent = '\u590d\u6dfb\u4e00\u679a';
+                    lineEl.textContent = '\u590d\u6dfb\u8db3\u5370\u4e00\u679a';
                 });
         }
 
