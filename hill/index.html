@@ -29,10 +29,10 @@
             .then(function (r) { return r.json(); })
             .then(function (d) {
                 var n = parseInt(String(d.count || '0').replace(/[^0-9]/g, ''), 10) + 1;
-                el.textContent = '\u4f60\u662f\u7b2c ' + n + ' \u4e2a\u5230\u8fbe\u8fd9\u91cc\u7684\u4eba\u3002';
+                el.textContent = '\u8fd9\u6761\u5c71\u5f84\u4e0a\uff0c\u5df2\u6709 ' + n + ' \u679a\u811a\u5370\u3002';
             })
             .catch(function () {
-                el.textContent = '\u4f60\u5230\u8fbe\u4e86\u8fd9\u91cc\u3002';
+                el.textContent = '\u8fd9\u6761\u5c71\u5f84\u4e0a\uff0c\u53c8\u591a\u4e86\u4e00\u679a\u811a\u5370\u3002';
             })
             .finally(function () {
                 try {
