@@ -84,7 +84,7 @@
         </div>
         <div class="count">
             <p>山径至此</p>
-            <p id="countLine">足印凡<span class="seal2" id="countSeal" hidden></span>枚</p>
+            <p id="countLine">足印凡<span class="seal2" id="countSeal" hidden></span><span id="countRem"></span>枚</p>
         </div>
         <div class="sig">
             <p>时丙午年夏</p>
@@ -97,35 +97,60 @@
     (function () {
         var sealEl = document.getElementById('countSeal');
         var lineEl = document.getElementById('countLine');
-        var DIG = '\u96f6\u58f9\u8cb3\u53c4\u8086\u4f0d\u9678'; // 零壹貳叄肆伍陸
+        var remEl = document.getElementById('countRem');
+        var DIG = '\u96f6\u58f9\u8cb3\u53c4\u8086\u4f0d\u9678\u67d2\u634c\u7396'; // 零壹貳叄肆伍陸柒捌玖
+
+        function toCnBig(n) {
+            var units = ['', '\u62fe', '\u4f70', '\u4edf'];
+            var bigs = ['', '\u842c', '\u5104'];
+            if (n === 0) return DIG[0];
+            var s = '', i = 0;
+            while (n > 0) {
+                var seg = n % 10000;
+                if (seg > 0) {
+                    var segs = '', z = false, m = seg, j = 0;
+                    while (m > 0) {
+                        var dig = m % 10;
+                        if (dig === 0) {
+                            if (segs && !z) { segs = DIG[0] + segs; z = true; }
+                        } else {
+                            segs = DIG[dig] + units[j] + segs;
+                            z = false;
+                        }
+                        m = Math.floor(m / 10); j++;
+                    }
+                    s = segs + bigs[i] + s;
+                }
+                n = Math.floor(n / 10000); i++;
+            }
+            return s;
+        }
 
         function buildSeal(n) {
-            var chars = ['\u67d2']; // 柒
-            var s = n.toString(7);
-            for (var i = 0; i < s.length; i++) chars.push(DIG[+s[i]]);
-            var total = chars.length;
-            var rows = Math.ceil(Math.sqrt(total));
-            var cols = Math.ceil(total / rows);
-            var pad = rows * cols - total;
-            if (pad === 1) {
-                chars.push('\u5370'); // 印
-            } else if (pad >= 2) {
-                while (chars.length < rows * cols - 2) chars.push('');
-                chars.push('\u4e4b', '\u5370'); // 之印
+            var e = 0, r = n;
+            if (n >= 7) {
+                e = Math.floor(Math.log(n) / Math.log(7));
+                while (Math.pow(7, e + 1) <= n) e++;
+                while (Math.pow(7, e) > n) e--;
+                r = n - Math.pow(7, e);
             }
+            var es = String(e);
+            while (es.length < 3) es = '0' + es;
+            var chars = ['\u67d2', DIG[+es[0]], DIG[+es[1]], DIG[+es[2]]];
             sealEl.innerHTML = '';
-            sealEl.style.gridTemplateRows = 'repeat(' + rows + ', 1.15em)';
-            sealEl.style.gridTemplateColumns = 'repeat(' + cols + ', 1.15em)';
-            for (var k = 0; k < chars.length; k++) {
+            sealEl.style.gridTemplateRows = 'repeat(2, 1.15em)';
+            sealEl.style.gridTemplateColumns = 'repeat(2, 1.15em)';
+            for (var k = 0; k < 4; k++) {
                 var cell = document.createElement('span');
                 cell.textContent = chars[k];
-                var col = Math.floor(k / rows);
-                var row = k % rows;
-                cell.style.gridColumn = String(cols - col);
+                var col = Math.floor(k / 2);
+                var row = k % 2;
+                cell.style.gridColumn = String(2 - col);
                 cell.style.gridRow = String(row + 1);
                 sealEl.appendChild(cell);
             }
             sealEl.hidden = false;
+            remEl.textContent = r > 0 ? '\u53c8' + toCnBig(r) : '';
         }
 
         var forced = parseInt((location.hash || '').slice(1), 10);
