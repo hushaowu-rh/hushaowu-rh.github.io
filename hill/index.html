@@ -84,7 +84,8 @@
         </div>
         <div class="count">
             <p>山径至此</p>
-            <p id="countLine">足印凡<span class="seal2" id="countSeal" hidden></span><span id="countRem"></span>枚</p>
+            <p id="countLine">足印凡<span class="seal2" id="countSeal" hidden></span></p>
+            <p id="countRem"></p>
         </div>
         <div class="sig">
             <p>时丙午年夏</p>
@@ -100,30 +101,8 @@
         var remEl = document.getElementById('countRem');
         var DIG = '\u96f6\u58f9\u8cb3\u53c4\u8086\u4f0d\u9678\u67d2\u634c\u7396'; // 零壹貳叄肆伍陸柒捌玖
 
-        function toCnBig(n) {
-            var units = ['', '\u62fe', '\u4f70', '\u4edf'];
-            var bigs = ['', '\u842c', '\u5104'];
-            if (n === 0) return DIG[0];
-            var s = '', i = 0;
-            while (n > 0) {
-                var seg = n % 10000;
-                if (seg > 0) {
-                    var segs = '', z = false, m = seg, j = 0;
-                    while (m > 0) {
-                        var dig = m % 10;
-                        if (dig === 0) {
-                            if (segs && !z) { segs = DIG[0] + segs; z = true; }
-                        } else {
-                            segs = DIG[dig] + units[j] + segs;
-                            z = false;
-                        }
-                        m = Math.floor(m / 10); j++;
-                    }
-                    s = segs + bigs[i] + s;
-                }
-                n = Math.floor(n / 10000); i++;
-            }
-            return s;
+        function digitsBig(n) {
+            return String(n).replace(/[0-9]/g, function (c) { return DIG[+c]; });
         }
 
         function buildSeal(n) {
@@ -150,7 +129,7 @@
                 sealEl.appendChild(cell);
             }
             sealEl.hidden = false;
-            remEl.textContent = r > 0 ? '\u53c8' + toCnBig(r) : '';
+            remEl.textContent = (r > 0 ? '\u53c8' + digitsBig(r) : '') + '\u679a';
         }
 
         var forced = parseInt((location.hash || '').slice(1), 10);
