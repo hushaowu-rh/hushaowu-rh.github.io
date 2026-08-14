@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://hushaowu-rh.github.io/sitemap.xml
