@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-08-18
+- ⑥ Motion of Matter: V1 上线 (The Mechanism of the Motion of Matter from the Bost–Connes System, 34pp, Zenodo DOI 10.5281/zenodo.21992872, 位置在⑰之后)
+
 ## 2026-04-08
 - ① QM: V16→V17, 五个公理Remark升级为物理正文
 - ④ Mass Spectrum: V1→V2, u型夸克公式+Gatto关系+v_EW升级[A*]+质子寿命预测
