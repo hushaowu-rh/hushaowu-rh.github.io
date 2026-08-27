@@ -2,6 +2,7 @@
 
 ## 2026-08-27
 - ⑮ Mechanism of Fields: V1 上线 (The Mechanism of Fields from the Bost–Connes System, 39pp, Zenodo DOI 10.5281/zenodo.22126956, 位置在⑥之后)
+- 网站: index 条目移除 Preprint(VX) 徽章(版本已在 PDF 链接行, 徽章无区分度)
 - 网站: index 分组改版——Foundation(⑯①)/Mechanisms(⑰⑥⑮)/Computation(计算①) 三组, 各配组头句(Foundation 句化用⑯结语); 条目原序不动, 无新页面
 
 ## 2026-08-21
