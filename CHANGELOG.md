@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-08-27
+- ⑮ Mechanism of Fields: V1 上线 (The Mechanism of Fields from the Bost–Connes System, 39pp, Zenodo DOI 10.5281/zenodo.22126956, 位置在⑥之后)
+
 ## 2026-08-21
 - ⑯ Unification: V2→V3 (146pp, Zenodo DOI 10.5281/zenodo.22053431; 附录求值规则章按操作/记录/读数/复合四环节重构, 两条外部输入就地化归为推论, 完备性与唯一性合并为三层陈述)
 
