@@ -31,16 +31,17 @@
         .paper-title { font-weight: bold; color: #1a1a1a; font-size: 1.0em; }
         .paper-title a { color: inherit; text-decoration: none; }
         .paper-title a:hover { color: #2563eb; }
-        .paper-meta { color: #666; font-size: 0.88em; margin-top: 4px; }
-        .paper-status { 
-            display: inline-block;
-            font-size: 0.8em;
-            padding: 2px 8px;
-            border-radius: 3px;
-            margin-top: 5px;
+        .badges { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 6px; }
+        .badge {
+            display: inline-flex; align-items: center; gap: 5px;
+            font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+            font-size: 0.78em; font-weight: 600; color: #fff;
+            padding: 3px 11px; border-radius: 4px; line-height: 1.5;
         }
-        .status-review { background: #fef3c7; color: #92400e; }
-        .status-preprint { background: #e0e7ff; color: #3730a3; }
+        .badge-date { background: #3c74ad; }
+        .badge-type { background: #808080; }
+        .badge-open { background: #4d8b4a; }
+        .badge-open svg { width: 11px; height: 11px; fill: #fff; }
         .pdf-link {
             display: block;
             margin-top: 6px;
@@ -87,17 +88,17 @@
 
 <div class="paper">
     <div class="paper-title"><a href="papers/unification.html">The Unification of Matter, Forces, and Spacetime from the Bost–Connes System</a></div>
-    <div class="paper-meta">ShaoWu Hu · July 6, 2026</div>
+    <div class="badges"><span class="badge badge-date">July 6, 2026 (v3)</span><span class="badge badge-type">Preprint</span><span class="badge badge-open"><svg viewBox="0 0 24 24"><path d="M18 8h-1V6a5 5 0 0 0-9.9-1h2.06A3 3 0 0 1 15 6v2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2zm-6 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>Open</span></div>
     <div class="abstract-wrap"><div class="abstract-text" id="abs-unification16">Starting from the Bost–Connes system, we perform the p-adic reduction at a prime p and construct the state space H_p = L²(ℤ/p^Kℤ), K = p(p−1)−1, and argue that its structural properties naturally describe the physical world. The five axioms of quantum mechanics are derived, one by one, from the algebraic structure of the state space; the geometry of spacetime is determined by the observable space at the ground state, the involution pairing giving dimension 4 and signature (1,3); matter consists of the stable excitations that keep their form under propagation, the eigenmodes of the convolution operator K; the forces are the couplings between these eigenmodes, arising from frequency resonance and from the non-uniformity of the metric. When the characteristic quantities of the p channels are compared with observation—three generations of fermions, five elementary particles, three gauge forces, and the Standard Model gauge group—the unique compatible value is p = 7. The physical world we inhabit is described by the state space over ℤ/7ℤ. Fixing p = 7, the computation yields the electroweak scale 246.19 GeV (−0.011%), the Planck mass 1.221×10¹⁹ GeV (+0.04%), the proton mass 937 MeV (−0.17%), the nine charged-fermion masses all within 1.5% (the three charged leptons at experimental precision), the electromagnetic coupling α_EM⁻¹ = 137.036 (+0.0003%), the color coupling α_s⁻¹ = 8.49 (+0.08%), the weak coupling α_W⁻¹ = 29.60 (−0.004%), the nuclear coupling α_nuclear = 14.10 (+0.7%), and the gravitational constant G = 6.70×10⁻³⁹ GeV⁻² (−0.09%). Neutrinos are of Majorana type, with absolute masses 5.07, 9.96, 50.6 meV for the three generations and mass-squared-difference ratio 34.5 (experiment 33.8±0.9), a decisive prediction.</div><button class="expand-btn" onclick="toggleAbs('abs-unification16',this)">Show more</button></div>
-    <a class="pdf-link" href="papers/unification_matter_forces_spacetime_bost_connes_en.pdf?v=20260821" target="_blank">📄 PDF (English, V3)</a>
+    <a class="pdf-link" href="papers/unification_matter_forces_spacetime_bost_connes_en.pdf?v=20260821" target="_blank">📄 PDF (English)</a>
     <a class="pdf-link" href="https://doi.org/10.5281/zenodo.21345360" target="_blank">🔗 DOI: 10.5281/zenodo.21345360</a>
 </div>
 
 <div class="paper">
     <div class="paper-title"><a href="papers/qm_axioms.html">Axioms of Quantum Mechanics and the Arithmetic Structure of the Bost–Connes System</a></div>
-    <div class="paper-meta">ShaoWu Hu · March 11, 2026</div>
+    <div class="badges"><span class="badge badge-date">March 11, 2026 (v18)</span><span class="badge badge-type">Preprint</span><span class="badge badge-open"><svg viewBox="0 0 24 24"><path d="M18 8h-1V6a5 5 0 0 0-9.9-1h2.06A3 3 0 0 1 15 6v2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2zm-6 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>Open</span></div>
     <div class="abstract-wrap"><div class="abstract-text" id="abs-qm">The five axioms of von Neumann quantum mechanics are each confirmed by experiment, yet they are not described within a single mathematical framework. Starting from the Bost–Connes system, we perform the p-adic reduction at a prime p and construct the state space H_p = L²(ℤ/p^Kℤ), K = p(p−1)−1, and argue that its structure naturally describes these five axioms. (I) C*-positivity gives the Hilbert space through the GNS construction, (II) invariance under Galois conjugation gives the self-adjoint observables, (III) the CRT decomposition gives the tensor product, and (IV) H = log n generates the unique unitary time evolution. (V) The Born rule comes from the modular structure S = JΔ^{1/2} of the KMS state, its probability weights being the squared moduli of the values of Dirichlet L-functions on the critical line.</div><button class="expand-btn" onclick="toggleAbs('abs-qm',this)">Show more</button></div>
-    <a class="pdf-link" href="papers/qm_pure_bc_en.pdf?v=18" target="_blank">📄 PDF (English, V18)</a>
+    <a class="pdf-link" href="papers/qm_pure_bc_en.pdf?v=18" target="_blank">📄 PDF (English)</a>
     <a class="pdf-link" href="https://doi.org/10.5281/zenodo.21841817" target="_blank">🔗 DOI: 10.5281/zenodo.21841817</a>
 </div>
 
@@ -106,25 +107,25 @@
 
 <div class="paper">
     <div class="paper-title"><a href="papers/thermalization.html">The Mechanism of Thermalization in the Bost–Connes System</a></div>
-    <div class="paper-meta">ShaoWu Hu · August 5, 2026</div>
+    <div class="badges"><span class="badge badge-date">August 5, 2026 (v11)</span><span class="badge badge-type">Preprint</span><span class="badge badge-open"><svg viewBox="0 0 24 24"><path d="M18 8h-1V6a5 5 0 0 0-9.9-1h2.06A3 3 0 0 1 15 6v2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2zm-6 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>Open</span></div>
     <div class="abstract-wrap"><div class="abstract-text" id="abs-thermalization17">The Bost–Connes system supplies KMS equilibrium states, but the evaluation algebra and its inner fluctuations preserve every valuation shell, no dynamics within the existing structure carries a general initial state to equilibrium, and thermalization requires a cross-shell dilation. This paper supplies that dilation and proves its construction unique component by component. The mechanism of thermalization is repeated collisions between the system and the environment. Each collision performs an energy-conserving single-quantum exchange between an environment mode and the shell levels, and the system moves one step at a time along the valuation shells; the KMS occupation of the environment sets the ratio of ascent to descent rates to p^{−β}, the shell occupations approach the Gibbs distribution under detailed balance, and the weak-coupling limit converges to a GKSL semigroup; the photons carrying the records escape without return, so the relaxation is irreversible. At fixed temperature the relative entropy decreases monotonically toward equilibrium, and the only time-asymmetric assumption is the boundary condition of environment refreshing. In units of the total rate, the relaxation spectrum is completely determined by tree geometry and detailed balance, independent of the microscopic branch weights, and the infinite-depth spectral gap is the bound (√p−1)²/(p+1) permitted by regular-tree geometry. The Arrhenius temperature dependence of generation-label mixing and the Majorana phase criterion provide experimental tests.</div><button class="expand-btn" onclick="toggleAbs('abs-thermalization17',this)">Show more</button></div>
-    <a class="pdf-link" href="papers/bc_thermalization_en.pdf?v=11c" target="_blank">📄 PDF (English, V11)</a>
+    <a class="pdf-link" href="papers/bc_thermalization_en.pdf?v=11c" target="_blank">📄 PDF (English)</a>
     <a class="pdf-link" href="https://doi.org/10.5281/zenodo.21803449" target="_blank">🔗 DOI: 10.5281/zenodo.21803449</a>
 </div>
 
 <div class="paper">
     <div class="paper-title"><a href="papers/motion_of_matter.html">The Mechanism of the Motion of Matter from the Bost–Connes System</a></div>
-    <div class="paper-meta">ShaoWu Hu · August 18, 2026</div>
+    <div class="badges"><span class="badge badge-date">August 18, 2026 (v1)</span><span class="badge badge-type">Preprint</span><span class="badge badge-open"><svg viewBox="0 0 24 24"><path d="M18 8h-1V6a5 5 0 0 0-9.9-1h2.06A3 3 0 0 1 15 6v2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2zm-6 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>Open</span></div>
     <div class="abstract-wrap"><div class="abstract-text" id="abs-motion6">The structure of matter and the mechanism of thermalization have been established on the state space of the Bost–Connes system; the motion of matter has so far had no definition. Starting from the hierarchy between the state space and observational spacetime, we define motion as the cycle-by-cycle displacement of the reconstruction center of a standing wave in the state space, which appears in observational spacetime as a sequence of records. Propagation proceeds in units of cycles, each cycle consisting of three steps, free evolution, formation exchange, and pattern reconstruction, and the exact dispersion relation follows; a record carries phase away through a really emitted photon, an event is the readout of a record, and time is the phase count carried by records. The conservation laws hold in the state space as operator identities and appear in observational spacetime as event-by-event balance; the representative phenomena of motion, double-slit interference, tunneling, entanglement, and macroscopic trajectories, are explained one by one from the same structure.</div><button class="expand-btn" onclick="toggleAbs('abs-motion6',this)">Show more</button></div>
-    <a class="pdf-link" href="papers/motion_of_matter_en.pdf?v=20260822" target="_blank">📄 PDF (English, V1)</a>
+    <a class="pdf-link" href="papers/motion_of_matter_en.pdf?v=20260822" target="_blank">📄 PDF (English)</a>
     <a class="pdf-link" href="https://doi.org/10.5281/zenodo.21992871" target="_blank">🔗 DOI: 10.5281/zenodo.21992871</a>
 </div>
 
 <div class="paper">
     <div class="paper-title"><a href="papers/mechanism_of_fields.html">The Mechanism of Fields from the Bost–Connes System</a></div>
-    <div class="paper-meta">ShaoWu Hu · August 27, 2026</div>
+    <div class="badges"><span class="badge badge-date">August 27, 2026 (v1)</span><span class="badge badge-type">Preprint</span><span class="badge badge-open"><svg viewBox="0 0 24 24"><path d="M18 8h-1V6a5 5 0 0 0-9.9-1h2.06A3 3 0 0 1 15 6v2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2zm-6 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>Open</span></div>
     <div class="abstract-wrap"><div class="abstract-text" id="abs-field15">The structure of the forces and the response of matter to a non-uniform background have been established on the state space of the Bost–Connes system; the field has so far had no definition. Starting from the definition of motion, we define a field as the region-by-region values of a background quantity in the state space; it appears in observational spacetime as the statistics of events. The standing-wave cycles of matter occupy the spectral weight of the region they inhabit and accumulate channel phase along dwell segments, and the corrections are redistributed outward conservatively; the deduction of occupation gives the gravitational potential, the metric, and the source equation, and the accumulation of phase gives the field equations of the electromagnetic, weak, nuclear, and color interactions. Following the duality of discrete and continuous, the equations are written on two levels, discrete structural equations in the state space and differential equations for statistical field quantities in observational spacetime, and the classical Maxwell equations hold closed under the statistical readout. The nonlinear equation of gravity agrees with general relativity at all orders of the existing tests, and the next-order coefficient of the spatial metric component gives a discriminable deviation. The representative puzzles of fields, action at a distance, the photoelectric effect, the localization of field energy, the graviton, and the classical limit, are resolved one by one from the same structure.</div><button class="expand-btn" onclick="toggleAbs('abs-field15',this)">Show more</button></div>
-    <a class="pdf-link" href="papers/mechanism_of_fields_en.pdf?v=20260827" target="_blank">📄 PDF (English, V1)</a>
+    <a class="pdf-link" href="papers/mechanism_of_fields_en.pdf?v=20260827" target="_blank">📄 PDF (English)</a>
     <a class="pdf-link" href="https://doi.org/10.5281/zenodo.22126955" target="_blank">🔗 DOI: 10.5281/zenodo.22126955</a>
 </div>
 
@@ -133,9 +134,9 @@
 
 <div class="paper">
     <div class="paper-title"><a href="papers/bc_computer.html">BC State-Space Computer</a></div>
-    <div class="paper-meta">ShaoWu Hu · July 31, 2026</div>
+    <div class="badges"><span class="badge badge-date">July 31, 2026 (v32)</span><span class="badge badge-type">Preprint</span><span class="badge badge-open"><svg viewBox="0 0 24 24"><path d="M18 8h-1V6a5 5 0 0 0-9.9-1h2.06A3 3 0 0 1 15 6v2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2zm-6 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>Open</span></div>
     <div class="abstract-wrap"><div class="abstract-text" id="abs-bccomputer">That excitations are countable, that energy is additive, and that independent composition multiplies are three laboratory-level basic facts; their minimal algebraic form is the Bost–Connes (BC) covariance structure. Starting from this we define the BC state-space computer: a controllable physical system that carries the BC covariance relations in finite truncation within finite experimental boundaries. A run is the complete chain that takes external conditions through boundary formation, preparation, constrained evolution, stopping and readout, to return coupling; computation is defined on the run law by a task, a reusable boundary program, physical compilation, and completion criteria. Three structural dilemmas of the prevailing paradigm close at the physical-structure level of this machine. Content processing is carried directly by the state space, and step-by-step replay does not arise; statistics and thermalization are native resources, and pseudorandom reconstruction does not arise; the interface to the world is carried by the physical coupling of transduction and actuation, and symbolic replicas do not arise. The supporting construction consists of the arithmetic workspace (prime occupations carry multiplicative composition, phase sectors carry addition), machine parts organized into an arithmetic and an interaction module, and running instances that progress from elementary operations to sustained tracking. The thermalization mechanism is stated conditionally, all verdict quantities are pre-registered by a numerical twin, and whether devices physically realize them is left to independent experiments.</div><button class="expand-btn" onclick="toggleAbs('abs-bccomputer',this)">Show more</button></div>
-    <a class="pdf-link" href="papers/bc_state_space_computer_en.pdf?v=32b" target="_blank">📄 PDF (English, V32)</a>
+    <a class="pdf-link" href="papers/bc_state_space_computer_en.pdf?v=32b" target="_blank">📄 PDF (English)</a>
     <a class="pdf-link" href="https://doi.org/10.5281/zenodo.21719997" target="_blank">🔗 DOI: 10.5281/zenodo.21719997</a>
 </div>
 
