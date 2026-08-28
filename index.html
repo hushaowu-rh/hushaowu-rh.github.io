@@ -6,68 +6,323 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ShaoWu Hu — Research</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            color-scheme: light;
+            --canvas: #f7f6f3;
+            --paper: #fff;
+            --ink: #20272e;
+            --muted: #68737d;
+            --faint: #8c959d;
+            --line: #dfe3e6;
+            --accent: #315d92;
+            --accent-hover: #244a77;
+            --success: #3e7853;
+            --serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+            --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { background: var(--canvas); }
+
         body {
-            font-family: 'Georgia', 'Times New Roman', serif;
-            max-width: 800px;
+            width: min(1120px, calc(100% - 48px));
+            min-height: 100vh;
             margin: 0 auto;
-            padding: 40px 20px;
-            color: #333;
-            line-height: 1.7;
-            background: #fafafa;
+            padding: 68px 0 92px;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at 12% -10%, rgba(49, 93, 146, .045), transparent 28rem),
+                var(--canvas);
+            font-family: var(--serif);
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
         }
-        h1 { font-size: 1.8em; margin-bottom: 5px; color: #1a1a1a; }
-        h2 { font-size: 1.3em; margin: 35px 0 4px; color: #1a1a1a; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
-        .section-note { color: #666; font-size: 0.9em; font-style: italic; margin: 6px 0 12px; }
-        .subtitle { color: #666; font-size: 0.95em; margin-bottom: 30px; }
+
+        h1 {
+            color: var(--ink);
+            font-size: clamp(2.45rem, 4.2vw, 3.35rem);
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -.025em;
+        }
+
+        .subtitle {
+            margin-top: 10px;
+            color: var(--muted);
+            font: 550 .92rem/1.5 var(--sans);
+        }
+
+        .abstract {
+            max-width: 76ch;
+            margin-top: 28px;
+            padding: 18px 20px;
+            color: #505a63;
+            background: rgba(255, 255, 255, .68);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            font-size: 1.02rem;
+            line-height: 1.68;
+        }
+
+        .abstract strong { color: var(--ink); font-weight: 650; }
+
+        .info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 28px;
+            margin-top: 18px;
+            color: var(--muted);
+            font: 500 .88rem/1.5 var(--sans);
+        }
+
+        .info strong { color: var(--ink); font-weight: 650; }
+        .info a { color: var(--accent); text-decoration: none; }
+        .info a:hover { color: var(--accent-hover); text-decoration: underline; text-underline-offset: 3px; }
+
+        h2 {
+            margin-top: 58px;
+            padding-bottom: 14px;
+            color: var(--ink);
+            border-bottom: 1px solid var(--line);
+            font-size: clamp(2rem, 3.2vw, 2.55rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -.02em;
+        }
+
+        .section-note {
+            max-width: 840px;
+            margin: 14px 0 25px;
+            color: var(--muted);
+            font-size: 1.08rem;
+            font-style: italic;
+            line-height: 1.55;
+        }
+
         .paper {
-            margin: 15px 0;
-            padding: 15px 18px;
-            background: #fff;
-            border-left: 3px solid #2563eb;
-            border-radius: 2px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+            margin: 18px 0;
+            padding: 36px 40px 32px;
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            box-shadow: 0 12px 35px rgba(26, 35, 44, .045);
         }
-        .paper-title { font-weight: bold; color: #1a1a1a; font-size: 1.0em; }
+
+        .paper::before {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 4px;
+            background: var(--accent);
+            content: "";
+        }
+
+        .paper-title {
+            max-width: 940px;
+            color: var(--ink);
+            font-size: clamp(1.48rem, 2.25vw, 1.92rem);
+            font-weight: 650;
+            line-height: 1.25;
+            letter-spacing: -.015em;
+        }
+
         .paper-title a { color: inherit; text-decoration: none; }
-        .paper-title a:hover { color: #2563eb; }
-        .badges { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 6px; }
+        .paper-title a:hover { color: var(--accent); }
+
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px;
+            margin-top: 16px;
+            color: var(--muted);
+            font: 600 .84rem/1.45 var(--sans);
+        }
+
         .badge {
-            display: inline-flex; align-items: center; gap: 5px;
-            font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
-            font-size: 0.78em; font-weight: 600; color: #fff;
-            padding: 3px 11px; border-radius: 4px; line-height: 1.5;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            color: inherit;
         }
-        .badge-date { background: #3c74ad; }
-        .badge-type { background: #808080; }
-        .badge-open { background: #4d8b4a; }
-        .badge-open svg { width: 11px; height: 11px; fill: #fff; }
-        .pdf-link {
+
+        .badge + .badge::before {
+            margin-right: 1px;
+            color: #b7bdc2;
+            content: "·";
+        }
+
+        .badge-open { color: var(--success); }
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            background: currentColor;
+            border-radius: 50%;
+        }
+
+        .abstract-wrap {
+            position: relative;
+            max-width: 76ch;
+            margin-top: 28px;
+        }
+
+        .abstract-wrap::before {
             display: block;
-            margin-top: 6px;
-            color: #2563eb;
-            text-decoration: none;
-            font-size: 0.9em;
+            margin-bottom: 10px;
+            color: var(--faint);
+            font: 650 .68rem/1.2 var(--sans);
+            letter-spacing: .13em;
+            text-transform: uppercase;
+            content: "Abstract";
         }
-        .pdf-link:hover { text-decoration: underline; }
-        .pdf-link .icon { width: 13px; height: 13px; vertical-align: -2px; margin-right: 6px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-        .abstract-wrap { position: relative; margin-top: 6px; }
-        .abstract-text { font-size: 0.88em; color: #555; max-height: 4.8em; overflow: hidden; line-height: 1.6; position: relative; }
-        .abstract-text.expanded { max-height: none; overflow: visible; }
-        .expand-btn { font-size: 0.82em; color: #2563eb; cursor: pointer; border: none; background: none; padding: 0; margin-left: 4px; }
-        .expand-btn:hover { text-decoration: underline; }
-        .info { margin: 10px 0; }
-        .info a { color: #2563eb; text-decoration: none; }
-        .info a:hover { text-decoration: underline; }
-        .abstract { font-size: 0.92em; color: #555; margin-top: 20px; padding: 15px; background: #f0f4ff; border-radius: 4px; }
-        footer { margin-top: 50px; padding-top: 20px; border-top: 1px solid #ddd; color: #999; font-size: 0.85em; }
-        footer .trail { margin-top: 10px; }
-        footer .trail a { color: #b9b2a5; text-decoration: none; letter-spacing: 3px; font-family: Georgia, 'Kaiti SC', 'STKaiti', serif; transition: color .3s; }
-        footer .trail a:hover { color: #8a765a; }
 
+        .abstract-text {
+            display: -webkit-box;
+            overflow: hidden;
+            color: #4f5962;
+            font-size: 1.08rem;
+            line-height: 1.7;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+        }
 
+        .abstract-text.expanded {
+            display: block;
+            overflow: visible;
+        }
+
+        .expand-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            margin-top: 12px;
+            padding: 0;
+            color: var(--accent);
+            background: none;
+            border: 0;
+            cursor: pointer;
+            font: 600 .86rem/1.4 var(--sans);
+        }
+
+        .expand-btn::after {
+            display: inline-block;
+            font-size: 1.05em;
+            content: "⌄";
+            transition: transform 160ms ease;
+        }
+
+        .expand-btn[aria-expanded="true"]::after { transform: rotate(180deg); }
+        .expand-btn:hover { color: var(--accent-hover); }
+
+        .paper-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px 22px;
+            margin-top: 28px;
+            padding-top: 23px;
+            border-top: 1px solid #edf0f2;
+            font-family: var(--sans);
+        }
+
+        .pdf-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: .92rem;
+            font-weight: 620;
+        }
+
+        .paper-actions .pdf-link:first-child {
+            padding: 10px 14px;
+            color: #fff;
+            background: var(--accent);
+            border-radius: 6px;
+        }
+
+        .paper-actions .pdf-link:first-child:hover {
+            color: #fff;
+            background: var(--accent-hover);
+            text-decoration: none;
+        }
+
+        .pdf-link:hover {
+            color: var(--accent-hover);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .pdf-link .icon {
+            width: 17px;
+            height: 17px;
+            flex: 0 0 auto;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        footer {
+            margin-top: 58px;
+            padding-top: 24px;
+            color: var(--faint);
+            border-top: 1px solid var(--line);
+            font: 500 .82rem/1.5 var(--sans);
+        }
+
+        footer .trail { margin-top: 8px; }
+        footer .trail a {
+            color: #a8a092;
+            font-family: Georgia, "Kaiti SC", "STKaiti", serif;
+            letter-spacing: 3px;
+            text-decoration: none;
+            transition: color .3s;
+        }
+        footer .trail a:hover { color: #7f705a; }
+
+        a:focus-visible,
+        button:focus-visible {
+            outline: 3px solid rgba(49, 93, 146, .28);
+            outline-offset: 3px;
+        }
+
+        @media (max-width: 680px) {
+            body {
+                width: min(100% - 28px, 1120px);
+                padding: 38px 0 58px;
+            }
+
+            h1 { font-size: 2.4rem; }
+            .abstract { margin-top: 23px; padding: 16px 17px; }
+            .info { display: grid; gap: 4px; }
+            h2 { margin-top: 46px; font-size: 2rem; }
+            .section-note { margin-bottom: 20px; font-size: 1rem; }
+
+            .paper {
+                margin: 14px 0;
+                padding: 27px 23px 25px 27px;
+                border-radius: 8px;
+            }
+
+            .paper-title { font-size: 1.45rem; }
+            .badges { margin-top: 14px; font-size: .79rem; }
+            .abstract-wrap { margin-top: 24px; }
+            .abstract-text { font-size: 1rem; line-height: 1.68; }
+            .paper-actions { align-items: flex-start; margin-top: 25px; }
+            .paper-actions .pdf-link:first-child { width: 100%; justify-content: center; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { transition: none !important; }
+        }
     </style>
-    <script data-goatcounter="https://hushaowu.goatcounter.com/count"  async src="//gc.zgo.at/count.js"></script>
     <script src="https://gc.zgo.at/count.js" async data-goatcounter="https://hushaowu.goatcounter.com/count"></script>
 </head>
 <body>
@@ -80,8 +335,8 @@
 </div>
 
 <div class="info">
-    <strong>ORCID:</strong> <a href="https://orcid.org/0009-0009-8300-4691" target="_blank">0009-0009-8300-4691</a><br>
-    <strong>Email:</strong> forest@xindong.com<br>
+    <span><strong>ORCID:</strong> <a href="https://orcid.org/0009-0009-8300-4691" target="_blank" rel="noopener">0009-0009-8300-4691</a></span>
+    <span><strong>Email:</strong> <a href="mailto:forest@xindong.com">forest@xindong.com</a></span>
 </div>
 
 <h2>Foundation</h2>
@@ -89,7 +344,7 @@
 
 <div class="paper">
     <div class="paper-title"><a href="papers/unification.html">The Unification of Matter, Forces, and Spacetime from the Bost–Connes System</a></div>
-    <div class="badges"><span class="badge badge-date">July 6, 2026 (v3)</span><span class="badge badge-type">Preprint</span><span class="badge badge-open"><svg viewBox="0 0 24 24"><path d="M18 8h-1V6a5 5 0 0 0-9.9-1h2.06A3 3 0 0 1 15 6v2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2zm-6 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>Open</span></div>
+    <div class="badges"><span class="badge badge-type">Preprint</span><span class="badge badge-version">Version 3</span><time class="badge badge-date" datetime="2026-07-06">6 July 2026</time><span class="badge badge-open"><span class="status-dot" aria-hidden="true"></span>Open access</span></div>
     <div class="abstract-wrap"><div class="abstract-text" id="abs-unification16">Starting from the Bost–Connes system, we perform the p-adic reduction at a prime p and construct the state space H_p = L²(ℤ/p^Kℤ), K = p(p−1)−1, and argue that its structural properties naturally describe the physical world. The five axioms of quantum mechanics are derived, one by one, from the algebraic structure of the state space; the geometry of spacetime is determined by the observable space at the ground state, the involution pairing giving dimension 4 and signature (1,3); matter consists of the stable excitations that keep their form under propagation, the eigenmodes of the convolution operator K; the forces are the couplings between these eigenmodes, arising from frequency resonance and from the non-uniformity of the metric. When the characteristic quantities of the p channels are compared with observation—three generations of fermions, five elementary particles, three gauge forces, and the Standard Model gauge group—the unique compatible value is p = 7. The physical world we inhabit is described by the state space over ℤ/7ℤ. Fixing p = 7, the computation yields the electroweak scale 246.19 GeV (−0.011%), the Planck mass 1.221×10¹⁹ GeV (+0.04%), the proton mass 937 MeV (−0.17%), the nine charged-fermion masses all within 1.5% (the three charged leptons at experimental precision), the electromagnetic coupling α_EM⁻¹ = 137.036 (+0.0003%), the color coupling α_s⁻¹ = 8.49 (+0.08%), the weak coupling α_W⁻¹ = 29.60 (−0.004%), the nuclear coupling α_nuclear = 14.10 (+0.7%), and the gravitational constant G = 6.70×10⁻³⁹ GeV⁻² (−0.09%). Neutrinos are of Majorana type, with absolute masses 5.07, 9.96, 50.6 meV for the three generations and mass-squared-difference ratio 34.5 (experiment 33.8±0.9), a decisive prediction.</div><button class="expand-btn" onclick="toggleAbs('abs-unification16',this)">Show more</button></div>
     <a class="pdf-link" href="papers/unification_matter_forces_spacetime_bost_connes_en.pdf?v=20260821" target="_blank"><svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>PDF (English)</a>
     <a class="pdf-link" href="https://doi.org/10.5281/zenodo.21345360" target="_blank"><svg class="icon" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>DOI: 10.5281/zenodo.21345360</a>
@@ -97,7 +352,7 @@
 
 <div class="paper">
     <div class="paper-title"><a href="papers/qm_axioms.html">Axioms of Quantum Mechanics and the Arithmetic Structure of the Bost–Connes System</a></div>
-    <div class="badges"><span class="badge badge-date">March 11, 2026 (v18)</span><span class="badge badge-type">Preprint</span><span class="badge badge-open"><svg viewBox="0 0 24 24"><path d="M18 8h-1V6a5 5 0 0 0-9.9-1h2.06A3 3 0 0 1 15 6v2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2zm-6 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>Open</span></div>
+    <div class="badges"><span class="badge badge-type">Preprint</span><span class="badge badge-version">Version 18</span><time class="badge badge-date" datetime="2026-03-11">11 March 2026</time><span class="badge badge-open"><span class="status-dot" aria-hidden="true"></span>Open access</span></div>
     <div class="abstract-wrap"><div class="abstract-text" id="abs-qm">The five axioms of von Neumann quantum mechanics are each confirmed by experiment, yet they are not described within a single mathematical framework. Starting from the Bost–Connes system, we perform the p-adic reduction at a prime p and construct the state space H_p = L²(ℤ/p^Kℤ), K = p(p−1)−1, and argue that its structure naturally describes these five axioms. (I) C*-positivity gives the Hilbert space through the GNS construction, (II) invariance under Galois conjugation gives the self-adjoint observables, (III) the CRT decomposition gives the tensor product, and (IV) H = log n generates the unique unitary time evolution. (V) The Born rule comes from the modular structure S = JΔ^{1/2} of the KMS state, its probability weights being the squared moduli of the values of Dirichlet L-functions on the critical line.</div><button class="expand-btn" onclick="toggleAbs('abs-qm',this)">Show more</button></div>
     <a class="pdf-link" href="papers/qm_pure_bc_en.pdf?v=18" target="_blank"><svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>PDF (English)</a>
     <a class="pdf-link" href="https://doi.org/10.5281/zenodo.21841817" target="_blank"><svg class="icon" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>DOI: 10.5281/zenodo.21841817</a>
@@ -108,7 +363,7 @@
 
 <div class="paper">
     <div class="paper-title"><a href="papers/thermalization.html">The Mechanism of Thermalization in the Bost–Connes System</a></div>
-    <div class="badges"><span class="badge badge-date">August 5, 2026 (v11)</span><span class="badge badge-type">Preprint</span><span class="badge badge-open"><svg viewBox="0 0 24 24"><path d="M18 8h-1V6a5 5 0 0 0-9.9-1h2.06A3 3 0 0 1 15 6v2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2zm-6 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>Open</span></div>
+    <div class="badges"><span class="badge badge-type">Preprint</span><span class="badge badge-version">Version 11</span><time class="badge badge-date" datetime="2026-08-05">5 August 2026</time><span class="badge badge-open"><span class="status-dot" aria-hidden="true"></span>Open access</span></div>
     <div class="abstract-wrap"><div class="abstract-text" id="abs-thermalization17">The Bost–Connes system supplies KMS equilibrium states, but the evaluation algebra and its inner fluctuations preserve every valuation shell, no dynamics within the existing structure carries a general initial state to equilibrium, and thermalization requires a cross-shell dilation. This paper supplies that dilation and proves its construction unique component by component. The mechanism of thermalization is repeated collisions between the system and the environment. Each collision performs an energy-conserving single-quantum exchange between an environment mode and the shell levels, and the system moves one step at a time along the valuation shells; the KMS occupation of the environment sets the ratio of ascent to descent rates to p^{−β}, the shell occupations approach the Gibbs distribution under detailed balance, and the weak-coupling limit converges to a GKSL semigroup; the photons carrying the records escape without return, so the relaxation is irreversible. At fixed temperature the relative entropy decreases monotonically toward equilibrium, and the only time-asymmetric assumption is the boundary condition of environment refreshing. In units of the total rate, the relaxation spectrum is completely determined by tree geometry and detailed balance, independent of the microscopic branch weights, and the infinite-depth spectral gap is the bound (√p−1)²/(p+1) permitted by regular-tree geometry. The Arrhenius temperature dependence of generation-label mixing and the Majorana phase criterion provide experimental tests.</div><button class="expand-btn" onclick="toggleAbs('abs-thermalization17',this)">Show more</button></div>
     <a class="pdf-link" href="papers/bc_thermalization_en.pdf?v=11c" target="_blank"><svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>PDF (English)</a>
     <a class="pdf-link" href="https://doi.org/10.5281/zenodo.21803449" target="_blank"><svg class="icon" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>DOI: 10.5281/zenodo.21803449</a>
@@ -116,7 +371,7 @@
 
 <div class="paper">
     <div class="paper-title"><a href="papers/motion_of_matter.html">The Mechanism of the Motion of Matter from the Bost–Connes System</a></div>
-    <div class="badges"><span class="badge badge-date">August 18, 2026 (v1)</span><span class="badge badge-type">Preprint</span><span class="badge badge-open"><svg viewBox="0 0 24 24"><path d="M18 8h-1V6a5 5 0 0 0-9.9-1h2.06A3 3 0 0 1 15 6v2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2zm-6 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>Open</span></div>
+    <div class="badges"><span class="badge badge-type">Preprint</span><span class="badge badge-version">Version 1</span><time class="badge badge-date" datetime="2026-08-18">18 August 2026</time><span class="badge badge-open"><span class="status-dot" aria-hidden="true"></span>Open access</span></div>
     <div class="abstract-wrap"><div class="abstract-text" id="abs-motion6">The structure of matter and the mechanism of thermalization have been established on the state space of the Bost–Connes system; the motion of matter has so far had no definition. Starting from the hierarchy between the state space and observational spacetime, we define motion as the cycle-by-cycle displacement of the reconstruction center of a standing wave in the state space, which appears in observational spacetime as a sequence of records. Propagation proceeds in units of cycles, each cycle consisting of three steps, free evolution, formation exchange, and pattern reconstruction, and the exact dispersion relation follows; a record carries phase away through a really emitted photon, an event is the readout of a record, and time is the phase count carried by records. The conservation laws hold in the state space as operator identities and appear in observational spacetime as event-by-event balance; the representative phenomena of motion, double-slit interference, tunneling, entanglement, and macroscopic trajectories, are explained one by one from the same structure.</div><button class="expand-btn" onclick="toggleAbs('abs-motion6',this)">Show more</button></div>
     <a class="pdf-link" href="papers/motion_of_matter_en.pdf?v=20260822" target="_blank"><svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>PDF (English)</a>
     <a class="pdf-link" href="https://doi.org/10.5281/zenodo.21992871" target="_blank"><svg class="icon" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>DOI: 10.5281/zenodo.21992871</a>
@@ -124,7 +379,7 @@
 
 <div class="paper">
     <div class="paper-title"><a href="papers/mechanism_of_fields.html">The Mechanism of Fields from the Bost–Connes System</a></div>
-    <div class="badges"><span class="badge badge-date">August 27, 2026 (v1)</span><span class="badge badge-type">Preprint</span><span class="badge badge-open"><svg viewBox="0 0 24 24"><path d="M18 8h-1V6a5 5 0 0 0-9.9-1h2.06A3 3 0 0 1 15 6v2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2zm-6 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>Open</span></div>
+    <div class="badges"><span class="badge badge-type">Preprint</span><span class="badge badge-version">Version 1</span><time class="badge badge-date" datetime="2026-08-27">27 August 2026</time><span class="badge badge-open"><span class="status-dot" aria-hidden="true"></span>Open access</span></div>
     <div class="abstract-wrap"><div class="abstract-text" id="abs-field15">The structure of the forces and the response of matter to a non-uniform background have been established on the state space of the Bost–Connes system; the field has so far had no definition. Starting from the definition of motion, we define a field as the region-by-region values of a background quantity in the state space; it appears in observational spacetime as the statistics of events. The standing-wave cycles of matter occupy the spectral weight of the region they inhabit and accumulate channel phase along dwell segments, and the corrections are redistributed outward conservatively; the deduction of occupation gives the gravitational potential, the metric, and the source equation, and the accumulation of phase gives the field equations of the electromagnetic, weak, nuclear, and color interactions. Following the duality of discrete and continuous, the equations are written on two levels, discrete structural equations in the state space and differential equations for statistical field quantities in observational spacetime, and the classical Maxwell equations hold closed under the statistical readout. The nonlinear equation of gravity agrees with general relativity at all orders of the existing tests, and the next-order coefficient of the spatial metric component gives a discriminable deviation. The representative puzzles of fields, action at a distance, the photoelectric effect, the localization of field energy, the graviton, and the classical limit, are resolved one by one from the same structure.</div><button class="expand-btn" onclick="toggleAbs('abs-field15',this)">Show more</button></div>
     <a class="pdf-link" href="papers/mechanism_of_fields_en.pdf?v=20260827" target="_blank"><svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>PDF (English)</a>
     <a class="pdf-link" href="https://doi.org/10.5281/zenodo.22126955" target="_blank"><svg class="icon" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>DOI: 10.5281/zenodo.22126955</a>
@@ -135,7 +390,7 @@
 
 <div class="paper">
     <div class="paper-title"><a href="papers/bc_computer.html">BC State-Space Computer</a></div>
-    <div class="badges"><span class="badge badge-date">July 31, 2026 (v32)</span><span class="badge badge-type">Preprint</span><span class="badge badge-open"><svg viewBox="0 0 24 24"><path d="M18 8h-1V6a5 5 0 0 0-9.9-1h2.06A3 3 0 0 1 15 6v2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2zm-6 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>Open</span></div>
+    <div class="badges"><span class="badge badge-type">Preprint</span><span class="badge badge-version">Version 32</span><time class="badge badge-date" datetime="2026-07-31">31 July 2026</time><span class="badge badge-open"><span class="status-dot" aria-hidden="true"></span>Open access</span></div>
     <div class="abstract-wrap"><div class="abstract-text" id="abs-bccomputer">That excitations are countable, that energy is additive, and that independent composition multiplies are three laboratory-level basic facts; their minimal algebraic form is the Bost–Connes (BC) covariance structure. Starting from this we define the BC state-space computer: a controllable physical system that carries the BC covariance relations in finite truncation within finite experimental boundaries. A run is the complete chain that takes external conditions through boundary formation, preparation, constrained evolution, stopping and readout, to return coupling; computation is defined on the run law by a task, a reusable boundary program, physical compilation, and completion criteria. Three structural dilemmas of the prevailing paradigm close at the physical-structure level of this machine. Content processing is carried directly by the state space, and step-by-step replay does not arise; statistics and thermalization are native resources, and pseudorandom reconstruction does not arise; the interface to the world is carried by the physical coupling of transduction and actuation, and symbolic replicas do not arise. The supporting construction consists of the arithmetic workspace (prime occupations carry multiplicative composition, phase sectors carry addition), machine parts organized into an arithmetic and an interaction module, and running instances that progress from elementary operations to sustained tracking. The thermalization mechanism is stated conditionally, all verdict quantities are pre-registered by a numerical twin, and whether devices physically realize them is left to independent experiments.</div><button class="expand-btn" onclick="toggleAbs('abs-bccomputer',this)">Show more</button></div>
     <a class="pdf-link" href="papers/bc_state_space_computer_en.pdf?v=32b" target="_blank"><svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>PDF (English)</a>
     <a class="pdf-link" href="https://doi.org/10.5281/zenodo.21719997" target="_blank"><svg class="icon" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>DOI: 10.5281/zenodo.21719997</a>
@@ -146,14 +401,38 @@
 </footer>
 
 <script>
+document.querySelectorAll('.paper').forEach(function(paper) {
+    var links = Array.from(paper.querySelectorAll(':scope > .pdf-link'));
+    if (links.length) {
+        var actions = document.createElement('nav');
+        actions.className = 'paper-actions';
+        actions.setAttribute('aria-label', 'Paper resources');
+        paper.insertBefore(actions, links[0]);
+        links.forEach(function(link) {
+            if (link.target === '_blank') link.rel = 'noopener';
+            actions.appendChild(link);
+        });
+    }
+});
+
+document.querySelectorAll('.expand-btn').forEach(function(btn) {
+    btn.textContent = 'Read abstract';
+    btn.setAttribute('aria-expanded', 'false');
+    if (btn.previousElementSibling && btn.previousElementSibling.id) {
+        btn.setAttribute('aria-controls', btn.previousElementSibling.id);
+    }
+});
+
 function toggleAbs(id, btn) {
     var el = document.getElementById(id);
     if (el.classList.contains('expanded')) {
         el.classList.remove('expanded');
-        btn.textContent = 'Show more';
+        btn.textContent = 'Read abstract';
+        btn.setAttribute('aria-expanded', 'false');
     } else {
         el.classList.add('expanded');
-        btn.textContent = 'Show less';
+        btn.textContent = 'Hide abstract';
+        btn.setAttribute('aria-expanded', 'true');
     }
 }
 
