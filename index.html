@@ -14,11 +14,11 @@
             --muted: #68737d;
             --faint: #8c959d;
             --line: #dfe3e6;
-            --accent: #315d92;
-            --accent-hover: #244a77;
+            --accent: #2f70b5;
+            --accent-hover: #245a91;
             --success: #3e7853;
             --serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
-            --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            --sans: Arial, Helvetica, sans-serif;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -123,11 +123,12 @@
 
         .paper-title {
             max-width: 940px;
-            color: var(--ink);
-            font-size: clamp(1.28rem, 1.7vw, 1.48rem);
-            font-weight: 650;
-            line-height: 1.3;
-            letter-spacing: -.015em;
+            color: var(--accent);
+            font-family: var(--sans);
+            font-size: clamp(1.25rem, 1.55vw, 1.42rem);
+            font-weight: 700;
+            line-height: 1.28;
+            letter-spacing: -.01em;
         }
 
         .paper-title a { color: inherit; text-decoration: none; }
@@ -183,9 +184,11 @@
         .abstract-text {
             display: -webkit-box;
             overflow: hidden;
-            color: #4f5962;
+            color: #414141;
+            font-family: var(--sans);
             font-size: .96rem;
-            line-height: 1.62;
+            font-weight: 400;
+            line-height: 1.55;
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 2;
         }
@@ -311,10 +314,10 @@
                 border-radius: 7px;
             }
 
-            .paper-title { font-size: 1.2rem; }
+            .paper-title { font-size: 1.18rem; }
             .badges { margin-top: 9px; font-size: .73rem; }
             .abstract-wrap { margin-top: 16px; }
-            .abstract-text { font-size: .92rem; line-height: 1.58; }
+            .abstract-text { font-size: .92rem; line-height: 1.52; }
             .paper-actions { align-items: flex-start; margin-top: 17px; }
             .paper-actions .pdf-link:first-child { width: 100%; justify-content: center; }
         }
