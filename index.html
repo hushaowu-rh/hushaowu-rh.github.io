@@ -26,10 +26,10 @@
         html { background: var(--canvas); }
 
         body {
-            width: min(1120px, calc(100% - 48px));
+            width: min(1080px, calc(100% - 48px));
             min-height: 100vh;
             margin: 0 auto;
-            padding: 68px 0 92px;
+            padding: 52px 0 72px;
             color: var(--ink);
             background:
                 radial-gradient(circle at 12% -10%, rgba(49, 93, 146, .045), transparent 28rem),
@@ -41,7 +41,7 @@
 
         h1 {
             color: var(--ink);
-            font-size: clamp(2.45rem, 4.2vw, 3.35rem);
+            font-size: clamp(2.1rem, 3.5vw, 2.75rem);
             font-weight: 700;
             line-height: 1.05;
             letter-spacing: -.025em;
@@ -55,14 +55,14 @@
 
         .abstract {
             max-width: 76ch;
-            margin-top: 28px;
-            padding: 18px 20px;
+            margin-top: 22px;
+            padding: 14px 16px;
             color: #505a63;
             background: rgba(255, 255, 255, .68);
             border: 1px solid var(--line);
             border-radius: 8px;
-            font-size: 1.02rem;
-            line-height: 1.68;
+            font-size: .96rem;
+            line-height: 1.62;
         }
 
         .abstract strong { color: var(--ink); font-weight: 650; }
@@ -81,11 +81,11 @@
         .info a:hover { color: var(--accent-hover); text-decoration: underline; text-underline-offset: 3px; }
 
         h2 {
-            margin-top: 58px;
-            padding-bottom: 14px;
+            margin-top: 44px;
+            padding-bottom: 11px;
             color: var(--ink);
             border-bottom: 1px solid var(--line);
-            font-size: clamp(2rem, 3.2vw, 2.55rem);
+            font-size: clamp(1.72rem, 2.6vw, 2.08rem);
             font-weight: 700;
             line-height: 1.1;
             letter-spacing: -.02em;
@@ -93,9 +93,9 @@
 
         .section-note {
             max-width: 840px;
-            margin: 14px 0 25px;
+            margin: 11px 0 18px;
             color: var(--muted);
-            font-size: 1.08rem;
+            font-size: .97rem;
             font-style: italic;
             line-height: 1.55;
         }
@@ -103,12 +103,12 @@
         .paper {
             position: relative;
             overflow: hidden;
-            margin: 18px 0;
-            padding: 36px 40px 32px;
+            margin: 12px 0;
+            padding: 24px 28px 22px;
             background: var(--paper);
             border: 1px solid var(--line);
-            border-radius: 10px;
-            box-shadow: 0 12px 35px rgba(26, 35, 44, .045);
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(26, 35, 44, .035);
         }
 
         .paper::before {
@@ -124,9 +124,9 @@
         .paper-title {
             max-width: 940px;
             color: var(--ink);
-            font-size: clamp(1.48rem, 2.25vw, 1.92rem);
+            font-size: clamp(1.28rem, 1.7vw, 1.48rem);
             font-weight: 650;
-            line-height: 1.25;
+            line-height: 1.3;
             letter-spacing: -.015em;
         }
 
@@ -137,10 +137,10 @@
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            gap: 6px;
-            margin-top: 16px;
+            gap: 5px;
+            margin-top: 10px;
             color: var(--muted);
-            font: 600 .84rem/1.45 var(--sans);
+            font: 600 .76rem/1.4 var(--sans);
         }
 
         .badge {
@@ -167,14 +167,14 @@
         .abstract-wrap {
             position: relative;
             max-width: 76ch;
-            margin-top: 28px;
+            margin-top: 18px;
         }
 
         .abstract-wrap::before {
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 7px;
             color: var(--faint);
-            font: 650 .68rem/1.2 var(--sans);
+            font: 650 .63rem/1.2 var(--sans);
             letter-spacing: .13em;
             text-transform: uppercase;
             content: "Abstract";
@@ -184,10 +184,10 @@
             display: -webkit-box;
             overflow: hidden;
             color: #4f5962;
-            font-size: 1.08rem;
-            line-height: 1.7;
+            font-size: .96rem;
+            line-height: 1.62;
             -webkit-box-orient: vertical;
-            -webkit-line-clamp: 3;
+            -webkit-line-clamp: 2;
         }
 
         .abstract-text.expanded {
@@ -199,13 +199,13 @@
             display: inline-flex;
             align-items: center;
             gap: 7px;
-            margin-top: 12px;
+            margin-top: 8px;
             padding: 0;
             color: var(--accent);
             background: none;
             border: 0;
             cursor: pointer;
-            font: 600 .86rem/1.4 var(--sans);
+            font: 600 .78rem/1.4 var(--sans);
         }
 
         .expand-btn::after {
@@ -222,9 +222,9 @@
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            gap: 12px 22px;
-            margin-top: 28px;
-            padding-top: 23px;
+            gap: 9px 18px;
+            margin-top: 18px;
+            padding-top: 15px;
             border-top: 1px solid #edf0f2;
             font-family: var(--sans);
         }
@@ -232,15 +232,15 @@
         .pdf-link {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 7px;
             color: var(--accent);
             text-decoration: none;
-            font-size: .92rem;
+            font-size: .84rem;
             font-weight: 620;
         }
 
         .paper-actions .pdf-link:first-child {
-            padding: 10px 14px;
+            padding: 8px 11px;
             color: #fff;
             background: var(--accent);
             border-radius: 6px;
@@ -259,8 +259,8 @@
         }
 
         .pdf-link .icon {
-            width: 17px;
-            height: 17px;
+            width: 15px;
+            height: 15px;
             flex: 0 0 auto;
             stroke: currentColor;
             fill: none;
@@ -270,8 +270,8 @@
         }
 
         footer {
-            margin-top: 58px;
-            padding-top: 24px;
+            margin-top: 44px;
+            padding-top: 20px;
             color: var(--faint);
             border-top: 1px solid var(--line);
             font: 500 .82rem/1.5 var(--sans);
@@ -295,27 +295,27 @@
 
         @media (max-width: 680px) {
             body {
-                width: min(100% - 28px, 1120px);
-                padding: 38px 0 58px;
+                width: min(1080px, calc(100% - 28px));
+                padding: 34px 0 50px;
             }
 
-            h1 { font-size: 2.4rem; }
-            .abstract { margin-top: 23px; padding: 16px 17px; }
+            h1 { font-size: 2.05rem; }
+            .abstract { margin-top: 20px; padding: 13px 14px; }
             .info { display: grid; gap: 4px; }
-            h2 { margin-top: 46px; font-size: 2rem; }
-            .section-note { margin-bottom: 20px; font-size: 1rem; }
+            h2 { margin-top: 39px; font-size: 1.72rem; }
+            .section-note { margin-bottom: 16px; font-size: .94rem; }
 
             .paper {
-                margin: 14px 0;
-                padding: 27px 23px 25px 27px;
-                border-radius: 8px;
+                margin: 11px 0;
+                padding: 21px 18px 19px 22px;
+                border-radius: 7px;
             }
 
-            .paper-title { font-size: 1.45rem; }
-            .badges { margin-top: 14px; font-size: .79rem; }
-            .abstract-wrap { margin-top: 24px; }
-            .abstract-text { font-size: 1rem; line-height: 1.68; }
-            .paper-actions { align-items: flex-start; margin-top: 25px; }
+            .paper-title { font-size: 1.2rem; }
+            .badges { margin-top: 9px; font-size: .73rem; }
+            .abstract-wrap { margin-top: 16px; }
+            .abstract-text { font-size: .92rem; line-height: 1.58; }
+            .paper-actions { align-items: flex-start; margin-top: 17px; }
             .paper-actions .pdf-link:first-child { width: 100%; justify-content: center; }
         }
 
