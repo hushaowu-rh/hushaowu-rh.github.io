@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-09-04
+- ⑩ Mechanism of Decay: V1 上线 (The Mechanism of Decay from the Bost–Connes System, 32pp, Zenodo DOI 10.5281/zenodo.22307013, concept 10.5281/zenodo.22307012, 位置在⑮之后; 详情页 citation_* meta 20 关键词)
+
 ## 2026-08-27
 - ⑮ Mechanism of Fields: V1 上线 (The Mechanism of Fields from the Bost–Connes System, 39pp, Zenodo DOI 10.5281/zenodo.22126956, 位置在⑥之后)
 - 网站: PDF/DOI 图标 emoji→线条SVG(文档+链环, currentColor 跟链接色), index 与全部详情页同批
