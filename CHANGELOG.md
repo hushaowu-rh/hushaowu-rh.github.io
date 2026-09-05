@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-09-05
+- ⑥ Motion of Matter: V3 上线 (Zenodo DOI 10.5281/zenodo.22332693, concept 21992871 不变; 推导检查后的真错修正: 色散修正阶 −m²p²/3v²、§6.2 相位分解、§6.1 两支非两偏振、§5.4 CHSH 段重写、±k 对写法、时间步长与附录 A、驻相符号、波包展宽、可见度平衡因子, 加限定词三处; 34pp; 首页日期按规则保持 08-18, 版本徽章 V3)
+
 ## 2026-09-04
 - ⑩ Mechanism of Decay: V1 上线 (The Mechanism of Decay from the Bost–Connes System, 32pp, Zenodo DOI 10.5281/zenodo.22307013, concept 10.5281/zenodo.22307012, 位置在⑮之后; 详情页 citation_* meta 20 关键词)
 
