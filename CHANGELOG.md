@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-09-11
+- ⑱ Unification of Dynamics: V1 上线 (The Unification of Formation, Motion, Decay, and Thermalization of Matter from the Bost–Connes System, 63pp, Zenodo DOI 10.5281/zenodo.22720923, concept 10.5281/zenodo.22720922, 位置在⑩之后; 详情页 citation_* meta 20 关键词, citation_doi=版本 DOI; related cites ⑯⑰⑥⑩)
+
 ## 2026-09-05
 - ⑯ Unification: V5→V6 (Zenodo DOI 10.5281/zenodo.22365347, concept 21345360 不变; 行文规则检查后的措辞修订, 数值不动: §4 Born 第六步「账」改「配对」, 附录 B7 删自评句、「全程受控」改「逐步受控」; CN 134pp/EN 147pp; 首页日期保持 07-06)
 - ⑰ Thermalization: V12→V13 (Zenodo DOI 10.5281/zenodo.22365360, concept 21803449 不变; 措辞修订: 「跨壳接口」改「跨壳交换」; 33/37pp; 日期保持 08-05)
