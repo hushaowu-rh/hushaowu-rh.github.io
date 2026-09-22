@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-09-22
+- 数学③ Dynamics of the Bost–Connes State Space: V1 首次发布（英文139页；Zenodo版本DOI 10.5281/zenodo.22896932，concept DOI 10.5281/zenodo.22896931）。新增Foundation条目、详情页、英文PDF及sitemap；标题、摘要和20个关键词与Zenodo一致，首发日期2026-09-22。
+
 ## 2026-09-11
 - ⑱ Unification of Dynamics: V1 上线 (The Unification of Formation, Motion, Decay, and Thermalization of Matter from the Bost–Connes System, 63pp, Zenodo DOI 10.5281/zenodo.22720923, concept 10.5281/zenodo.22720922, 位置在⑩之后; 详情页 citation_* meta 20 关键词, citation_doi=版本 DOI; related cites ⑯⑰⑥⑩)
 
