@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-09-27
+- 数学③ Dynamics of the Bost–Connes State Space: V2更新（署名英文139页；Zenodo版本DOI 10.5281/zenodo.23005935，concept DOI 10.5281/zenodo.22896931）。摘要和引言前置统一描述形成、运动、衰变与热化的研究目的；更新首页及详情页摘要、V2标记、PDF和引用DOI，首发日期保持2026-09-22。
+
 ## 2026-09-22
 - 数学③ Dynamics of the Bost–Connes State Space: V1 首次发布（英文139页；Zenodo版本DOI 10.5281/zenodo.22896932，concept DOI 10.5281/zenodo.22896931）。新增Foundation条目、详情页、英文PDF及sitemap；标题、摘要和20个关键词与Zenodo一致，首发日期2026-09-22。
 
