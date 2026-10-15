@@ -1,0 +1,65 @@
+[
+  {
+    "id": "unification",
+    "subject": "A deep indigo astronomical photograph of a quiet silver-blue nebula and sparse fine starlight, with subtle depth and dust, representing matter, forces and spacetime.",
+    "palette": "ink indigo, silver blue",
+    "prompt": "Create a premium academic monograph cover BACKGROUND ART, portrait 2:3. A deep indigo astronomical photograph of a quiet silver-blue nebula and sparse fine starlight, with subtle depth and dust, representing matter, forces and spacetime. Palette: ink indigo, silver blue. High-end tactile matte print finish with delicate paper grain, rich shadows and natural lighting; restrained saturation, sophisticated scientific editorial photography. Concentrate the imagery in the upper 55 percent, let the bottom 45 percent fade naturally into dark quiet space for later typesetting. This is flat full-bleed artwork, not a book mockup. NO words, letters, numerals, symbols, logo, border, grid, geometric line art, formulas, or decorative diagrams. Keep enough visual character to read at small thumbnail size.",
+    "asset": "assets/cover-art/unification.jpg"
+  },
+  {
+    "id": "qm_axioms",
+    "subject": "A macro photograph of a translucent optical crystal, softly illuminated from within, a restrained cyan diffraction glow on its fine surface, suggesting quantum superposition without drawing diagrams.",
+    "palette": "petrol blue, cyan, graphite",
+    "prompt": "Create a premium academic monograph cover BACKGROUND ART, portrait 2:3. A macro photograph of a translucent optical crystal, softly illuminated from within, a restrained cyan diffraction glow on its fine surface, suggesting quantum superposition without drawing diagrams. Palette: petrol blue, cyan, graphite. High-end tactile matte print finish with delicate paper grain, rich shadows and natural lighting; restrained saturation, sophisticated scientific editorial photography. Concentrate the imagery in the upper 55 percent, let the bottom 45 percent fade naturally into dark quiet space for later typesetting. This is flat full-bleed artwork, not a book mockup. NO words, letters, numerals, symbols, logo, border, grid, geometric line art, formulas, or decorative diagrams. Keep enough visual character to read at small thumbnail size.",
+    "asset": "assets/cover-art/qm_axioms.jpg"
+  },
+  {
+    "id": "bc_state_space_dynamics",
+    "subject": "A fine frost crystal growing through dark glass, natural intricate dendritic branches and microscopic surface detail, selective focus and delicately illuminated edges.",
+    "palette": "slate blue, muted silver",
+    "prompt": "Create a premium academic monograph cover BACKGROUND ART, portrait 2:3. A fine frost crystal growing through dark glass, natural intricate dendritic branches and microscopic surface detail, selective focus and delicately illuminated edges. Palette: slate blue, muted silver. High-end tactile matte print finish with delicate paper grain, rich shadows and natural lighting; restrained saturation, sophisticated scientific editorial photography. Concentrate the imagery in the upper 55 percent, let the bottom 45 percent fade naturally into dark quiet space for later typesetting. This is flat full-bleed artwork, not a book mockup. NO words, letters, numerals, symbols, logo, border, grid, geometric line art, formulas, or decorative diagrams. Keep enough visual character to read at small thumbnail size.",
+    "asset": "assets/cover-art/bc_state_space_dynamics.jpg"
+  },
+  {
+    "id": "thermalization",
+    "subject": "A macro photograph of smoke-like ink diffusing through still liquid, warm copper wisps slowly mixing with deep charcoal fluid, subtle density gradients and minute particles.",
+    "palette": "deep warm charcoal, muted copper",
+    "prompt": "Create a premium academic monograph cover BACKGROUND ART, portrait 2:3. A macro photograph of smoke-like ink diffusing through still liquid, warm copper wisps slowly mixing with deep charcoal fluid, subtle density gradients and minute particles. Palette: deep warm charcoal, muted copper. High-end tactile matte print finish with delicate paper grain, rich shadows and natural lighting; restrained saturation, sophisticated scientific editorial photography. Concentrate the imagery in the upper 55 percent, let the bottom 45 percent fade naturally into dark quiet space for later typesetting. This is flat full-bleed artwork, not a book mockup. NO words, letters, numerals, symbols, logo, border, grid, geometric line art, formulas, or decorative diagrams. Keep enough visual character to read at small thumbnail size.",
+    "asset": "assets/cover-art/thermalization.jpg"
+  },
+  {
+    "id": "motion_of_matter",
+    "subject": "A photographic long exposure of a narrow stream of silver particles moving through dark blue fluid, a calm curved sweep with subtle motion blur, realistic optical depth, no drawn lines.",
+    "palette": "midnight navy, silver",
+    "prompt": "Create a premium academic monograph cover BACKGROUND ART, portrait 2:3. A photographic long exposure of a narrow stream of silver particles moving through dark blue fluid, a calm curved sweep with subtle motion blur, realistic optical depth, no drawn lines. Palette: midnight navy, silver. High-end tactile matte print finish with delicate paper grain, rich shadows and natural lighting; restrained saturation, sophisticated scientific editorial photography. Concentrate the imagery in the upper 55 percent, let the bottom 45 percent fade naturally into dark quiet space for later typesetting. This is flat full-bleed artwork, not a book mockup. NO words, letters, numerals, symbols, logo, border, grid, geometric line art, formulas, or decorative diagrams. Keep enough visual character to read at small thumbnail size.",
+    "asset": "assets/cover-art/motion_of_matter.jpg"
+  },
+  {
+    "id": "mechanism_of_fields",
+    "subject": "A soft aurora-like luminous veil across darkness, continuous organic light gradients, delicate atmospheric haze, physically inspired photographic texture.",
+    "palette": "deep forest teal, muted blue-green",
+    "prompt": "Create a premium academic monograph cover BACKGROUND ART, portrait 2:3. A soft aurora-like luminous veil across darkness, continuous organic light gradients, delicate atmospheric haze, physically inspired photographic texture. Palette: deep forest teal, muted blue-green. High-end tactile matte print finish with delicate paper grain, rich shadows and natural lighting; restrained saturation, sophisticated scientific editorial photography. Concentrate the imagery in the upper 55 percent, let the bottom 45 percent fade naturally into dark quiet space for later typesetting. This is flat full-bleed artwork, not a book mockup. NO words, letters, numerals, symbols, logo, border, grid, geometric line art, formulas, or decorative diagrams. Keep enough visual character to read at small thumbnail size.",
+    "asset": "assets/cover-art/mechanism_of_fields.jpg"
+  },
+  {
+    "id": "decay_mechanism",
+    "subject": "A tiny luminous amber cluster gradually dispersing into a sparse trail of fading dust motes across darkness, cinematic macro photograph, soft focus and quiet negative space.",
+    "palette": "dark plum charcoal, muted amber",
+    "prompt": "Create a premium academic monograph cover BACKGROUND ART, portrait 2:3. A tiny luminous amber cluster gradually dispersing into a sparse trail of fading dust motes across darkness, cinematic macro photograph, soft focus and quiet negative space. Palette: dark plum charcoal, muted amber. High-end tactile matte print finish with delicate paper grain, rich shadows and natural lighting; restrained saturation, sophisticated scientific editorial photography. Concentrate the imagery in the upper 55 percent, let the bottom 45 percent fade naturally into dark quiet space for later typesetting. This is flat full-bleed artwork, not a book mockup. NO words, letters, numerals, symbols, logo, border, grid, geometric line art, formulas, or decorative diagrams. Keep enough visual character to read at small thumbnail size.",
+    "asset": "assets/cover-art/decay_mechanism.jpg"
+  },
+  {
+    "id": "dynamics_unification",
+    "subject": "A photographic close-up of a flowing dark water surface where a soft ripple forms, moves and dissolves, fine silver highlights and organic fluid texture.",
+    "palette": "charcoal blue, steel silver",
+    "prompt": "Create a premium academic monograph cover BACKGROUND ART, portrait 2:3. A photographic close-up of a flowing dark water surface where a soft ripple forms, moves and dissolves, fine silver highlights and organic fluid texture. Palette: charcoal blue, steel silver. High-end tactile matte print finish with delicate paper grain, rich shadows and natural lighting; restrained saturation, sophisticated scientific editorial photography. Concentrate the imagery in the upper 55 percent, let the bottom 45 percent fade naturally into dark quiet space for later typesetting. This is flat full-bleed artwork, not a book mockup. NO words, letters, numerals, symbols, logo, border, grid, geometric line art, formulas, or decorative diagrams. Keep enough visual character to read at small thumbnail size.",
+    "asset": "assets/cover-art/dynamics_unification.jpg"
+  },
+  {
+    "id": "bc_computer",
+    "subject": "An extreme macro photograph of a silicon wafer surface with delicate material layers, subtle metallic reflectivity and fine etched microtexture, selective focus, no circuit diagram.",
+    "palette": "graphite, restrained steel blue",
+    "prompt": "Create a premium academic monograph cover BACKGROUND ART, portrait 2:3. An extreme macro photograph of a silicon wafer surface with delicate material layers, subtle metallic reflectivity and fine etched microtexture, selective focus, no circuit diagram. Palette: graphite, restrained steel blue. High-end tactile matte print finish with delicate paper grain, rich shadows and natural lighting; restrained saturation, sophisticated scientific editorial photography. Concentrate the imagery in the upper 55 percent, let the bottom 45 percent fade naturally into dark quiet space for later typesetting. This is flat full-bleed artwork, not a book mockup. NO words, letters, numerals, symbols, logo, border, grid, geometric line art, formulas, or decorative diagrams. Keep enough visual character to read at small thumbnail size.",
+    "asset": "assets/cover-art/bc_computer.jpg"
+  }
+]
