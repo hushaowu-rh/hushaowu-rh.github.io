@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Bookshelf Preview — ShaoWu Hu</title><meta name="robots" content="noindex, nofollow"><meta name="theme-color" content="#f7f6f2">
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Bookshelf Preview — ShaoWu Hu</title><meta name="robots" content="noindex, nofollow"><meta name="theme-color" content="#faf9f6">
 <style>
-:root { color-scheme:light; --canvas:#f7f6f2; --paper:#e9e5da; --ink:#343832; --muted:#686e64; --rule:#d9dbd2; --accent:#475c48; --serif:Georgia,"Times New Roman",serif; --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+:root { color-scheme:light; --canvas:#faf9f6; --paper:#e9e5da; --ink:#303630; --muted:#6b7068; --rule:#d9ddd5; --accent:#475c48; --serif:Georgia,"Times New Roman",serif; --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
 * { box-sizing:border-box; }
 [hidden] { display:none!important; }
 html { scroll-padding-top:25px; }
@@ -16,56 +16,68 @@ button { cursor:pointer; }
 .page { width:min(1060px,calc(100% - 80px)); margin:auto; }
 .masthead { display:flex; justify-content:space-between; align-items:center; gap:20px; padding:25px 0; border-bottom:1px solid var(--rule); }
 .identity { font-size:21px; letter-spacing:-.4px; }
-.identity small { font:10px var(--sans); color:var(--muted); letter-spacing:.5px; margin-left:15px; }
-.masthead nav { display:flex; gap:25px; font:11px var(--sans); color:var(--muted); }
+.identity small { font:11px var(--sans); color:var(--muted); margin-left:15px; }
+.masthead nav { display:flex; gap:25px; font:12px var(--sans); color:var(--muted); }
 .collection-heading { display:flex; justify-content:space-between; align-items:baseline; gap:30px; padding:32px 0 26px; }
 .eyebrow { font:10px var(--sans); letter-spacing:1.5px; color:var(--muted); margin:0 0 13px; text-transform:uppercase; }
 .collection-heading h1 { font-size:34px; font-weight:400; line-height:1.15; letter-spacing:-.7px; margin:0; }
-.collection-heading .description { margin:0; font:13px/1.6 var(--serif); color:var(--muted); }
+.collection-heading .description { margin:0; font:14px/1.6 var(--serif); color:var(--muted); }
 .toolbar { display:flex; justify-content:space-between; align-items:center; gap:25px; padding:11px 0; border-block:1px solid var(--rule); }
 .filters { display:flex; gap:7px; }
-.filter { border:0; background:none; color:var(--muted); padding:9px 10px; font:11px var(--sans); border-radius:2px; }
-.filter[aria-pressed="true"] { background:#e2e5dc; color:var(--ink); }
-.filter:hover { background:#e9ebe3; }
-.filter span { font-size:9px; margin-left:4px; }
-.search { display:flex; align-items:center; gap:8px; flex:0 1 180px; color:var(--muted); }
+.filter { border:0; background:none; color:var(--muted); padding:10px 12px; font:12px var(--sans); border-radius:2px; }
+.filter[aria-pressed="true"] { background:#e5e8df; color:var(--ink); }
+.filter:hover { background:#eeeee7; }
+.filter span { font-size:10px; margin-left:4px; }
+.search { display:flex; align-items:center; gap:8px; flex:0 1 185px; color:var(--muted); }
 .search span[aria-hidden] { font:19px var(--sans); }
-.search input { width:100%; min-width:0; border:0; background:transparent; font:12px var(--sans); padding:8px 3px; color:var(--ink); }
+.search input { width:100%; min-width:0; border:0; background:transparent; font:13px var(--sans); padding:9px 3px; color:var(--ink); }
 .search input::placeholder { color:var(--muted); }
-.shelf-label { display:flex; justify-content:space-between; margin:25px 0 24px; color:var(--muted); font:10px var(--sans); letter-spacing:.5px; }
+.shelf-label { display:flex; justify-content:space-between; margin:19px 0 0; color:var(--muted); font:11px var(--sans); }
 .shelf-label p { margin:0; }
-.library { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:34px 38px; align-items:start; }
-.book { min-width:0; }
-.cover { display:flex; flex-direction:column; position:relative; aspect-ratio:2/3; width:100%; max-width:156px; margin:0 auto; padding:13% 11% 10% 13%; color:var(--ink); background:var(--paper); border:1px solid #d7d3c8; border-left:3px solid #d0ccbf; box-shadow:2px 3px 5px #34383210; container-type:inline-size; transition:transform .15s,box-shadow .15s; }
-a.cover:hover { transform:translateY(-2px); box-shadow:2px 6px 9px #34383215; text-decoration:none; }
+.paper-group { margin-top:36px; }
+.group-heading { display:flex; align-items:baseline; gap:14px; padding-bottom:14px; border-bottom:1px solid var(--rule); }
+.group-heading h2 { margin:0; font-size:25px; font-weight:400; letter-spacing:-.3px; }
+.group-count { font:11px var(--sans); color:var(--muted); }
+.book { display:grid; grid-template-columns:124px minmax(0,1fr); column-gap:35px; row-gap:10px; align-content:start; padding:28px 0; border-bottom:1px solid var(--rule); min-width:0; }
+.cover { display:flex; flex-direction:column; position:relative; aspect-ratio:2/3; width:100%; margin:0; padding:16px 12px 13px 15px; color:var(--ink); background:var(--paper); border:1px solid #d7d3c8; border-left:3px solid #d0ccbf; box-shadow:2px 3px 5px #34383210; container-type:inline-size; }
+a.cover:hover { text-decoration:none; border-color:#b9bbae; }
+.book>.cover { grid-column:1; grid-row:1/5; align-self:start; }
 .cover-series { font:8px/1.4 var(--sans); font-size:6.3cqw; letter-spacing:.4px; }
-.cover-title { font:18px/1.25 var(--serif); font-size:13cqw; letter-spacing:-.2px; margin-top:27%; overflow-wrap:normal; }
+.cover-title { font:18px/1.25 var(--serif); font-size:14cqw; letter-spacing:-.2px; margin-top:27%; overflow-wrap:normal; }
 .cover-author { font:7px/1.5 var(--sans); font-size:5.8cqw; letter-spacing:.5px; margin-top:auto; padding-top:12px; }
-.book h2 { font-size:13px; font-weight:400; line-height:1.4; margin:13px auto 7px; max-width:156px; }
-.book-meta { display:flex; justify-content:space-between; gap:10px; font:9px var(--sans); color:var(--muted); max-width:156px; margin:auto; }
+.book-heading,.book-summary,.book-meta,.book-actions { grid-column:2; min-width:0; }
+.book-series { display:flex; flex-wrap:wrap; gap:15px; margin:0 0 9px; color:var(--muted); font:10px/1.5 var(--sans); letter-spacing:.5px; }
+.book-series span { letter-spacing:0; }
+.book h3 { margin:0; font:500 23px/1.3 var(--serif); letter-spacing:-.25px; }
+.book h3 a { text-decoration-thickness:1px; text-underline-offset:4px; }
+.book-summary { display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; font:14px/1.65 var(--sans); color:#586057; margin:0; }
+.book-meta { display:flex; flex-wrap:wrap; gap:5px 0; margin:0; font:11px/1.6 var(--sans); color:var(--muted); }
+.book-meta>span+span::before { content:'·'; padding:0 10px; color:#a4a89f; }
+.book-actions { display:flex; flex-wrap:wrap; align-items:center; gap:5px 22px; font:12px/1.4 var(--sans); color:var(--accent); }
+.book-actions a { display:inline-flex; align-items:center; gap:7px; min-height:30px; }
+.book-actions .details-link { color:var(--muted); }
 .empty { padding:45px 0 80px; text-align:center; color:var(--muted); }
 .empty p { font-size:20px; }
 .empty button { border:0; background:transparent; color:var(--accent); text-decoration:underline; text-underline-offset:4px; padding:12px; font:12px var(--sans); }
 .about { border-top:1px solid var(--rule); margin-top:42px; padding:23px 0 28px; display:flex; justify-content:space-between; gap:30px; }
 .about h2 { font-size:19px; font-weight:400; margin:0 0 9px; }
-.about p { font-size:12px; line-height:1.7; margin:0; color:var(--muted); max-width:530px; }
-.contact { display:flex; align-items:center; gap:20px; font:11px var(--sans); color:var(--accent); }
-footer { border-top:1px solid var(--rule); display:flex; justify-content:space-between; gap:20px; padding:18px 0 28px; color:var(--muted); font:9px/1.6 var(--sans); }
+.about p { font-size:13px; line-height:1.7; margin:0; color:var(--muted); max-width:530px; }
+.contact { display:flex; align-items:center; gap:20px; font:12px var(--sans); color:var(--accent); }
+footer { border-top:1px solid var(--rule); display:flex; justify-content:space-between; gap:20px; padding:18px 0 28px; color:var(--muted); font:10px/1.6 var(--sans); }
 .sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; }
 .skip { position:absolute; top:-100px; padding:10px; background:var(--ink); color:white; z-index:9; }
 .skip:focus { top:8px; }
 .paper-reader { padding-bottom:10px; }
-.back-link { display:inline-block; margin:26px 0 31px; padding:5px 0; color:var(--muted); font:11px var(--sans); }
-.reader-layout { display:grid; grid-template-columns:156px minmax(0,680px); gap:65px; }
-.reader-side .cover { padding:20px 17px 17px 20px; }
+.back-link { display:inline-block; margin:26px 0 31px; padding:5px 0; color:var(--muted); font:12px var(--sans); }
+.reader-layout { display:grid; grid-template-columns:124px minmax(0,740px); gap:35px; }
 .reader-edition { text-align:center; font:10px/1.6 var(--sans); color:var(--muted); margin:13px 0 0; }
 .reader-article { min-width:0; }
-.reader-article h1 { font-size:31px; font-weight:400; line-height:1.25; letter-spacing:-.55px; margin:0 0 18px; }
+.reader-article h1 { font-size:30px; font-weight:400; line-height:1.3; letter-spacing:-.5px; margin:0 0 18px; }
 .reader-article h1:focus { outline:none; }
 .reader-author { font-size:16px; margin:0 0 9px; }
-.reader-date { font:11px/1.6 var(--sans); color:var(--muted); margin:0 0 25px; }
+.reader-date { font:12px/1.6 var(--sans); color:var(--muted); margin:0 0 25px; }
 .resources { display:flex; flex-wrap:wrap; gap:9px 12px; padding-bottom:26px; border-bottom:1px solid var(--rule); }
-.resource { display:flex; justify-content:space-between; align-items:center; gap:20px; padding:10px 12px; font:11px/1.4 var(--sans); border:1px solid var(--rule); color:var(--accent); border-radius:2px; min-height:39px; }
+.resource { display:flex; justify-content:space-between; align-items:center; gap:20px; padding:10px 12px; font:12px/1.4 var(--sans); border:1px solid var(--rule); color:var(--accent); border-radius:2px; min-height:40px; }
 .resource.primary { background:#e7e9df; border-color:#cdd2c5; color:var(--ink); }
 .resource:hover { background:#eeeee6; }
 .reader-article h2 { font-size:20px; font-weight:400; margin:28px 0 15px; }
@@ -74,69 +86,88 @@ footer { border-top:1px solid var(--rule); display:flex; justify-content:space-b
 .version-note p { color:var(--muted); font-size:14px; }
 .version-note a { text-decoration:underline; text-underline-offset:3px; }
 .reader-bottom { display:flex; justify-content:space-between; gap:20px; border-top:1px solid var(--rule); margin-top:35px; padding:20px 0; font:11px var(--sans); color:var(--muted); }
-@media(max-width:960px) { .page { width:calc(100% - 60px); } .library { grid-template-columns:repeat(4,minmax(0,1fr)); gap:32px; } .reader-layout { gap:35px; grid-template-columns:140px minmax(0,1fr); } .collection-heading .description { max-width:235px; } }
+@media(max-width:960px) { .page { width:calc(100% - 60px); } .book { grid-template-columns:112px minmax(0,1fr); column-gap:27px; } .collection-heading .description { max-width:235px; } .book h3 { font-size:21px; } }
 @media(max-width:700px) {
  .page { width:calc(100% - 36px); } .preview-notice { padding:7px 12px; font-size:10px; } .preview-notice a { margin-left:10px; }
- .masthead { padding:19px 0; gap:15px; } .identity { font-size:19px; } .identity small { display:none; } .masthead nav { gap:18px; font-size:10px; }
+ .masthead { padding:19px 0; gap:15px; } .identity { font-size:19px; } .identity small { display:none; } .masthead nav { gap:18px; font-size:11px; }
  .collection-heading { display:block; padding:25px 0 21px; } .collection-heading h1 { font-size:29px; } .collection-heading .eyebrow { margin-bottom:10px; font-size:9px; }
- .collection-heading .description { margin-top:10px; max-width:none; font-size:12px; }
- .toolbar { flex-direction:column; gap:7px; align-items:stretch; padding:7px 0; } .filters { justify-content:space-between; gap:0; } .filter { font-size:10px; padding:10px 7px; min-height:38px; white-space:nowrap; } .filter span { display:none; }
- .search { flex:auto; width:100%; padding:0 6px; } .search input { font-size:12px; }
- .shelf-label { margin:18px 0 20px; font-size:9px; } .library { grid-template-columns:repeat(3,minmax(0,1fr)); gap:27px 19px; }
- .cover { padding:12% 9% 9% 11%; border-left-width:2px; } .cover-title { font-size:13.5cqw; margin-top:24%; } .cover-series { font-size:6cqw; letter-spacing:.1px; } .cover-author { letter-spacing:.1px; font-size:5.7cqw; padding-top:7px; }
- .book h2 { font-size:12px; line-height:1.38; margin-top:10px; } .book-meta { font-size:8px; }
- .about { display:block; margin-top:32px; padding:21px 0; } .about h2 { font-size:19px; } .contact { margin-top:17px; font-size:11px; }
- footer { font-size:8px; gap:15px; } .back-link { margin:18px 0 25px; padding:8px 0; font-size:11px; }
- .reader-layout { grid-template-columns:1fr; gap:0; } .reader-side { display:none; } .reader-article h1 { font-size:27px; line-height:1.28; letter-spacing:-.4px; } .reader-author { font-size:15px; } .reader-date { font-size:11px; margin-bottom:22px; }
- .resources { gap:9px; padding-bottom:23px; } .resource { font-size:11px; min-height:43px; padding:10px 11px; } .abstract p { font-size:16px; line-height:1.8; } .reader-bottom { font-size:10px; } .reader-article h2 { font-size:20px; }
+ .collection-heading .description { margin-top:10px; max-width:none; font-size:13px; }
+ .toolbar { flex-direction:column; gap:7px; align-items:stretch; padding:7px 0; } .filters { justify-content:space-between; gap:0; } .filter { font-size:11px; padding:10px 7px; min-height:40px; white-space:nowrap; } .filter span { display:none; }
+ .search { flex:auto; width:100%; padding:0 6px; } .search input { font-size:16px; }
+ .shelf-label { margin:18px 0 0; font-size:10px; } .paper-group { margin-top:27px; } .group-heading { padding-bottom:12px; } .group-heading h2 { font-size:23px; }
+ .book { grid-template-columns:80px minmax(0,1fr); gap:13px 19px; padding:23px 0; } .book>.cover { grid-row:1; } .book-heading { align-self:start; } .book-summary,.book-meta,.book-actions { grid-column:1/-1; }
+ .book .cover { padding:10px 7px 9px 9px; border-left-width:2px; } .book .cover-title { font-size:15cqw; margin-top:24%; } .book .cover-series { font-size:6.2cqw; letter-spacing:.1px; } .book .cover-author { letter-spacing:.1px; font-size:6cqw; padding-top:7px; }
+ .book h3 { font-size:19px; line-height:1.35; letter-spacing:-.15px; } .book-series { font-size:9px; gap:7px 11px; margin-bottom:7px; } .book-summary { font-size:13px; line-height:1.65; -webkit-line-clamp:3; } .book-meta { font-size:10px; } .book-meta>span+span::before { padding:0 7px; }
+ .book-actions { gap:2px 20px; font-size:12px; } .book-actions a { min-height:38px; }
+ .about { display:block; margin-top:32px; padding:21px 0; } .about h2 { font-size:19px; } .contact { margin-top:17px; font-size:12px; }
+ footer { font-size:9px; gap:15px; } .back-link { margin:18px 0 25px; padding:8px 0; font-size:12px; }
+ .reader-layout { grid-template-columns:1fr; gap:0; } .reader-side { display:none; } .reader-article h1 { font-size:26px; line-height:1.3; letter-spacing:-.3px; } .reader-author { font-size:15px; } .reader-date { font-size:11px; margin-bottom:22px; }
+ .resources { gap:9px; padding-bottom:23px; } .resource { font-size:11px; min-height:43px; padding:10px 11px; } .abstract p { font-size:16px; line-height:1.8; } .reader-bottom { font-size:10px; }
 }
-@media(max-width:359px) { .page { width:calc(100% - 28px); } .library { gap:24px 14px; } .filter { padding:9px 5px; font-size:9px; } .book h2 { font-size:11px; } .reader-article h1 { font-size:25px; } }
-@media(prefers-reduced-motion:reduce) { * { transition:none!important; } a.cover:hover { transform:none; } }
-@media print { .toolbar,.preview-notice,.masthead nav,footer,.back-link,.resources,.reader-bottom { display:none!important; } .page { width:100%; } .library { grid-template-columns:repeat(4,1fr); } .book { break-inside:avoid; } .reader-side { display:none; } .reader-layout { display:block; } }
+@media(max-width:359px) { .page { width:calc(100% - 28px); } .book { grid-template-columns:68px minmax(0,1fr); column-gap:15px; } .filter { padding:9px 5px; font-size:10px; } .book h3 { font-size:18px; } }
+@media print { .toolbar,.preview-notice,.masthead nav,footer,.back-link,.resources,.reader-bottom,.book-actions { display:none!important; } .page { width:100%; } .book { break-inside:avoid; } .book-summary { display:block; } .reader-side { display:none; } .reader-layout { display:block; } }
 </style><noscript><style>.toolbar{display:none}.paper-reader{border-top:1px solid var(--rule);margin-top:30px}</style></noscript>
 <script data-goatcounter="https://hushaowu.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script></head>
 <body><aside class="preview-notice" lang="zh-CN">书刊预览 · 打磨中<a href="./">正式主页</a></aside><a class="skip" href="#library">Skip to collection</a><div class="page">
 <header class="masthead"><a class="identity" href="#library">ShaoWu Hu<small>Independent researcher</small></a><nav aria-label="Main navigation"><a href="#library">Papers</a><a href="#about">About</a><a href="https://orcid.org/0009-0009-8300-4691" target="_blank" rel="noopener">ORCID ↗</a></nav></header>
 <main><div id="collection-view"><section class="collection-heading"><div><p class="eyebrow">The Bost–Connes papers</p><h1>Collected papers</h1></div><p class="description">Studies in matter, forces, spacetime &amp; computation.</p></section>
-<div class="toolbar"><div class="filters" role="group" aria-label="Filter papers by subject"><button class="filter" data-filter="all" aria-pressed="true">All papers <span>9</span></button><button class="filter" data-filter="foundation" aria-pressed="false">Foundations <span>3</span></button><button class="filter" data-filter="mechanisms" aria-pressed="false">Mechanisms <span>5</span></button><button class="filter" data-filter="computation" aria-pressed="false">Computation <span>1</span></button></div><label class="search"><span aria-hidden="true">⌕</span><span class="sr-only">Search papers</span><input id="search" type="search" placeholder="Search papers" autocomplete="off"></label></div>
+<div class="toolbar"><div class="filters" role="group" aria-label="Filter papers by subject"><button class="filter" data-filter="all" aria-pressed="true">All papers <span>9</span></button><button class="filter" data-filter="foundation" aria-pressed="false">Foundation <span>3</span></button><button class="filter" data-filter="mechanisms" aria-pressed="false">Mechanisms <span>5</span></button><button class="filter" data-filter="computation" aria-pressed="false">Computation <span>1</span></button></div><label class="search"><span aria-hidden="true">⌕</span><span class="sr-only">Search papers</span><input id="search" type="search" placeholder="Search papers" autocomplete="off"></label></div>
 <div class="shelf-label"><p>Open-access preprints / 2026</p><span id="result-count" role="status" aria-live="polite">9 papers</span></div>
-<section class="library" id="library" aria-label="Collected papers"><article class="book" data-category="foundation" data-search="The Unification of Matter, Forces, and Spacetime from the Bost–Connes System foundation PHYSICS XVI">
+<section class="library" id="library" aria-label="Collected papers"><section class="paper-group" data-group="foundation" aria-labelledby="heading-foundation"><header class="group-heading"><h2 id="heading-foundation">Foundation</h2><span class="group-count">3 papers</span></header><div class="paper-list"><article class="book" data-category="foundation" data-search="The Unification of Matter, Forces, and Spacetime from the Bost–Connes System foundation PHYSICS XVI">
 <a class="cover" href="#paper-unification" aria-label="Read The Unification of Matter, Forces, and Spacetime from the Bost–Connes System"><span class="cover-series">PHYSICS / XVI</span><span class="cover-title">Matter, Forces<br>&amp; Spacetime</span><span class="cover-author">SHAO-WU HU</span></a>
-<h2><a href="#paper-unification" title="The Unification of Matter, Forces, and Spacetime from the Bost–Connes System">Matter, Forces &amp; Spacetime</a></h2>
-<div class="book-meta"><time datetime="2026-07-06">2026.07</time><span>v7</span></div>
+<div class="book-heading"><p class="book-series">PHYSICS · XVI <span>Open access</span></p><h3><a href="#paper-unification">The Unification of Matter, Forces, and Spacetime from the Bost–Connes System</a></h3></div>
+<p class="book-summary">Starting from a finite p-adic reduction of the Bost–Connes system, we investigate the common dynamical origin of matter, mass, and forces. Matter is characterized as stable excitations whose patterns are preserved under propagation and exchange: the relative phases of their persistent evolution yield mass frequencies, exchange between stable states produces resonance responses, and the influence of the background energy distribution on motion produces a metric response.</p>
+<p class="book-meta"><span>Shao-Wu Hu</span><span>First published <time datetime="2026-07-06">6 July 2026</time></span><span>Version 7</span></p>
+<nav class="book-actions" aria-label="Resources for The Unification of Matter, Forces, and Spacetime from the Bost–Connes System"><a class="publication-resource" href="papers/Unification_of_Matter_Forces_and_Spacetime_Rewritten.pdf?v=7" target="_blank" rel="noopener">Read PDF <span aria-hidden="true">↗</span></a><a class="publication-resource" href="papers/Supplementary_Proofs.pdf?v=7" target="_blank" rel="noopener">Supplementary proofs <span aria-hidden="true">↗</span></a><a class="publication-resource" href="videos/paper16/" target="_blank" rel="noopener">Chapter videos <span aria-hidden="true">↗</span></a><a class="publication-resource" href="https://doi.org/10.5281/zenodo.23392111" target="_blank" rel="noopener">Zenodo <span aria-hidden="true">↗</span></a><a class="details-link" href="#paper-unification">Abstract &amp; details <span aria-hidden="true">→</span></a></nav>
 </article><article class="book" data-category="foundation" data-search="Axioms of Quantum Mechanics and the Arithmetic Structure of the Bost–Connes System foundation PHYSICS I">
 <a class="cover" href="#paper-qm_axioms" aria-label="Read Axioms of Quantum Mechanics and the Arithmetic Structure of the Bost–Connes System"><span class="cover-series">PHYSICS / I</span><span class="cover-title">Axioms of<br>Quantum<br>Mechanics</span><span class="cover-author">SHAO-WU HU</span></a>
-<h2><a href="#paper-qm_axioms" title="Axioms of Quantum Mechanics and the Arithmetic Structure of the Bost–Connes System">Quantum Mechanics</a></h2>
-<div class="book-meta"><time datetime="2026-03-11">2026.03</time><span>v19</span></div>
+<div class="book-heading"><p class="book-series">PHYSICS · I <span>Open access</span></p><h3><a href="#paper-qm_axioms">Axioms of Quantum Mechanics and the Arithmetic Structure of the Bost–Connes System</a></h3></div>
+<p class="book-summary">The five axioms of von Neumann quantum mechanics are each confirmed by experiment, yet they are not described within a single mathematical framework. Starting from the Bost–Connes system, we perform the p-adic reduction at a prime p and construct the state space H_p = L²(ℤ/p^Kℤ), K = p(p−1)−1, and argue that its structure naturally describes these five axioms. (I) C*-positivity gives the Hilbert space through the GNS construction, (II) invariance under Galois conjugation gives the self-adjoint observables, (III) the CRT decomposition gives the tensor product, and (IV) H = log n generates the unique unitary time evolution. (V) The Born rule comes from the modular structure S = JΔ^{1/2} of the KMS state, its probability weights being the squared moduli of the values of Dirichlet L-functions on the critical line.</p>
+<p class="book-meta"><span>Shao-Wu Hu</span><span>First published <time datetime="2026-03-11">11 March 2026</time></span><span>Version 19</span></p>
+<nav class="book-actions" aria-label="Resources for Axioms of Quantum Mechanics and the Arithmetic Structure of the Bost–Connes System"><a class="publication-resource" href="papers/qm_pure_bc_en.pdf?v=19" target="_blank" rel="noopener">Read PDF <span aria-hidden="true">↗</span></a><a class="publication-resource" href="https://doi.org/10.5281/zenodo.21841816" target="_blank" rel="noopener">Zenodo <span aria-hidden="true">↗</span></a><a class="details-link" href="#paper-qm_axioms">Abstract &amp; details <span aria-hidden="true">→</span></a></nav>
 </article><article class="book" data-category="foundation" data-search="Dynamics of the Bost–Connes State Space foundation MATHEMATICS III">
 <a class="cover" href="#paper-bc_state_space_dynamics" aria-label="Read Dynamics of the Bost–Connes State Space"><span class="cover-series">MATHEMATICS / III</span><span class="cover-title">Dynamics of the<br>Bost–Connes<br>State Space</span><span class="cover-author">SHAO-WU HU</span></a>
-<h2><a href="#paper-bc_state_space_dynamics" title="Dynamics of the Bost–Connes State Space">State-Space Dynamics</a></h2>
-<div class="book-meta"><time datetime="2026-09-22">2026.09</time><span>v2</span></div>
-</article><article class="book" data-category="mechanisms" data-search="The Mechanism of Thermalization in the Bost–Connes System mechanisms PHYSICS XVII">
+<div class="book-heading"><p class="book-series">MATHEMATICS · III <span>Open access</span></p><h3><a href="#paper-bc_state_space_dynamics">Dynamics of the Bost–Connes State Space</a></h3></div>
+<p class="book-summary">We investigate whether the dynamics of the formation, motion, decay, and thermalization of matter in the physical world can be described within a unified and internally consistent mathematical framework. To this end, we start from the local decomposition of the Bost–Connes system and perform a finite p-adic reduction to construct the corresponding state space. Within this space, we characterize stable states relative to a background and establish a complete cycle consisting of free evolution, formation exchange, and pattern reconstruction. Excitation formation, motion, and decay, together with relaxation of the ensemble occupation distribution, are determined by the same joint evolution and its iterations, with the final state of each cycle serving as the initial state of the next. References, observation, and records are incorporated into the same joint construction, giving the evolution of a subject and its observable manifestations a common mathematical basis. Under the corresponding conditions, we derive event statistics, convergence to stationarity, and thermalization, and use joint conservation and entropy balances to relate reversible joint evolution to irreversible system relaxation.</p>
+<p class="book-meta"><span>Shao-Wu Hu</span><span>First published <time datetime="2026-09-22">22 September 2026</time></span><span>Version 2</span></p>
+<nav class="book-actions" aria-label="Resources for Dynamics of the Bost–Connes State Space"><a class="publication-resource" href="papers/bc_state_space_dynamics_en.pdf?v=20260927" target="_blank" rel="noopener">Read PDF <span aria-hidden="true">↗</span></a><a class="publication-resource" href="videos/math3-ch1/" target="_blank" rel="noopener">Chapter 1 video <span aria-hidden="true">↗</span></a><a class="publication-resource" href="videos/math3-ch2/" target="_blank" rel="noopener">Chapter 2 video <span aria-hidden="true">↗</span></a><a class="publication-resource" href="https://doi.org/10.5281/zenodo.22896931" target="_blank" rel="noopener">Zenodo <span aria-hidden="true">↗</span></a><a class="details-link" href="#paper-bc_state_space_dynamics">Abstract &amp; details <span aria-hidden="true">→</span></a></nav>
+</article></div></section><section class="paper-group" data-group="mechanisms" aria-labelledby="heading-mechanisms"><header class="group-heading"><h2 id="heading-mechanisms">Mechanisms</h2><span class="group-count">5 papers</span></header><div class="paper-list"><article class="book" data-category="mechanisms" data-search="The Mechanism of Thermalization in the Bost–Connes System mechanisms PHYSICS XVII">
 <a class="cover" href="#paper-thermalization" aria-label="Read The Mechanism of Thermalization in the Bost–Connes System"><span class="cover-series">PHYSICS / XVII</span><span class="cover-title">Thermalization</span><span class="cover-author">SHAO-WU HU</span></a>
-<h2><a href="#paper-thermalization" title="The Mechanism of Thermalization in the Bost–Connes System">Thermalization</a></h2>
-<div class="book-meta"><time datetime="2026-08-05">2026.08</time><span>v13</span></div>
+<div class="book-heading"><p class="book-series">PHYSICS · XVII <span>Open access</span></p><h3><a href="#paper-thermalization">The Mechanism of Thermalization in the Bost–Connes System</a></h3></div>
+<p class="book-summary">The Bost–Connes system supplies KMS equilibrium states, but the evaluation algebra and its inner fluctuations preserve every valuation shell, no dynamics within the existing structure carries a general initial state to equilibrium, and thermalization requires a cross-shell dilation. This paper supplies that dilation and proves its construction unique component by component. The mechanism of thermalization is repeated collisions between the system and the environment. Each collision performs an energy-conserving single-quantum exchange between an environment mode and the shell levels, and the system moves one step at a time along the valuation shells; the KMS occupation of the environment sets the ratio of ascent to descent rates to p^{−β}, the shell occupations approach the Gibbs distribution under detailed balance, and the weak-coupling limit converges to a GKSL semigroup; the photons carrying the records escape without return, so the relaxation is irreversible. At fixed temperature the relative entropy decreases monotonically toward equilibrium, and the only time-asymmetric assumption is the boundary condition of environment refreshing. In units of the total rate, the relaxation spectrum is completely determined by tree geometry and detailed balance, independent of the microscopic branch weights, and the infinite-depth spectral gap is the bound (√p−1)²/(p+1) permitted by regular-tree geometry. The Arrhenius temperature dependence of generation-label mixing and the Majorana phase criterion provide experimental tests.</p>
+<p class="book-meta"><span>Shao-Wu Hu</span><span>First published <time datetime="2026-08-05">5 August 2026</time></span><span>Version 13</span></p>
+<nav class="book-actions" aria-label="Resources for The Mechanism of Thermalization in the Bost–Connes System"><a class="publication-resource" href="papers/bc_thermalization_en.pdf?v=20260905b" target="_blank" rel="noopener">Read PDF <span aria-hidden="true">↗</span></a><a class="publication-resource" href="https://doi.org/10.5281/zenodo.21803449" target="_blank" rel="noopener">Zenodo <span aria-hidden="true">↗</span></a><a class="details-link" href="#paper-thermalization">Abstract &amp; details <span aria-hidden="true">→</span></a></nav>
 </article><article class="book" data-category="mechanisms" data-search="The Mechanism of the Motion of Matter from the Bost–Connes System mechanisms PHYSICS VI">
 <a class="cover" href="#paper-motion_of_matter" aria-label="Read The Mechanism of the Motion of Matter from the Bost–Connes System"><span class="cover-series">PHYSICS / VI</span><span class="cover-title">The Motion<br>of Matter</span><span class="cover-author">SHAO-WU HU</span></a>
-<h2><a href="#paper-motion_of_matter" title="The Mechanism of the Motion of Matter from the Bost–Connes System">The Motion of Matter</a></h2>
-<div class="book-meta"><time datetime="2026-08-18">2026.08</time><span>v4</span></div>
+<div class="book-heading"><p class="book-series">PHYSICS · VI <span>Open access</span></p><h3><a href="#paper-motion_of_matter">The Mechanism of the Motion of Matter from the Bost–Connes System</a></h3></div>
+<p class="book-summary">The structure of matter and the mechanism of thermalization have been established on the state space of the Bost–Connes system; the motion of matter has so far had no definition. Starting from the hierarchy between the state space and observational spacetime, we define motion as the cycle-by-cycle displacement of the reconstruction center of a standing wave in the state space, which appears in observational spacetime as a sequence of records. Propagation proceeds in units of cycles, each cycle consisting of three steps, free evolution, formation exchange, and pattern reconstruction, and the exact dispersion relation follows; a record carries phase away through a really emitted photon, an event is the readout of a record, and time is the phase count carried by records. The conservation laws hold in the state space as operator identities and appear in observational spacetime as event-by-event balance; the representative phenomena of motion, double-slit interference, tunneling, entanglement, and macroscopic trajectories, are explained one by one from the same structure.</p>
+<p class="book-meta"><span>Shao-Wu Hu</span><span>First published <time datetime="2026-08-18">18 August 2026</time></span><span>Version 4</span></p>
+<nav class="book-actions" aria-label="Resources for The Mechanism of the Motion of Matter from the Bost–Connes System"><a class="publication-resource" href="papers/motion_of_matter_en.pdf?v=20260905b" target="_blank" rel="noopener">Read PDF <span aria-hidden="true">↗</span></a><a class="publication-resource" href="https://doi.org/10.5281/zenodo.21992871" target="_blank" rel="noopener">Zenodo <span aria-hidden="true">↗</span></a><a class="details-link" href="#paper-motion_of_matter">Abstract &amp; details <span aria-hidden="true">→</span></a></nav>
 </article><article class="book" data-category="mechanisms" data-search="The Mechanism of Fields from the Bost–Connes System mechanisms PHYSICS XV">
 <a class="cover" href="#paper-mechanism_of_fields" aria-label="Read The Mechanism of Fields from the Bost–Connes System"><span class="cover-series">PHYSICS / XV</span><span class="cover-title">The Mechanism<br>of Fields</span><span class="cover-author">SHAO-WU HU</span></a>
-<h2><a href="#paper-mechanism_of_fields" title="The Mechanism of Fields from the Bost–Connes System">The Mechanism of Fields</a></h2>
-<div class="book-meta"><time datetime="2026-08-27">2026.08</time><span>v3</span></div>
+<div class="book-heading"><p class="book-series">PHYSICS · XV <span>Open access</span></p><h3><a href="#paper-mechanism_of_fields">The Mechanism of Fields from the Bost–Connes System</a></h3></div>
+<p class="book-summary">The structure of the forces and the response of matter to a non-uniform background have been established on the state space of the Bost–Connes system; the field has so far had no definition. Starting from the definition of motion, we define a field as the region-by-region values of a background quantity in the state space; it appears in observational spacetime as the statistics of events. The standing-wave cycles of matter occupy the spectral weight of the region they inhabit and accumulate channel phase along dwell segments, and the corrections are redistributed outward conservatively; the deduction of occupation gives the gravitational potential, the metric, and the source equation, and the accumulation of phase gives the field equations of the electromagnetic, weak, nuclear, and color interactions. Following the duality of discrete and continuous, the equations are written on two levels, discrete structural equations in the state space and differential equations for statistical field quantities in observational spacetime, and the classical Maxwell equations hold closed under the statistical readout. The nonlinear equation of gravity agrees with general relativity at all orders of the existing tests, and the next-order coefficient of the spatial metric component gives a discriminable deviation. The representative puzzles of fields, action at a distance, the photoelectric effect, the localization of field energy, the graviton, and the classical limit, are resolved one by one from the same structure.</p>
+<p class="book-meta"><span>Shao-Wu Hu</span><span>First published <time datetime="2026-08-27">27 August 2026</time></span><span>Version 3</span></p>
+<nav class="book-actions" aria-label="Resources for The Mechanism of Fields from the Bost–Connes System"><a class="publication-resource" href="papers/mechanism_of_fields_en.pdf?v=20260905b" target="_blank" rel="noopener">Read PDF <span aria-hidden="true">↗</span></a><a class="publication-resource" href="https://doi.org/10.5281/zenodo.22126955" target="_blank" rel="noopener">Zenodo <span aria-hidden="true">↗</span></a><a class="details-link" href="#paper-mechanism_of_fields">Abstract &amp; details <span aria-hidden="true">→</span></a></nav>
 </article><article class="book" data-category="mechanisms" data-search="The Mechanism of Decay from the Bost–Connes System mechanisms PHYSICS X">
 <a class="cover" href="#paper-decay_mechanism" aria-label="Read The Mechanism of Decay from the Bost–Connes System"><span class="cover-series">PHYSICS / X</span><span class="cover-title">The Mechanism<br>of Decay</span><span class="cover-author">SHAO-WU HU</span></a>
-<h2><a href="#paper-decay_mechanism" title="The Mechanism of Decay from the Bost–Connes System">The Mechanism of Decay</a></h2>
-<div class="book-meta"><time datetime="2026-09-04">2026.09</time><span>v2</span></div>
+<div class="book-heading"><p class="book-series">PHYSICS · X <span>Open access</span></p><h3><a href="#paper-decay_mechanism">The Mechanism of Decay from the Bost–Connes System</a></h3></div>
+<p class="book-summary">The structure, thermalization, and motion of matter have been established on the state space of the Bost–Connes system; the change of identity has so far had no mechanism. We define decay as the change of identity of a stable standing wave, χ<sub>j</sub> → χ<sub>k</sub>, and it proceeds in only one way: the amplitude of the initial state merges into the background, the final state re-forms from the background, and an emitted pair carries the record away. Merging and formation are evaluated at the vertices against the background; the evaluation gives the conservation of electric charge, generation charge, and parity, the direction and rate of decay follow from it, and the Fermi constant and the muon lifetime are given by the numbers of the framework. The exponential decay law, the β spectrum, parity violation, the lifetime hierarchy, and nucleon stability are explained one by one from the same structure.</p>
+<p class="book-meta"><span>Shao-Wu Hu</span><span>First published <time datetime="2026-09-04">4 September 2026</time></span><span>Version 2</span></p>
+<nav class="book-actions" aria-label="Resources for The Mechanism of Decay from the Bost–Connes System"><a class="publication-resource" href="papers/decay_mechanism_en.pdf?v=20260905" target="_blank" rel="noopener">Read PDF <span aria-hidden="true">↗</span></a><a class="publication-resource" href="https://doi.org/10.5281/zenodo.22307012" target="_blank" rel="noopener">Zenodo <span aria-hidden="true">↗</span></a><a class="details-link" href="#paper-decay_mechanism">Abstract &amp; details <span aria-hidden="true">→</span></a></nav>
 </article><article class="book" data-category="mechanisms" data-search="The Unification of Formation, Motion, Decay, and Thermalization of Matter from the Bost–Connes System mechanisms PHYSICS XVIII">
 <a class="cover" href="#paper-dynamics_unification" aria-label="Read The Unification of Formation, Motion, Decay, and Thermalization of Matter from the Bost–Connes System"><span class="cover-series">PHYSICS / XVIII</span><span class="cover-title">The Unification<br>of Dynamics</span><span class="cover-author">SHAO-WU HU</span></a>
-<h2><a href="#paper-dynamics_unification" title="The Unification of Formation, Motion, Decay, and Thermalization of Matter from the Bost–Connes System">The Unification of Dynamics</a></h2>
-<div class="book-meta"><time datetime="2026-09-11">2026.09</time><span>v1</span></div>
-</article><article class="book" data-category="computation" data-search="BC State-Space Computer computation COMPUTATION I">
+<div class="book-heading"><p class="book-series">PHYSICS · XVIII <span>Open access</span></p><h3><a href="#paper-dynamics_unification">The Unification of Formation, Motion, Decay, and Thermalization of Matter from the Bost–Connes System</a></h3></div>
+<p class="book-summary">The formation, motion, decay, and thermalization of matter have each been established on the state space of the Bost–Connes system, but the complete cycle map has not yet been constructed. On the finite joint space taking part in the exchange, this paper composes free evolution, formation exchange, and pattern reconstruction into a unitary cycle, with the exchange matrix elements and the environment preparation given as conditions of the construction. A standing wave exchanges continuously with the environment during its propagation, and the system state at the end of the cycle and the outgoing records are determined by the same joint evolution; the environment is refreshed cycle by cycle, and the system continues to evolve under the same map. Retrieval, transit, and transport together determine the maintenance of the standing wave, the change of identity, and the formation of records, while the reverse exchange replenishes formation under the corresponding incident occupation. Record weights are determined, under explicit statistical conditions, by the squared norms of the components of the joint state, and energy and the corresponding conserved charges are balanced between system and environment. Under a specified coherent detection preparation, a conserving cycle realizes position records with controlled error and gives error bounds for the interference visibility; the corresponding finite model gives conditional thermalization during identity maintenance and the equilibrium of formation and exit. Under fixed supply and convergence conditions, the steady total occupation of a linear ensemble equals the product of the production rate and the mean waiting time to the first exit. The evolution of a single standing wave, the occupation of many standing waves, and the statistics of actual records are thereby connected within the same cycle.</p>
+<p class="book-meta"><span>Shao-Wu Hu</span><span>First published <time datetime="2026-09-11">11 September 2026</time></span><span>Version 1</span></p>
+<nav class="book-actions" aria-label="Resources for The Unification of Formation, Motion, Decay, and Thermalization of Matter from the Bost–Connes System"><a class="publication-resource" href="papers/dynamics_unification_en.pdf?v=20260911" target="_blank" rel="noopener">Read PDF <span aria-hidden="true">↗</span></a><a class="publication-resource" href="https://doi.org/10.5281/zenodo.22720922" target="_blank" rel="noopener">Zenodo <span aria-hidden="true">↗</span></a><a class="details-link" href="#paper-dynamics_unification">Abstract &amp; details <span aria-hidden="true">→</span></a></nav>
+</article></div></section><section class="paper-group" data-group="computation" aria-labelledby="heading-computation"><header class="group-heading"><h2 id="heading-computation">Computation</h2><span class="group-count">1 paper</span></header><div class="paper-list"><article class="book" data-category="computation" data-search="BC State-Space Computer computation COMPUTATION I">
 <a class="cover" href="#paper-bc_computer" aria-label="Read BC State-Space Computer"><span class="cover-series">COMPUTATION / I</span><span class="cover-title">BC State-Space<br>Computer</span><span class="cover-author">SHAO-WU HU</span></a>
-<h2><a href="#paper-bc_computer" title="BC State-Space Computer">BC State-Space Computer</a></h2>
-<div class="book-meta"><time datetime="2026-07-31">2026.07</time><span>v33</span></div>
-</article></section><div id="empty" class="empty" hidden><p>No matching papers.</p><button id="clear-search">Show all papers</button></div>
+<div class="book-heading"><p class="book-series">COMPUTATION · I <span>Open access</span></p><h3><a href="#paper-bc_computer">BC State-Space Computer</a></h3></div>
+<p class="book-summary">That excitations are countable, that energy is additive, and that independent composition multiplies are three laboratory-level basic facts; their minimal algebraic form is the Bost–Connes (BC) covariance structure. Starting from this we define the BC state-space computer: a controllable physical system that carries the BC covariance relations in finite truncation within finite experimental boundaries. A run is the complete chain that takes external conditions through boundary formation, preparation, constrained evolution, stopping and readout, to return coupling; computation is defined on the run law by a task, a reusable boundary program, physical compilation, and completion criteria. Three structural dilemmas of the prevailing paradigm close at the physical-structure level of this machine. Content processing is carried directly by the state space, and step-by-step replay does not arise; statistics and thermalization are native resources, and pseudorandom reconstruction does not arise; the interface to the world is carried by the physical coupling of transduction and actuation, and symbolic replicas do not arise. The supporting construction consists of the arithmetic workspace (prime occupations carry multiplicative composition, phase sectors carry addition), machine parts organized into an arithmetic and an interaction module, and running instances that progress from elementary operations to sustained tracking. The thermalization mechanism is stated conditionally, all verdict quantities are pre-registered by a numerical twin, and whether devices physically realize them is left to independent experiments.</p>
+<p class="book-meta"><span>Shao-Wu Hu</span><span>First published <time datetime="2026-07-31">31 July 2026</time></span><span>Version 33</span></p>
+<nav class="book-actions" aria-label="Resources for BC State-Space Computer"><a class="publication-resource" href="papers/bc_state_space_computer_en.pdf?v=33" target="_blank" rel="noopener">Read PDF <span aria-hidden="true">↗</span></a><a class="publication-resource" href="https://doi.org/10.5281/zenodo.21719997" target="_blank" rel="noopener">Zenodo <span aria-hidden="true">↗</span></a><a class="details-link" href="#paper-bc_computer">Abstract &amp; details <span aria-hidden="true">→</span></a></nav>
+</article></div></section></section><div id="empty" class="empty" hidden><p>No matching papers.</p><button id="clear-search">Show all papers</button></div>
 <section class="about" id="about"><div><h2>ShaoWu Hu <span lang="zh-CN">胡邵武</span></h2><p>Independent researcher in Shanghai, exploring spacetime, matter, forces, and computation through the Bost–Connes system.</p></div><div class="contact"><a href="https://orcid.org/0009-0009-8300-4691" target="_blank" rel="noopener">ORCID ↗</a><a href="mailto:forest@xindong.com">Email ↗</a></div></section></div>
 <section class="paper-reader" id="paper-unification" aria-labelledby="title-unification">
 <a class="back-link" data-back href="#library">← Back to collection</a>
@@ -205,6 +236,7 @@ footer { border-top:1px solid var(--rule); display:flex; justify-content:space-b
  const readers=[...document.querySelectorAll('.paper-reader')];
  const books=[...document.querySelectorAll('.book')];
  const filters=[...document.querySelectorAll('.filter')];
+ const groups=[...document.querySelectorAll('.paper-group')];
  const search=document.getElementById('search');
  const count=document.getElementById('result-count');
  let category='all',savedY=0,lastOpener=null,activeReader=null;
@@ -214,6 +246,7 @@ footer { border-top:1px solid var(--rule); display:flex; justify-content:space-b
    const words=search.value.trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);
    let n=0;
    books.forEach(book=>{const show=(category==='all'||book.dataset.category===category)&&words.every(w=>book.dataset.search.toLocaleLowerCase().includes(w));book.hidden=!show;if(show)n++;});
+   groups.forEach(group=>{const visible=group.querySelectorAll('.book:not([hidden])').length;group.hidden=visible===0;group.querySelector('.group-count').textContent=visible+' '+(visible===1?'paper':'papers');});
    count.textContent=n+' '+(n===1?'paper':'papers');document.getElementById('empty').hidden=n!==0;
  }
  filters.forEach(button=>button.addEventListener('click',()=>{category=button.dataset.filter;filters.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));filter();}));
@@ -234,10 +267,10 @@ footer { border-top:1px solid var(--rule); display:flex; justify-content:space-b
      else {window.scrollTo(0,savedY);if(lastOpener && !lastOpener.closest('.book').hidden)lastOpener.focus({preventScroll:true});}
    } else if(id && !['library','about'].includes(id)){history.replaceState(null,'','#library');}
  }
- document.querySelectorAll('.book a').forEach(a=>a.addEventListener('click',()=>{lastOpener=a;savedY=window.scrollY;}));
+ document.querySelectorAll('.book a[href^="#paper-"]').forEach(a=>a.addEventListener('click',()=>{lastOpener=a;savedY=window.scrollY;}));
  document.querySelectorAll('[data-back]').forEach(a=>a.addEventListener('click',event=>{event.preventDefault();history.pushState(null,'','#library');route();}));
  window.addEventListener('hashchange',()=>route());
  route(true);
- document.querySelectorAll('.resource').forEach(a=>a.addEventListener('click',()=>{if(window.goatcounter?.count)window.goatcounter.count({path:a.getAttribute('href'),event:true});}));
+ document.querySelectorAll('.resource,.publication-resource').forEach(a=>a.addEventListener('click',()=>{if(window.goatcounter?.count)window.goatcounter.count({path:a.getAttribute('href'),event:true});}));
 })();
 </script></body></html>
