@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17
+- ⑰更新为完整题名 The Mechanism of Thermalization in the Bost–Connes System 的 V14 重写版（52页，29条参考文献），版本DOI 10.5281/zenodo.23436393；首页简介、内嵌详情、独立页面、引用元数据与PDF同步。首次发布日期2026-08-05保留。
+- ⑥以题名修正版V6恢复原题 The Mechanism of the Motion of Matter from the Bost–Connes System；PDF首页、文档属性、网站完整题名及引用元数据同步。正文、推导、图表、参考文献与56页页数不变；首次发布日期2026-08-18保留。版本DOI 10.5281/zenodo.23436422。
+- 核对近期发布的⑯V7并附查数学③V2，正式题名与论文首页和引用元数据一致；封面视觉保持已采用的简洁主标题设计。
+
 ## 2026-10-16
 - ⑥更新为Zenodo V5重写版《The Mechanism of Matter Motion》（英文56页，31条文献；版本DOI 10.5281/zenodo.23413912，concept DOI 10.5281/zenodo.21992871不变）。首页条目、内嵌详情和独立论文页同步新标题、摘要、版本、下载链接及引用元数据，PDF与Zenodo公开版一致；保留封面风格、三行简介及首次发布日期2026-08-18。
 
