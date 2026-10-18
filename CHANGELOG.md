@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17 — Fields V4
+- ⑮发布重写英文版 The Mechanism of Fields from the Bost–Connes System：正文43页，配套 Geometric Extension and Optical Examples 11页；版本DOI 10.5281/zenodo.23445982。
+- 同步首页简介、站内与独立详情摘要、V4标记、作者署名、引用元数据及正文PDF；补充入口仅放详情页，首页保持PDF与DOI。
+- 首次发布日期2026-08-27不变；保留旧正文下载路径，同时提供两份正式文件名以保持PDF之间的跳转。旧版保留于Zenodo版本历史。
+
 ## 2026-10-17 — Decay V3
 - ⑩发布完整重写英文版 The Mechanism of Decay from the Bost–Connes System（58页，七章，146组展示公式，14幅图，19条参考文献），版本DOI 10.5281/zenodo.23444985。
 - 同步首页简介、内嵌详情摘要、独立详情页、引用元数据和英文PDF；下载标签统一为V3，首次发布日期2026-09-04保持不变。
