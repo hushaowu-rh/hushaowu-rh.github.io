@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17 — Decay V3
+- ⑩发布完整重写英文版 The Mechanism of Decay from the Bost–Connes System（58页，七章，146组展示公式，14幅图，19条参考文献），版本DOI 10.5281/zenodo.23444985。
+- 同步首页简介、内嵌详情摘要、独立详情页、引用元数据和英文PDF；下载标签统一为V3，首次发布日期2026-09-04保持不变。
+- 作者姓名统一为Shao-Wu Hu，详情页移除Independent Researcher。旧版保留于Zenodo版本历史。
+
 ## 2026-10-17
 - ⑰更新为完整题名 The Mechanism of Thermalization in the Bost–Connes System 的 V14 重写版（52页，29条参考文献），版本DOI 10.5281/zenodo.23436393；首页简介、内嵌详情、独立页面、引用元数据与PDF同步。首次发布日期2026-08-05保留。
 - ⑥以题名修正版V6恢复原题 The Mechanism of the Motion of Matter from the Bost–Connes System；PDF首页、文档属性、网站完整题名及引用元数据同步。正文、推导、图表、参考文献与56页页数不变；首次发布日期2026-08-18保留。版本DOI 10.5281/zenodo.23436422。
