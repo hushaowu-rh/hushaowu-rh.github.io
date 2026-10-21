@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-10-21 — Cosmology in Foundation
+- 按用户指定将宇宙学从 Mechanisms 移至 Foundation，紧接⑯；该组顺序为数学③、⑯、宇宙学。同步组内计数与详情源码顺序。论文、摘要、首发日期、DOI与现有封面不变；新封面另行预览。
+
 ## 2026-10-21 — Cosmology, rewritten six-chapter edition
 - 恢复⑤《Cosmology and the Bost–Connes System》的独立论文入口，发布六章重写英文73页、中文65页；首次Zenodo版本DOI 10.5281/zenodo.23534997，概念DOI 10.5281/zenodo.23534996。
 - 首页摘要、站内详情、独立详情、PDF与中英文自包含在线阅读稿同步；保留英文PDF旧地址及2026-04-15首次发布日期，当前修订日期另列。新增宇宙学独立矢量纹理封面。
