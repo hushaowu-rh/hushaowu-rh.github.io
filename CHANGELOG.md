@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-20 — Fields V5
+- ⑮更新为全面复核后的英文正文49页，配套动力学补充23页和几何／光学补充11页；版本DOI 10.5281/zenodo.23520706。
+- 首页和详情同步V5、修订摘要与正文PDF；两份补充仅在站内详情及独立详情提供。正文与补充使用正式文件名并保持跨PDF链接，原正文下载地址继续有效。
+- 机制的准备、近似与标定条件明确保留；首次发布日期2026-08-27、封面和顶部资料不变。旧版保留于Zenodo版本历史。
+
 ## 2026-10-17 — Fields V4
 - ⑮发布重写英文版 The Mechanism of Fields from the Bost–Connes System：正文43页，配套 Geometric Extension and Optical Examples 11页；版本DOI 10.5281/zenodo.23445982。
 - 同步首页简介、站内与独立详情摘要、V4标记、作者署名、引用元数据及正文PDF；补充入口仅放详情页，首页保持PDF与DOI。
