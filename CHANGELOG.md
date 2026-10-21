@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-21 — Approved Unification and Cosmology covers
+- 按用户最终确认，⑯换用暖金波纹凝聚与深青力场的新封面，完整保留获批图及其标题；首页列表、详情共用同图，避免叠加重复标题。宇宙学复用⑯原星云背景，保留自己的HTML题名。
+- Foundation顺序仍为数学③、⑯、宇宙学；论文正文、摘要、日期、DOI与下载文件均不变。
+
 ## 2026-10-21 — Cosmology in Foundation
 - 按用户指定将宇宙学从 Mechanisms 移至 Foundation，紧接⑯；该组顺序为数学③、⑯、宇宙学。同步组内计数与详情源码顺序。论文、摘要、首发日期、DOI与现有封面不变；新封面另行预览。
 

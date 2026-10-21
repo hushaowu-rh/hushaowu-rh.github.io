@@ -1,10 +1,13 @@
 [
   {
     "id": "unification",
-    "subject": "A deep indigo astronomical photograph of a quiet silver-blue nebula and sparse fine starlight, with subtle depth and dust, representing matter, forces and spacetime.",
-    "palette": "ink indigo, silver blue",
-    "prompt": "Create a premium academic monograph cover BACKGROUND ART, portrait 2:3. A deep indigo astronomical photograph of a quiet silver-blue nebula and sparse fine starlight, with subtle depth and dust, representing matter, forces and spacetime. Palette: ink indigo, silver blue. High-end tactile matte print finish with delicate paper grain, rich shadows and natural lighting; restrained saturation, sophisticated scientific editorial photography. Concentrate the imagery in the upper 55 percent, let the bottom 45 percent fade naturally into dark quiet space for later typesetting. This is flat full-bleed artwork, not a book mockup. NO words, letters, numerals, symbols, logo, border, grid, geometric line art, formulas, or decorative diagrams. Keep enough visual character to read at small thumbnail size.",
-    "asset": "assets/cover-art/unification.jpg"
+    "subject": "Localized warm-gold wave coherence continuously joined to a deep-teal surrounding force field; approved complete cover with title.",
+    "palette": "deep petrol teal, amber, pale gold, ivory",
+    "prompt": "Refine the Unification cover so matter is a localized luminous wave pattern rather than a solid sphere: airy overlapping wavefronts, naturally dissolving edges and seamless force-field streams. Preserve the ivory serif title and composition.",
+    "asset": "assets/cover-art/unification-wave-field-20261021.jpg",
+    "source_media": "cindy-media://blobs/9ebf6197767cbb7972325279edf5c5d70d681eeaaa778e0f27df5bd7ee3265d0.jpg",
+    "provenance": "Generated with Art / Cindy Core media, Seedream 5 Lite, and explicitly approved by the user on 2026-10-21. The complete approved image includes the title, so the legacy HTML cover caption is hidden visually.",
+    "archived_asset": "assets/cover-art/unification.jpg"
   },
   {
     "id": "qm_axioms",
@@ -61,5 +64,13 @@
     "palette": "graphite, restrained steel blue",
     "prompt": "Create a premium academic monograph cover BACKGROUND ART, portrait 2:3. An extreme macro photograph of a silicon wafer surface with delicate material layers, subtle metallic reflectivity and fine etched microtexture, selective focus, no circuit diagram. Palette: graphite, restrained steel blue. High-end tactile matte print finish with delicate paper grain, rich shadows and natural lighting; restrained saturation, sophisticated scientific editorial photography. Concentrate the imagery in the upper 55 percent, let the bottom 45 percent fade naturally into dark quiet space for later typesetting. This is flat full-bleed artwork, not a book mockup. NO words, letters, numerals, symbols, logo, border, grid, geometric line art, formulas, or decorative diagrams. Keep enough visual character to read at small thumbnail size.",
     "asset": "assets/cover-art/bc_computer.jpg"
+  },
+  {
+    "id": "cosmology",
+    "subject": "A deep indigo astronomical photograph of a quiet silver-blue nebula and sparse fine starlight, with subtle depth and dust, representing matter, forces and spacetime.",
+    "palette": "ink indigo, silver blue",
+    "prompt": "Create a premium academic monograph cover BACKGROUND ART, portrait 2:3. A deep indigo astronomical photograph of a quiet silver-blue nebula and sparse fine starlight, with subtle depth and dust, representing matter, forces and spacetime. Palette: ink indigo, silver blue. High-end tactile matte print finish with delicate paper grain, rich shadows and natural lighting; restrained saturation, sophisticated scientific editorial photography. Concentrate the imagery in the upper 55 percent, let the bottom 45 percent fade naturally into dark quiet space for later typesetting. This is flat full-bleed artwork, not a book mockup. NO words, letters, numerals, symbols, logo, border, grid, geometric line art, formulas, or decorative diagrams. Keep enough visual character to read at small thumbnail size.",
+    "asset": "assets/cover-art/cosmology.jpg",
+    "provenance": "User selected the existing Unification nebula artwork for Cosmology on 2026-10-21; copied unchanged from assets/cover-art/unification.jpg."
   }
 ]
