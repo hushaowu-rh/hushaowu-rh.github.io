@@ -11,10 +11,13 @@
   },
   {
     "id": "qm_axioms",
-    "subject": "A macro photograph of a translucent optical crystal, softly illuminated from within, a restrained cyan diffraction glow on its fine surface, suggesting quantum superposition without drawing diagrams.",
-    "palette": "petrol blue, cyan, graphite",
-    "prompt": "Create a premium academic monograph cover BACKGROUND ART, portrait 2:3. A macro photograph of a translucent optical crystal, softly illuminated from within, a restrained cyan diffraction glow on its fine surface, suggesting quantum superposition without drawing diagrams. Palette: petrol blue, cyan, graphite. High-end tactile matte print finish with delicate paper grain, rich shadows and natural lighting; restrained saturation, sophisticated scientific editorial photography. Concentrate the imagery in the upper 55 percent, let the bottom 45 percent fade naturally into dark quiet space for later typesetting. This is flat full-bleed artwork, not a book mockup. NO words, letters, numerals, symbols, logo, border, grid, geometric line art, formulas, or decorative diagrams. Keep enough visual character to read at small thumbnail size.",
-    "asset": "assets/cover-art/qm_axioms.jpg"
+    "subject": "User-approved photographic cover: a glass plate, softened dotted interference fringes and binder clip on a textured surface, with ivory serif title.",
+    "palette": "muted grey-burgundy, warm graphite, ivory",
+    "prompt": null,
+    "asset": "assets/cover-art/qm_axioms.jpg",
+    "source": "Approved existing cover, option 3 grey-burgundy; published at the user's request on 2026-10-27.",
+    "includes_typography": true,
+    "sha256": "3457be0c2dfd9ebbd47eb96156d61babf1bcb88c880efbb7357115c7ce191402"
   },
   {
     "id": "bc_state_space_dynamics",
