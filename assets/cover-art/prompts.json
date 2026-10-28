@@ -35,10 +35,16 @@
   },
   {
     "id": "motion_of_matter",
-    "subject": "A photographic long exposure of a narrow stream of silver particles moving through dark blue fluid, a calm curved sweep with subtle motion blur, realistic optical depth, no drawn lines.",
-    "palette": "midnight navy, silver",
-    "prompt": "Create a premium academic monograph cover BACKGROUND ART, portrait 2:3. A photographic long exposure of a narrow stream of silver particles moving through dark blue fluid, a calm curved sweep with subtle motion blur, realistic optical depth, no drawn lines. Palette: midnight navy, silver. High-end tactile matte print finish with delicate paper grain, rich shadows and natural lighting; restrained saturation, sophisticated scientific editorial photography. Concentrate the imagery in the upper 55 percent, let the bottom 45 percent fade naturally into dark quiet space for later typesetting. This is flat full-bleed artwork, not a book mockup. NO words, letters, numerals, symbols, logo, border, grid, geometric line art, formulas, or decorative diagrams. Keep enough visual character to read at small thumbnail size.",
-    "asset": "assets/cover-art/motion_of_matter.jpg"
+    "subject": "User-approved thin brass pendulum clock with Roman numerals in a vermilion arched niche, above a single water event and continuous warm copper-red reflections.",
+    "palette": "vermilion plaster, aged brass, petrol-teal clock face, warm burgundy and copper water reflections",
+    "prompt": "Refine the approved thin-rim circular pendulum clock (variant A): add twelve slender Roman-numeral hour markers I through XII, fine minute ticks, a hairline bezel engraving and restrained brushed-brass details. Preserve the centered upper clock, slim straight supports, flat pendulum disk, red arched niche, single water-drop rebound, warm water reflections and gently darkened bottom title area. No lettering outside the clock or watermark.",
+    "asset": "assets/cover-art/motion_of_matter.jpg",
+    "source": "Built-in imagegen; user selected variant A, requested Roman numerals and light detailing, then approved replacement of the website cover on 2026-10-28.",
+    "includes_typography": false,
+    "clock_numerals": "I–XII",
+    "source_png_sha256": "392c22cf2eb1448a03ff9410149f68af7b4264db9dd5c7754c03afb3140c6e78",
+    "sha256": "cf365d1402eb2a6abf1dd955757006f28f16459be4d373377f8b1391998aa751",
+    "export": "Full 1024 × 1536 composition, JPEG quality 92; no cropping or retouching during publication."
   },
   {
     "id": "mechanism_of_fields",
