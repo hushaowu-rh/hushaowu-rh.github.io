@@ -31,3 +31,11 @@ Source: `cindy-media://blobs/3457be0c2dfd9ebbd47eb96156d61babf1bcb88c880efbb7357
 The built-in imagegen result was exported as a full-size 1024 × 1536 JPEG (quality 92), without cropping or visual retouching. The homepage embeds it once as a data URI shared by the collection and reader covers. The artwork fills the 2:3 border box, preserving its full proportions without letterboxing; the standard cover frame is retained. Its live HTML title remains visible and sits slightly lower to clear the water event at narrow mobile widths.
 
 Source PNG SHA-256: `81b15d41afb56f13b8ef2e6e7e64d7e72543e48bfa9c25af393f7d63b15be162`. Published JPEG SHA-256: `57f3f11a297dc7e9ec4660c5976e390a745f64a86f1bddbc6332504d9dacc2ae`.
+
+## BC State-Space Computer (28 October 2026)
+
+`bc_computer.jpg` is the user-approved champagne-copper refinement of the original silicon-wafer macro. It retains the fine etched surface, thin curved edge and shallow depth of field, with five small softly gleaming die chips scattered lower in the scene. The final artwork incorporates the original website cover’s larger crop and curved-edge framing. It is decorative concept artwork, not experimental evidence.
+
+The built-in imagegen result was exported as a full-size 1024 × 1536 JPEG (quality 92), without further cropping or retouching. The homepage embeds it once as a data URI shared by the collection and reader covers. The computer cover fills its 2:3 border box at 100%, preserving the approved framing without applying the former 132% zoom again; the standard cover border remains. Its live HTML title retains the existing standard size and position; the user explicitly allowed the lettering to overlap part of the small die chips. Other paper covers and metadata are unchanged.
+
+Source PNG SHA-256: `4ed3610973f1ecfc572d6c996f25fe095ad2e6e54fe43ad010f1b51601a816b9`. Published JPEG SHA-256: `dcaeec3251785bc6b4a40df41c1c043dde6e315be19b0516a6cc3d3a665d4c89`.

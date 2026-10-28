@@ -70,10 +70,15 @@
   },
   {
     "id": "bc_computer",
-    "subject": "An extreme macro photograph of a silicon wafer surface with delicate material layers, subtle metallic reflectivity and fine etched microtexture, selective focus, no circuit diagram.",
-    "palette": "graphite, restrained steel blue",
-    "prompt": "Create a premium academic monograph cover BACKGROUND ART, portrait 2:3. An extreme macro photograph of a silicon wafer surface with delicate material layers, subtle metallic reflectivity and fine etched microtexture, selective focus, no circuit diagram. Palette: graphite, restrained steel blue. High-end tactile matte print finish with delicate paper grain, rich shadows and natural lighting; restrained saturation, sophisticated scientific editorial photography. Concentrate the imagery in the upper 55 percent, let the bottom 45 percent fade naturally into dark quiet space for later typesetting. This is flat full-bleed artwork, not a book mockup. NO words, letters, numerals, symbols, logo, border, grid, geometric line art, formulas, or decorative diagrams. Keep enough visual character to read at small thumbnail size.",
-    "asset": "assets/cover-art/bc_computer.jpg"
+    "subject": "User-approved champagne-copper silicon-wafer macro with fine etched regions, a thin curved edge framed like the original website cover, and five small softly gleaming die chips scattered below.",
+    "palette": "champagne gold, satin copper, warm ivory highlights and espresso graphite",
+    "prompt": "Refine the original silicon-wafer macro while preserving its precision etched microtexture, thin laminated curved edge and shallow depth of field. Use champagne, copper and espresso tones with coherent warm upper-left light. Match the larger etched regions, flatter circular arc and framing of the original website cover after its 132% crop, baking that composition into the artwork itself. Add five small thin die chips on the exposed tabletop below the wafer with varied size and orientation, subtle warm edge glints and realistic contact shadows. Lower the loose die group as requested. Preserve a quiet dark area at the foot for live HTML typography. No tweezers, extra tools, large material blocks, text, logos or border.",
+    "asset": "assets/cover-art/bc_computer.jpg",
+    "source": "Built-in imagegen; user selected the champagne-copper palette, refined the wafer framing and scattered die placement, and approved website replacement on 2026-10-28.",
+    "includes_typography": false,
+    "source_png_sha256": "4ed3610973f1ecfc572d6c996f25fe095ad2e6e54fe43ad010f1b51601a816b9",
+    "sha256": "dcaeec3251785bc6b4a40df41c1c043dde6e315be19b0516a6cc3d3a665d4c89",
+    "export": "Full 1024 × 1536 composition, JPEG quality 92; no additional cropping or retouching during publication."
   },
   {
     "id": "cosmology",
