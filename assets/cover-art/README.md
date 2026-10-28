@@ -39,3 +39,11 @@ Source PNG SHA-256: `81b15d41afb56f13b8ef2e6e7e64d7e72543e48bfa9c25af393f7d63b15
 The built-in imagegen result was exported as a full-size 1024 × 1536 JPEG (quality 92), without further cropping or retouching. The homepage embeds it once as a data URI shared by the collection and reader covers. The computer cover fills its 2:3 border box at 100%, preserving the approved framing without applying the former 132% zoom again; the standard cover border remains. Its live HTML title retains the existing standard size and position; the user explicitly allowed the lettering to overlap part of the small die chips. Other paper covers and metadata are unchanged.
 
 Source PNG SHA-256: `4ed3610973f1ecfc572d6c996f25fe095ad2e6e54fe43ad010f1b51601a816b9`. Published JPEG SHA-256: `dcaeec3251785bc6b4a40df41c1c043dde6e315be19b0516a6cc3d3a665d4c89`.
+
+## BC State-Space Dynamics (28 October 2026)
+
+`bc_state_space_dynamics.jpg` is the user-approved texture refinement of the original frost-on-glass cover. It preserves the recognizable long main branch, irregular hanging branches, cool slate-blue/silver palette and selective focus. Fine translucent ice facets and dark-glass texture improve its material detail. The final artwork incorporates the original website cover’s closer framing: the main fork sits lower, the lateral branch extends beyond the right edge, and the longest hanging branch reaches roughly three quarters down the picture. It is decorative artwork, not experimental evidence.
+
+The built-in imagegen result was exported as a full-size 1024 × 1536 JPEG (quality 92), without further cropping or retouching. The homepage embeds it once as a data URI shared by the collection and reader covers. The artwork fills its 2:3 border box at 100%, preserving the approved composition without applying the former 132% zoom again. The standard cover frame and live HTML title keep their existing size and position. Other covers and paper metadata are unchanged.
+
+Source PNG SHA-256: `e3a80fc4046c3a3d1cd45826daca7b0ca98d6051c6adde9bb07dd83e652f25fd`. Published JPEG SHA-256: `37635b298c0ae475aed014f9795c10061aad6fe1ec95da8650483d5b8a26bdee`.

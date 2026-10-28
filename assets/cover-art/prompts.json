@@ -21,10 +21,15 @@
   },
   {
     "id": "bc_state_space_dynamics",
-    "subject": "A fine frost crystal growing through dark glass, natural intricate dendritic branches and microscopic surface detail, selective focus and delicately illuminated edges.",
-    "palette": "slate blue, muted silver",
-    "prompt": "Create a premium academic monograph cover BACKGROUND ART, portrait 2:3. A fine frost crystal growing through dark glass, natural intricate dendritic branches and microscopic surface detail, selective focus and delicately illuminated edges. Palette: slate blue, muted silver. High-end tactile matte print finish with delicate paper grain, rich shadows and natural lighting; restrained saturation, sophisticated scientific editorial photography. Concentrate the imagery in the upper 55 percent, let the bottom 45 percent fade naturally into dark quiet space for later typesetting. This is flat full-bleed artwork, not a book mockup. NO words, letters, numerals, symbols, logo, border, grid, geometric line art, formulas, or decorative diagrams. Keep enough visual character to read at small thumbnail size.",
-    "asset": "assets/cover-art/bc_state_space_dynamics.jpg"
+    "subject": "User-approved material refinement of the original frost-on-glass cover, preserving its distinctive long main branch and lower, closer framing as displayed on the original website.",
+    "palette": "cold slate blue, muted silver and deep blue-grey shadows",
+    "prompt": "Refine the original dendritic frost cover while preserving its recognizable main branch, asymmetric hanging branches, selective focus and cool slate-blue/silver palette. Match the original website composition after its 132% crop: principal fork near 28% of picture height, lateral main stem extending beyond the right edge, and longest tapered hanging branch reaching roughly three quarters down the image. Preserve a single clear dominant formation rather than filling space with repeated bright branches. Add delicate translucent crystal edges, restrained silver microfacets and tactile dark-glass texture. Keep secondary frost dimmer and softer, fading continuously into dark lower space for live HTML typography. No additional objects, text, symbols, borders or watermark.",
+    "asset": "assets/cover-art/bc_state_space_dynamics.jpg",
+    "source": "Built-in imagegen; user approved the refined ice texture and original website framing, and requested replacement on 2026-10-28.",
+    "includes_typography": false,
+    "source_png_sha256": "e3a80fc4046c3a3d1cd45826daca7b0ca98d6051c6adde9bb07dd83e652f25fd",
+    "sha256": "37635b298c0ae475aed014f9795c10061aad6fe1ec95da8650483d5b8a26bdee",
+    "export": "Full 1024 × 1536 composition, JPEG quality 92; no additional cropping or retouching during publication."
   },
   {
     "id": "thermalization",
