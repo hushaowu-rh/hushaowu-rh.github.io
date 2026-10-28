@@ -35,16 +35,17 @@
   },
   {
     "id": "motion_of_matter",
-    "subject": "User-approved thin brass pendulum clock with Roman numerals in a vermilion arched niche, with the water droplet and concentric ripples centered on the same vertical axis as the clock, above continuous warm copper-red reflections.",
+    "subject": "User-approved thin brass pendulum clock with Roman numerals showing seven o’clock in a vermilion arched niche, with the water droplet and concentric ripples centered on the same vertical axis as the clock, above continuous warm copper-red reflections.",
     "palette": "vermilion plaster, aged brass, petrol-teal clock face, warm burgundy and copper water reflections",
-    "prompt": "Refine the approved thin-rim circular pendulum clock (variant A): add twelve slender Roman-numeral hour markers I through XII, fine minute ticks, a hairline bezel engraving and restrained brushed-brass details. Preserve the centered upper clock, slim straight supports, flat pendulum disk, red arched niche, single water-drop rebound, warm water reflections and gently darkened bottom title area. No lettering outside the clock or watermark. Localized alignment revision: move the water droplet, rebound column, splash base and concentric ripple centers approximately 42 pixels left onto x=512 in the 1024-pixel-wide image, directly below the clock pivot and pendulum. Preserve the clock, arched niche, water-event height and scale, continuous warm light and reflections, and dark lower title space.",
+    "prompt": "Refine the approved thin-rim circular pendulum clock (variant A): add twelve slender Roman-numeral hour markers I through XII, fine minute ticks, a hairline bezel engraving and restrained brushed-brass details. Preserve the centered upper clock, slim straight supports, flat pendulum disk, red arched niche, single water-drop rebound, warm water reflections and gently darkened bottom title area. No lettering outside the clock or watermark. Localized alignment revision: move the water droplet, rebound column, splash base and concentric ripple centers approximately 42 pixels left onto x=512 in the 1024-pixel-wide image, directly below the clock pivot and pendulum. Preserve the clock, arched niche, water-event height and scale, continuous warm light and reflections, and dark lower title space. Clock-hand correction: set the long minute hand vertically to XII and shorten the hour hand so it is clearly shorter, pointing directly at VII. Keep the clock pivot, Roman numerals, centered water droplet and ripple system, lighting and composition unchanged.",
     "asset": "assets/cover-art/motion_of_matter.jpg",
-    "source": "Built-in imagegen; user selected variant A with Roman numerals and light detailing, then approved the water-droplet and ripple alignment revision for website publication on 2026-10-28.",
+    "source": "Built-in imagegen; user selected variant A with Roman numerals, approved the centered water-droplet revision, and requested seven o’clock with a slightly shorter hour hand on 2026-10-28.",
     "includes_typography": false,
     "clock_numerals": "I–XII",
-    "source_png_sha256": "ca945c9b8e76d30854e319a2907af7f5a0405ec3697d1fbce549215efcf50178",
-    "sha256": "121275e8b744658011f1e2af7c20cb58d552c9d6d3bb0a641b76eebf028376ec",
-    "export": "Full 1024 × 1536 composition, JPEG quality 92; no cropping or retouching during publication."
+    "source_png_sha256": "81b15d41afb56f13b8ef2e6e7e64d7e72543e48bfa9c25af393f7d63b15be162",
+    "sha256": "57f3f11a297dc7e9ec4660c5976e390a745f64a86f1bddbc6332504d9dacc2ae",
+    "export": "Full 1024 × 1536 composition, JPEG quality 92; no cropping or retouching during publication.",
+    "clock_time": "07:00"
   },
   {
     "id": "mechanism_of_fields",

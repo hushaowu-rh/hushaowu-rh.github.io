@@ -26,8 +26,8 @@ Source: `cindy-media://blobs/3457be0c2dfd9ebbd47eb96156d61babf1bcb88c880efbb7357
 
 ## Motion of Matter (28 October 2026)
 
-`motion_of_matter.jpg` replaces the earlier blue particle artwork with the user-approved thin brass pendulum clock (variant A), refined with Roman numerals and restrained detailing. The vermilion arched niche and warm water reflections form one continuous scene. The approved alignment revision centers the water droplet, rebound column and concentric ripples directly below the clock and pendulum, while retaining the surrounding composition and light. The image is decorative artwork, not experimental evidence.
+`motion_of_matter.jpg` replaces the earlier blue particle artwork with the user-approved thin brass pendulum clock (variant A), refined with Roman numerals and restrained detailing. The vermilion arched niche and warm water reflections form one continuous scene. The approved alignment revision centers the water droplet, rebound column and concentric ripples directly below the clock and pendulum, while retaining the surrounding composition and light. The clock now reads seven o’clock: the long minute hand points to XII and the shortened hour hand points to VII. The image is decorative artwork, not experimental evidence.
 
 The built-in imagegen result was exported as a full-size 1024 × 1536 JPEG (quality 92), without cropping or visual retouching. The homepage embeds it once as a data URI shared by the collection and reader covers. The artwork fills the 2:3 border box, preserving its full proportions without letterboxing; the standard cover frame is retained. Its live HTML title remains visible and sits slightly lower to clear the water event at narrow mobile widths.
 
-Source PNG SHA-256: `ca945c9b8e76d30854e319a2907af7f5a0405ec3697d1fbce549215efcf50178`. Published JPEG SHA-256: `121275e8b744658011f1e2af7c20cb58d552c9d6d3bb0a641b76eebf028376ec`.
+Source PNG SHA-256: `81b15d41afb56f13b8ef2e6e7e64d7e72543e48bfa9c25af393f7d63b15be162`. Published JPEG SHA-256: `57f3f11a297dc7e9ec4660c5976e390a745f64a86f1bddbc6332504d9dacc2ae`.
