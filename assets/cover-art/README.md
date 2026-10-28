@@ -28,6 +28,6 @@ Source: `cindy-media://blobs/3457be0c2dfd9ebbd47eb96156d61babf1bcb88c880efbb7357
 
 `motion_of_matter.jpg` replaces the earlier blue particle artwork with the user-approved thin brass pendulum clock (variant A), refined with Roman numerals and restrained detailing. The vermilion arched niche and warm water reflections form one continuous scene. The image is decorative artwork, not experimental evidence.
 
-The built-in imagegen result was exported as a full-size 1024 × 1536 JPEG (quality 92), without cropping or visual retouching. The homepage embeds it once as a data URI shared by the collection and reader covers. A cover-specific `background-size: contain` rule, warm background and border preserve the complete composition. Its live HTML title remains visible and sits slightly lower to clear the water event at narrow mobile widths.
+The built-in imagegen result was exported as a full-size 1024 × 1536 JPEG (quality 92), without cropping or visual retouching. The homepage embeds it once as a data URI shared by the collection and reader covers. The artwork fills the 2:3 border box, preserving its full proportions without letterboxing; the standard cover frame is retained. Its live HTML title remains visible and sits slightly lower to clear the water event at narrow mobile widths.
 
 Source PNG SHA-256: `392c22cf2eb1448a03ff9410149f68af7b4264db9dd5c7754c03afb3140c6e78`. Published JPEG SHA-256: `cf365d1402eb2a6abf1dd955757006f28f16459be4d373377f8b1391998aa751`.
