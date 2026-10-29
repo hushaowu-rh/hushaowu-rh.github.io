@@ -67,6 +67,7 @@
         /* Two stamp cells, one gap, and the existing padding and border. */
         #countLine { min-block-size: calc(2.3em + 9px); }
         .seal2 {
+            position: relative;
             writing-mode: horizontal-tb;
             display: inline-grid;
             grid-template-rows: repeat(2, 1.15em);
@@ -106,25 +107,62 @@
         .ink-pending .count,
         .ink-pending .sig { visibility: hidden; }
         .ink-running .ink-char {
-            animation: write-ink var(--ink-duration, .38s) ease-out both;
+            animation: write-ink var(--ink-duration, .7s) linear both;
             animation-delay: var(--ink-delay);
         }
+        .ink-running .ink-horizontal { animation-name: write-horizontal; }
         .ink-running .count {
-            animation: settle-ink .45s ease-out both;
+            animation: settle-ink .55s ease-out both;
             animation-delay: var(--count-delay);
         }
-        .ink-running .seal2 {
-            animation: settle-ink .4s ease-out both;
-            animation-delay: var(--seal-delay);
+        .seal-waiting { opacity: 0; }
+        .seal-stamping {
+            transform-origin: center;
+            animation: stamp-ink 1.2s ease-out both;
+        }
+        .seal-stamping::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border: 1px solid #b23a2a;
+            border-radius: inherit;
+            pointer-events: none;
+            animation: stamp-contact .65s .56s ease-out both;
         }
         @keyframes write-ink {
-            from { opacity: 0; clip-path: inset(0 0 100% 0); filter: blur(.5px); }
-            85% { opacity: 1; clip-path: inset(-.15em); filter: blur(0); }
+            from { opacity: 0; clip-path: inset(0 0 100% 0); filter: blur(.35px); }
+            8% { opacity: 1; clip-path: inset(-.15em -.15em 86% -.15em); }
+            28% { clip-path: inset(-.15em -.15em 64% -.15em); }
+            48% { clip-path: inset(-.15em -.15em 51% -.15em); }
+            76% { clip-path: inset(-.15em -.15em 22% -.15em); filter: blur(.15px); }
+            94% { clip-path: inset(-.15em); filter: blur(0); }
+            to { opacity: 1; clip-path: none; filter: none; }
+        }
+        /* A horizontal stroke must grow left to right, rather than appear in one strip. */
+        @keyframes write-horizontal {
+            from { opacity: 0; clip-path: inset(-.15em 100% -.15em -.15em); filter: blur(.35px); }
+            12% { opacity: 1; clip-path: inset(-.15em 85% -.15em -.15em); }
+            38% { clip-path: inset(-.15em 60% -.15em -.15em); }
+            74% { clip-path: inset(-.15em 22% -.15em -.15em); filter: blur(.15px); }
+            94% { clip-path: inset(-.15em); filter: blur(0); }
             to { opacity: 1; clip-path: none; filter: none; }
         }
         @keyframes settle-ink {
             from { opacity: 0; }
             to { opacity: 1; }
+        }
+        @keyframes stamp-ink {
+            from { opacity: 0; transform: translate(-.08em, -.65em) scale(1.18) rotate(-8deg); filter: blur(1.1px); }
+            26% { opacity: .48; transform: translate(-.04em, -.35em) scale(1.1) rotate(-5deg); filter: blur(.65px); }
+            46% { opacity: .82; transform: translate(0, -.08em) scale(1.03) rotate(-1deg); filter: blur(.2px); }
+            55% { opacity: 1; transform: translate(.01em, .025em) scale(.97) rotate(.4deg); filter: contrast(1.25) saturate(1.15); }
+            72% { transform: none; filter: contrast(1.12) saturate(1.05); }
+            to { opacity: 1; transform: none; filter: none; }
+        }
+        @keyframes stamp-contact {
+            from { opacity: 0; transform: scale(.97); }
+            12% { opacity: .28; }
+            to { opacity: 0; transform: scale(1.12); }
         }
         @media (prefers-reduced-motion: reduce), print {
             .ink-pending .stanza,
@@ -132,7 +170,9 @@
             .ink-pending .sig { visibility: visible; }
             .ink-running .ink-char,
             .ink-running .count,
-            .ink-running .seal2 { animation: none; }
+            .seal-stamping { animation: none; }
+            .seal-waiting { opacity: 1; }
+            .seal-stamping::after { display: none; }
         }
     </style>
 </head>
@@ -202,6 +242,7 @@
             sealEl.hidden = false;
             valueEl.textContent = (r > 0 ? '\u53c8' + digitsBig(r) : '') + '\u679a';
             fitRemainder();
+            document.dispatchEvent(new Event('hill:count-ready'));
         }
 
         var forced = parseInt((location.hash || '').slice(1), 10);
@@ -236,12 +277,15 @@
         var root = document.documentElement;
         if (!root.classList.contains('ink-pending')) return;
         var motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        var seal = document.getElementById('countSeal');
         var finishTimer;
-        var inkDuration = 380;
-        var delay = 120;
-        root.style.setProperty('--ink-duration', inkDuration + 'ms');
+        var stampTimer;
+        var writingDone = false;
+        var cancelled = false;
+        var stamped = false;
+        var delay = 240;
 
-        function prepareLines(selector, step, pause) {
+        function prepareLines(selector, duration, gap, pause) {
             var lastEnd = delay;
             document.querySelectorAll(selector).forEach(function (line) {
                 var text = line.textContent;
@@ -249,12 +293,13 @@
                 Array.from(text).forEach(function (character) {
                     // Ordinary inline spans preserve the original vertical typesetting.
                     var span = document.createElement('span');
-                    span.className = 'ink-char';
+                    span.className = 'ink-char' + (character === '一' ? ' ink-horizontal' : '');
                     span.textContent = character;
+                    span.style.setProperty('--ink-duration', duration + 'ms');
                     span.style.setProperty('--ink-delay', delay + 'ms');
                     fragment.appendChild(span);
-                    lastEnd = delay + inkDuration;
-                    delay += step;
+                    lastEnd = delay + duration;
+                    delay = lastEnd + gap;
                 });
                 line.textContent = '';
                 line.appendChild(fragment);
@@ -263,36 +308,60 @@
             return lastEnd;
         }
 
-        function finish() {
+        function clearStamp() {
+            clearTimeout(stampTimer);
+            if (seal) seal.classList.remove('seal-waiting', 'seal-stamping');
+        }
+
+        function cancel() {
+            cancelled = true;
             clearTimeout(window.hillInkFallback);
             clearTimeout(finishTimer);
             root.classList.remove('ink-pending', 'ink-running');
+            clearStamp();
         }
 
-        delay = prepareLines('.stanza p', 180, 140) + 120;
+        function maybeStamp() {
+            if (cancelled || stamped || !writingDone || !seal || !seal.isConnected || seal.hidden) return;
+            stamped = true;
+            seal.classList.remove('seal-waiting');
+            seal.classList.add('seal-stamping');
+            stampTimer = setTimeout(clearStamp, 1250);
+        }
+
+        function finishWriting() {
+            writingDone = true;
+            root.classList.remove('ink-running');
+            maybeStamp();
+        }
+
+        // Each character finishes before the next begins; pauses mark the column changes.
+        delay = prepareLines('.stanza p', 700, 160, 500) + 260;
         root.style.setProperty('--count-delay', delay + 'ms');
-        delay += 570;
-        delay = prepareLines('.sig p', 90, 110) + 120;
-        root.style.setProperty('--seal-delay', delay + 'ms');
+        delay += 870;
+        delay = prepareLines('.sig p', 340, 100, 250) + 350;
 
         function start() {
             if (!root.classList.contains('ink-pending') || motion.matches) {
-                finish();
+                cancel();
                 return;
             }
             clearTimeout(window.hillInkFallback);
+            if (seal) seal.classList.add('seal-waiting');
             root.classList.add('ink-running');
             root.classList.remove('ink-pending');
-            finishTimer = setTimeout(finish, delay + 500);
+            finishTimer = setTimeout(finishWriting, delay);
         }
 
         // Wait briefly for the calligraphy font, without making a slow network block reading.
         Promise.race([
             document.fonts ? document.fonts.ready : Promise.resolve(),
             new Promise(function (resolve) { setTimeout(resolve, 700); })
-        ]).then(start, finish);
-        motion.addEventListener('change', function () { if (motion.matches) finish(); });
-        window.addEventListener('pagehide', finish);
+        ]).then(start).catch(cancel);
+        // Count data can arrive before or after the poem. Start the impression only when ready.
+        document.addEventListener('hill:count-ready', maybeStamp);
+        motion.addEventListener('change', function () { if (motion.matches) cancel(); });
+        window.addEventListener('pagehide', cancel);
     })();
     </script>
 </body>
