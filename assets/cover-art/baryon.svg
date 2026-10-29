@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900"><defs>
+<linearGradient id="bg" x2=".8" y2="1"><stop stop-color="#4a423d"/><stop offset=".5" stop-color="#282b2a"/><stop offset="1" stop-color="#151d20"/></linearGradient>
+<radialGradient id="bronze" cx=".29" cy=".22" r=".8"><stop stop-color="#e2d5b9"/><stop offset=".22" stop-color="#bca782"/><stop offset=".58" stop-color="#76634f"/><stop offset=".85" stop-color="#3e3c35"/><stop offset="1" stop-color="#242c2d"/></radialGradient>
+<radialGradient id="silver" cx=".3" cy=".2" r=".8"><stop stop-color="#d1d3cb"/><stop offset=".28" stop-color="#9ca49d"/><stop offset=".65" stop-color="#596866"/><stop offset="1" stop-color="#27393b"/></radialGradient>
+<radialGradient id="copper" cx=".3" cy=".22" r=".8"><stop stop-color="#e2c4a9"/><stop offset=".25" stop-color="#b58c75"/><stop offset=".65" stop-color="#79574b"/><stop offset="1" stop-color="#353234"/></radialGradient>
+<filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".6" numOctaves="3" seed="8" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+<filter id="shadow"><feGaussianBlur stdDeviation="16"/></filter>
+<linearGradient id="edge"><stop stop-color="#b6a58b" stop-opacity=".7"/><stop offset="1" stop-color="#b6a58b" stop-opacity=".08"/></linearGradient>
+</defs><rect width="600" height="900" fill="url(#bg)"/>
+<ellipse cx="314" cy="490" rx="207" ry="53" fill="#0b1518" opacity=".65" filter="url(#shadow)"/>
+<g fill="none" stroke="url(#edge)"><ellipse cx="300" cy="335" rx="220" ry="210" stroke-width="1.2" transform="rotate(-16 300 335)"/><ellipse cx="300" cy="335" rx="226" ry="216" opacity=".35"/></g>
+<circle cx="300" cy="247" r="101" fill="url(#bronze)"/><circle cx="212" cy="389" r="101" fill="url(#silver)"/><circle cx="384" cy="389" r="101" fill="url(#copper)"/>
+<g fill="none" stroke="#d0b993" opacity=".13"><path d="M81 337C118 143 478 133 519 337"/><path d="M80 337C104 541 479 556 521 337"/><ellipse cx="300" cy="335" rx="203" ry="61" transform="rotate(-48 300 335)"/><ellipse cx="300" cy="335" rx="203" ry="61" transform="rotate(48 300 335)"/></g>
+<rect width="600" height="900" filter="url(#grain)" opacity=".065"/>
+</svg>

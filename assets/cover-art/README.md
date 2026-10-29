@@ -47,3 +47,7 @@ Source PNG SHA-256: `4ed3610973f1ecfc572d6c996f25fe095ad2e6e54fe43ad010f1b51601a
 The built-in imagegen result was exported as a full-size 1024 × 1536 JPEG (quality 92), without further cropping or retouching. The homepage embeds it once as a data URI shared by the collection and reader covers. The artwork fills its 2:3 border box at 100%, preserving the approved composition without applying the former 132% zoom again. The standard cover frame and live HTML title keep their existing size and position. Other covers and paper metadata are unchanged.
 
 Source PNG SHA-256: `e3a80fc4046c3a3d1cd45826daca7b0ca98d6051c6adde9bb07dd83e652f25fd`. Published JPEG SHA-256: `37635b298c0ae475aed014f9795c10061aad6fe1ec95da8650483d5b8a26bdee`.
+
+## Baryons (29 October 2026)
+
+`baryon.svg` is original vector artwork created for the restored baryon entry: three softly shaded metal spheres within a common enclosing form, on a muted charcoal surface. It is a decorative metaphor for collective structure, not a particle image or scientific data. The homepage embeds the SVG once as a data URI and keeps the formal title in live HTML. It preserves the existing cover frame and 2:3 proportions.
