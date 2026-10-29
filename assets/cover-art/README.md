@@ -50,4 +50,8 @@ Source PNG SHA-256: `e3a80fc4046c3a3d1cd45826daca7b0ca98d6051c6adde9bb07dd83e652
 
 ## Baryons (29 October 2026)
 
-`baryon.svg` is original vector artwork created for the restored baryon entry: three softly shaded metal spheres within a common enclosing form, on a muted charcoal surface. It is a decorative metaphor for collective structure, not a particle image or scientific data. The homepage embeds the SVG once as a data URI and keeps the formal title in live HTML. It preserves the existing cover frame and 2:3 proportions.
+`baryon-wave-field-20261029.jpg` is the user-selected blue-and-gold continuous-wave cover, adapted from the approved Unification artwork. It replaces the earlier three-sphere vector image. The open, interwoven wave texture is an abstract metaphor rather than a proposed visible shape of a baryon. Its warm ivory serif lettering follows the Unification cover's visual style.
+
+The selected Art / Cindy Core PNG was exported as a full-size 1664 × 2496 JPEG (quality 92), without cropping, recoloring or retouching. The homepage embeds it once as a data URI shared by collection and reader covers. Its title is already in the artwork, so the former HTML caption and additional gradient are disabled. The standard frame, full 2:3 composition, accessible title, paper metadata and PDF links are retained. `baryon.svg` remains as an unused archive.
+
+Source: `cindy-media://blobs/4911f5919264c4be08e5f946ba0d9a370867d7fcf6f51a19d548f9e4bd4bdcf8.png`. Source PNG SHA-256: `4911f5919264c4be08e5f946ba0d9a370867d7fcf6f51a19d548f9e4bd4bdcf8`. Published JPEG SHA-256: `bd1a035046688cbe3c0f405b1d3805e23f99e928b9aa957c6e02e9155fc35f3a`.

@@ -92,5 +92,18 @@
     "prompt": "Create a premium academic monograph cover BACKGROUND ART, portrait 2:3. A deep indigo astronomical photograph of a quiet silver-blue nebula and sparse fine starlight, with subtle depth and dust, representing matter, forces and spacetime. Palette: ink indigo, silver blue. High-end tactile matte print finish with delicate paper grain, rich shadows and natural lighting; restrained saturation, sophisticated scientific editorial photography. Concentrate the imagery in the upper 55 percent, let the bottom 45 percent fade naturally into dark quiet space for later typesetting. This is flat full-bleed artwork, not a book mockup. NO words, letters, numerals, symbols, logo, border, grid, geometric line art, formulas, or decorative diagrams. Keep enough visual character to read at small thumbnail size.",
     "asset": "assets/cover-art/cosmology.jpg",
     "provenance": "User selected the existing Unification nebula artwork for Cosmology on 2026-10-21; copied unchanged from assets/cover-art/unification.jpg."
+  },
+  {
+    "id": "baryon",
+    "subject": "User-selected continuous deep-blue and warm-gold wave artwork adapted from the Unification cover, with ivory serif Baryons title.",
+    "palette": "deep petrol blue, pale gold, silver, warm ivory",
+    "prompt": null,
+    "asset": "assets/cover-art/baryon-wave-field-20261029.jpg",
+    "source_media": "cindy-media://blobs/4911f5919264c4be08e5f946ba0d9a370867d7fcf6f51a19d548f9e4bd4bdcf8.png",
+    "provenance": "Generated with Art / Cindy Core media, Seedream 5 Lite; selected by the user and authorized for website publication on 2026-10-29. Full-size JPEG export, quality 92, without cropping or retouching.",
+    "includes_typography": true,
+    "source_sha256": "4911f5919264c4be08e5f946ba0d9a370867d7fcf6f51a19d548f9e4bd4bdcf8",
+    "sha256": "bd1a035046688cbe3c0f405b1d3805e23f99e928b9aa957c6e02e9155fc35f3a",
+    "archived_asset": "assets/cover-art/baryon.svg"
   }
 ]
