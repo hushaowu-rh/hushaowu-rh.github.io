@@ -11,7 +11,8 @@
     "source_sha256": "c58f7d337338ff4e4bc5a83706964b9e11c62f9ec0f165bc9acef21bb514c8e9",
     "published_sha256": "75968cc5f6d85a9cf2b4cf70b87d14f068d3054d35c643918be2cc3647243271",
     "includes_typography": false,
-    "original_asset": "assets/cover-art/unification.jpg"
+    "original_asset": "assets/cover-art/unification.jpg",
+    "display_treatment": "A continuous CSS gradient darkens the lower half toward near-black behind the live title; the source image remains unchanged, without a separate black band."
   },
   {
     "id": "qm_axioms",
