@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
     <title>翻过山丘</title>
+    <script>
+    (function () {
+        if (!window.matchMedia || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        document.documentElement.classList.add('ink-pending');
+        // Keep the complete page readable if animation setup is interrupted.
+        window.hillInkFallback = setTimeout(function () {
+            document.documentElement.classList.remove('ink-pending');
+        }, 1800);
+    })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
@@ -92,6 +102,38 @@
             letter-spacing: .12em;
         }
         .sig p { line-height: 2; }
+        .ink-pending .stanza,
+        .ink-pending .count,
+        .ink-pending .sig { visibility: hidden; }
+        .ink-running .ink-char {
+            animation: write-ink var(--ink-duration, .38s) ease-out both;
+            animation-delay: var(--ink-delay);
+        }
+        .ink-running .count {
+            animation: settle-ink .45s ease-out both;
+            animation-delay: var(--count-delay);
+        }
+        .ink-running .seal2 {
+            animation: settle-ink .4s ease-out both;
+            animation-delay: var(--seal-delay);
+        }
+        @keyframes write-ink {
+            from { opacity: 0; clip-path: inset(0 0 100% 0); filter: blur(.5px); }
+            85% { opacity: 1; clip-path: inset(-.15em); filter: blur(0); }
+            to { opacity: 1; clip-path: none; filter: none; }
+        }
+        @keyframes settle-ink {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @media (prefers-reduced-motion: reduce), print {
+            .ink-pending .stanza,
+            .ink-pending .count,
+            .ink-pending .sig { visibility: visible; }
+            .ink-running .ink-char,
+            .ink-running .count,
+            .ink-running .seal2 { animation: none; }
+        }
     </style>
 </head>
 <body>
@@ -187,6 +229,70 @@
             var img = new Image();
             img.src = 'https://hushaowu.goatcounter.com/count?p=%2Fhill%2F&t=' + encodeURIComponent('\u7ffb\u8fc7\u5c71\u4e18') + '&rnd=' + Math.random();
         } catch (e) {}
+    })();
+    </script>
+    <script>
+    (function () {
+        var root = document.documentElement;
+        if (!root.classList.contains('ink-pending')) return;
+        var motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        var finishTimer;
+        var inkDuration = 380;
+        var delay = 120;
+        root.style.setProperty('--ink-duration', inkDuration + 'ms');
+
+        function prepareLines(selector, step, pause) {
+            var lastEnd = delay;
+            document.querySelectorAll(selector).forEach(function (line) {
+                var text = line.textContent;
+                var fragment = document.createDocumentFragment();
+                Array.from(text).forEach(function (character) {
+                    // Ordinary inline spans preserve the original vertical typesetting.
+                    var span = document.createElement('span');
+                    span.className = 'ink-char';
+                    span.textContent = character;
+                    span.style.setProperty('--ink-delay', delay + 'ms');
+                    fragment.appendChild(span);
+                    lastEnd = delay + inkDuration;
+                    delay += step;
+                });
+                line.textContent = '';
+                line.appendChild(fragment);
+                delay += pause;
+            });
+            return lastEnd;
+        }
+
+        function finish() {
+            clearTimeout(window.hillInkFallback);
+            clearTimeout(finishTimer);
+            root.classList.remove('ink-pending', 'ink-running');
+        }
+
+        delay = prepareLines('.stanza p', 180, 140) + 120;
+        root.style.setProperty('--count-delay', delay + 'ms');
+        delay += 570;
+        delay = prepareLines('.sig p', 90, 110) + 120;
+        root.style.setProperty('--seal-delay', delay + 'ms');
+
+        function start() {
+            if (!root.classList.contains('ink-pending') || motion.matches) {
+                finish();
+                return;
+            }
+            clearTimeout(window.hillInkFallback);
+            root.classList.add('ink-running');
+            root.classList.remove('ink-pending');
+            finishTimer = setTimeout(finish, delay + 500);
+        }
+
+        // Wait briefly for the calligraphy font, without making a slow network block reading.
+        Promise.race([
+            document.fonts ? document.fonts.ready : Promise.resolve(),
+            new Promise(function (resolve) { setTimeout(resolve, 700); })
+        ]).then(start, finish);
+        motion.addEventListener('change', function () { if (motion.matches) finish(); });
+        window.addEventListener('pagehide', finish);
     })();
     </script>
 </body>
