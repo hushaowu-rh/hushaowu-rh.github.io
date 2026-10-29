@@ -108,13 +108,11 @@
         .ink-pending .sig { visibility: hidden; }
         .ink-running .ink-char {
             animation: write-ink var(--ink-duration, .7s) linear both;
-            animation-delay: var(--ink-delay);
+            animation-delay: calc(var(--ink-delay) - var(--ink-offset, 0ms));
         }
         .ink-running .ink-horizontal { animation-name: write-horizontal; }
-        .ink-running .count {
-            animation: settle-ink .55s ease-out both;
-            animation-delay: var(--count-delay);
-        }
+        .ink-running .count:not(.ink-prepared),
+        .ink-running .sig:not(.ink-prepared) { visibility: hidden; }
         .seal-waiting { opacity: 0; }
         .seal-stamping {
             transform-origin: center;
@@ -147,10 +145,6 @@
             94% { clip-path: inset(-.15em); filter: blur(0); }
             to { opacity: 1; clip-path: none; filter: none; }
         }
-        @keyframes settle-ink {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
         @keyframes stamp-ink {
             from { opacity: 0; transform: translate(-.08em, -.65em) scale(1.18) rotate(-8deg); filter: blur(1.1px); }
             26% { opacity: .48; transform: translate(-.04em, -.35em) scale(1.1) rotate(-5deg); filter: blur(.65px); }
@@ -167,9 +161,10 @@
         @media (prefers-reduced-motion: reduce), print {
             .ink-pending .stanza,
             .ink-pending .count,
-            .ink-pending .sig { visibility: visible; }
+            .ink-pending .sig,
+            .ink-running .count:not(.ink-prepared),
+            .ink-running .sig:not(.ink-prepared) { visibility: visible; }
             .ink-running .ink-char,
-            .ink-running .count,
             .seal-stamping { animation: none; }
             .seal-waiting { opacity: 1; }
             .seal-stamping::after { display: none; }
@@ -202,6 +197,7 @@
         var lineEl = document.getElementById('countLine');
         var remEl = document.getElementById('countRem');
         var valueEl = document.getElementById('countValue');
+        var countEl = document.querySelector('.count');
         var DIG = '\u96f6\u58f9\u8d30\u53c1\u8086\u4f0d\u9646\u67d2\u634c\u7396'; // 零壹贰叁肆伍陆柒捌玖
 
         function digitsBig(n) {
@@ -242,6 +238,7 @@
             sealEl.hidden = false;
             valueEl.textContent = (r > 0 ? '\u53c8' + digitsBig(r) : '') + '\u679a';
             fitRemainder();
+            countEl.dataset.ready = 'true';
             document.dispatchEvent(new Event('hill:count-ready'));
         }
 
@@ -249,9 +246,13 @@
         if (Number.isSafeInteger(forced) && forced > 0) {
             buildSeal(forced);
         } else {
-            fetch('https://hushaowu.goatcounter.com/counter//hill/.json')
+            // A stalled counter must not leave the inscription and signature waiting forever.
+            var countRequest = new AbortController();
+            var countTimeout = setTimeout(function () { countRequest.abort(); }, 30000);
+            fetch('https://hushaowu.goatcounter.com/counter//hill/.json', { signal: countRequest.signal })
                 .then(function (r) { return r.json(); })
                 .then(function (d) {
+                    clearTimeout(countTimeout);
                     var n = parseInt(String(d.count || '0').replace(/[^0-9]/g, ''), 10);
                     if (!Number.isSafeInteger(n) || n < 0 || n >= Number.MAX_SAFE_INTEGER) {
                         throw new Error('Invalid visitor count');
@@ -259,7 +260,10 @@
                     buildSeal(n + 1);
                 })
                 .catch(function () {
+                    clearTimeout(countTimeout);
                     lineEl.textContent = '\u590d\u6dfb\u8db3\u5370\u4e00\u679a';
+                    countEl.dataset.ready = 'true';
+                    document.dispatchEvent(new Event('hill:count-ready'));
                 });
         }
 
@@ -278,8 +282,12 @@
         if (!root.classList.contains('ink-pending')) return;
         var motion = window.matchMedia('(prefers-reduced-motion: reduce)');
         var seal = document.getElementById('countSeal');
+        var count = document.querySelector('.count');
+        var signature = document.querySelector('.sig');
         var finishTimer;
         var stampTimer;
+        var startedAt;
+        var continuationPrepared = false;
         var writingDone = false;
         var cancelled = false;
         var stamped = false;
@@ -288,21 +296,30 @@
         function prepareLines(selector, duration, gap, pause) {
             var lastEnd = delay;
             document.querySelectorAll(selector).forEach(function (line) {
-                var text = line.textContent;
-                var fragment = document.createDocumentFragment();
-                Array.from(text).forEach(function (character) {
-                    // Ordinary inline spans preserve the original vertical typesetting.
-                    var span = document.createElement('span');
-                    span.className = 'ink-char' + (character === '一' ? ' ink-horizontal' : '');
-                    span.textContent = character;
-                    span.style.setProperty('--ink-duration', duration + 'ms');
-                    span.style.setProperty('--ink-delay', delay + 'ms');
-                    fragment.appendChild(span);
-                    lastEnd = delay + duration;
-                    delay = lastEnd + gap;
+                // Wrap text in place, preserving the stamp grid and the fitted number column.
+                var walker = document.createTreeWalker(line, NodeFilter.SHOW_TEXT, {
+                    acceptNode: function (node) {
+                        return node.nodeValue.trim() && !node.parentElement.closest('.seal2, .ink-char')
+                            ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+                    }
                 });
-                line.textContent = '';
-                line.appendChild(fragment);
+                var nodes = [], node;
+                while ((node = walker.nextNode())) nodes.push(node);
+                nodes.forEach(function (textNode) {
+                    var fragment = document.createDocumentFragment();
+                    Array.from(textNode.nodeValue).forEach(function (character) {
+                        // Ordinary inline spans preserve the original vertical typesetting.
+                        var span = document.createElement('span');
+                        span.className = 'ink-char' + (character === '一' ? ' ink-horizontal' : '');
+                        span.textContent = character;
+                        span.style.setProperty('--ink-duration', duration + 'ms');
+                        span.style.setProperty('--ink-delay', delay + 'ms');
+                        fragment.appendChild(span);
+                        lastEnd = delay + duration;
+                        delay = lastEnd + gap;
+                    });
+                    textNode.replaceWith(fragment);
+                });
                 delay += pause;
             });
             return lastEnd;
@@ -337,9 +354,25 @@
 
         // Each character finishes before the next begins; pauses mark the column changes.
         delay = prepareLines('.stanza p', 700, 160, 500) + 260;
-        root.style.setProperty('--count-delay', delay + 'ms');
-        delay += 870;
-        delay = prepareLines('.sig p', 340, 100, 250) + 350;
+        var countStart = delay;
+
+        function continueWriting() {
+            if (cancelled || continuationPrepared || startedAt === undefined || count.dataset.ready !== 'true') return;
+            try {
+                var elapsed = performance.now() - startedAt;
+                delay = Math.max(countStart, elapsed + 120);
+                count.style.setProperty('--ink-offset', elapsed + 'ms');
+                signature.style.setProperty('--ink-offset', elapsed + 'ms');
+                delay = prepareLines('.count p', 420, 100, 200) + 320;
+                delay = prepareLines('.sig p', 340, 100, 250) + 350;
+                continuationPrepared = true;
+                count.classList.add('ink-prepared');
+                signature.classList.add('ink-prepared');
+                finishTimer = setTimeout(finishWriting, Math.max(0, delay - (performance.now() - startedAt)));
+            } catch (e) {
+                cancel();
+            }
+        }
 
         function start() {
             if (!root.classList.contains('ink-pending') || motion.matches) {
@@ -348,9 +381,10 @@
             }
             clearTimeout(window.hillInkFallback);
             if (seal) seal.classList.add('seal-waiting');
+            startedAt = performance.now();
             root.classList.add('ink-running');
             root.classList.remove('ink-pending');
-            finishTimer = setTimeout(finishWriting, delay);
+            continueWriting();
         }
 
         // Wait briefly for the calligraphy font, without making a slow network block reading.
@@ -358,8 +392,8 @@
             document.fonts ? document.fonts.ready : Promise.resolve(),
             new Promise(function (resolve) { setTimeout(resolve, 700); })
         ]).then(start).catch(cancel);
-        // Count data can arrive before or after the poem. Start the impression only when ready.
-        document.addEventListener('hill:count-ready', maybeStamp);
+        // Late counts join the writing sequence before the signature and final impression.
+        document.addEventListener('hill:count-ready', continueWriting);
         motion.addEventListener('change', function () { if (motion.matches) cancel(); });
         window.addEventListener('pagehide', cancel);
     })();
