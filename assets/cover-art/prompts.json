@@ -1,13 +1,17 @@
 [
   {
     "id": "unification",
-    "subject": "Localized warm-gold wave coherence continuously joined to a deep-teal surrounding force field; approved complete cover with title.",
-    "palette": "deep petrol teal, amber, pale gold, ivory",
-    "prompt": "Refine the Unification cover so matter is a localized luminous wave pattern rather than a solid sphere: airy overlapping wavefronts, naturally dissolving edges and seamless force-field streams. Preserve the ivory serif title and composition.",
-    "asset": "assets/cover-art/unification-wave-field-20261021.jpg",
-    "source_media": "cindy-media://blobs/9ebf6197767cbb7972325279edf5c5d70d681eeaaa778e0f27df5bd7ee3265d0.jpg",
-    "provenance": "Generated with Art / Cindy Core media, Seedream 5 Lite, and explicitly approved by the user on 2026-10-21. The complete approved image includes the title, so the legacy HTML cover caption is hidden visually.",
-    "archived_asset": "assets/cover-art/unification.jpg"
+    "subject": "User-approved continuous geometric mirror room reflecting a warm sunrise; decorative metaphor for unification.",
+    "palette": "coral, copper, muted crimson, silver, charcoal",
+    "prompt": "依据用户连续两条修改意见编辑第1张封面：“中间镜面太平了，要像万花筒那样，这样就不会透过的感觉。镜面太多形状了，规则一点。”第2张只提供正确七边形的几何轮廓，不参考它的平面色块或构图。\n\n本次把镜面结构统一、简化：全部镜片只采用一种同规格的规则七边形，恰好七条直边、七个顶点，参考第2张。顶部一个顶点、下方一条水平边。尺寸差异只来自正常透视，排列间距和折入角度遵循同一规律。去掉第1张中形状杂乱的小斜片、三角形、四边形、不规则碎片和零散金属插片；不要六边形蜂巢，不要给镜子增加新的异形拼块。银色镜边都细而一致，接缝简洁。整片镜面是规则、连续、满幅的镜室，不是黑背景上的孤立花瓣阵列，不是照片卡片墙。\n\n让中央真正有万花筒的多重映照：\n中央与邻近几面规则七边形镜片以有限的两层深度轻微向内倾转，形成清楚的折入与转向，镜面彼此相照。中央主镜面内不再仅仅是一幅平展的完整天空地平线；应映出相同规则的镜面及其日出映像，出现有秩序、可追踪的错位和反向重复，使镜中映像产生两三层深度。日出在不同角度重复，圆太阳在中央最清楚，附近反射中出现几处稍小、稍暗的圆太阳或圆太阳局部。整个反射具有七重方向节律，但只保留有限层次，不能做不断套小相框的无尽门洞，不能细碎成满屏万花筒彩纸，也不把中央切成七块三角扇形。让形体与映像的转向制造纵深，不靠多加形状、不靠大块灰色玻璃反光。\n\n中央主七边形保持完整可数的七条边，大小适中、位置上中部且左右居中；中央最明亮、最清晰，其余镜面统一稍弱。镜片近乎同尺寸，不要中央一块巨大平窗、外围一堆小碎片的比例。每一片都是真实不透明的银膜镜子，日出是镜中倒影；银膜清晰、细腻、精密，边缘可见薄厚与反射衰减。不要窗台、洞口墙、厚装饰框、透明玻璃、屏幕或传送门。\n\n保留现有的朱红、珊瑚红、铜金日出和较大而完整的正圆太阳，圆盘清楚，不变椭圆或半圆，光晕克制。镜面被晨光映红，背光处是酒红、紫灰与少量冷银，反射色温和明暗贯通全部镜片，不出现五颜六色拼贴。真实大画幅摄影和高品质光学镜面的质感，不能塑料化或变成红色有色玻璃。保留2:3竖幅，整个镜室占满画面，上中部主体饱满；下方继续同一镜室的较暗反射并自然简化，给未来标题留位置，无黑横条、无字、无标志。最终要一眼看到“单一七边形规则＋有限的万花筒式反射纵深”，而不是复杂异形碎镜与平面日出窗口。",
+    "asset": "assets/cover-art/unification-mirror-sunrise-20261029.jpg",
+    "source_media": "cindy-media://blobs/c58f7d337338ff4e4bc5a83706964b9e11c62f9ec0f165bc9acef21bb514c8e9.png",
+    "provenance": "Generated with Art / Cindy Core media, Seedream 5 Lite; user approved this selected mirror-sunrise image for website publication on 2026-10-29. Exported at full 1664 x 2496 resolution as JPEG quality 92 without cropping, recoloring or retouching. The existing live HTML serif title is restored, with the main title fixed to two lines.",
+    "archived_asset": "assets/cover-art/unification-wave-field-20261021.jpg",
+    "source_sha256": "c58f7d337338ff4e4bc5a83706964b9e11c62f9ec0f165bc9acef21bb514c8e9",
+    "published_sha256": "75968cc5f6d85a9cf2b4cf70b87d14f068d3054d35c643918be2cc3647243271",
+    "includes_typography": false,
+    "original_asset": "assets/cover-art/unification.jpg"
   },
   {
     "id": "qm_axioms",

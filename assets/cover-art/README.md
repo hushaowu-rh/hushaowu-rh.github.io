@@ -4,15 +4,15 @@ Decorative cover artwork for the academic collection. The original nine photogra
 These are visual metaphors for the paper topics, not experimental photographs or evidence.
 The prompt set is recorded in `prompts.json`. No publisher logo is used.
 
-The original background assets are 600 × 900 JPEGs. The homepage embeds each active artwork once as a data URI; list and reader covers share it. Titles remain live HTML except for the complete, user-approved Unification and Quantum Mechanics covers described below.
+The original background assets are 600 × 900 JPEGs. The homepage embeds each active artwork once as a data URI; list and reader covers share it. Titles remain live HTML except for the complete, user-approved Quantum Mechanics and Baryons covers described below.
 
 ## Cosmology (21 October 2026)
 
 The user selected the original Unification nebula artwork for Cosmology. `cosmology.jpg` is an unchanged copy of `unification.jpg`; the homepage embeds it as a data URI and keeps the Cosmology title in live HTML. It is decorative artwork, not observational data. The earlier vector candidate `cosmology.svg` is retained as an unused archive.
 
-## Unification (21 October 2026)
+## Unification — archived (21 October 2026)
 
-`unification-wave-field-20261021.jpg` is the exact approved Art / Cindy Core image, preserved without cropping or retouching. Its warm-gold, locally concentrated wave pattern flows continuously into a deep-teal surrounding field. It is a visual metaphor for matter and forces, not observational data. The title is already part of this approved cover; the homepage displays the full image at its original 2:3 ratio and hides the old overlaid caption to avoid duplicate lettering. The full formal paper title and accessible cover link remain in HTML.
+`unification-wave-field-20261021.jpg` is the exact approved Art / Cindy Core image, preserved without cropping or retouching. Its warm-gold, locally concentrated wave pattern flows continuously into a deep-teal surrounding field. It is a visual metaphor for matter and forces, not observational data. The title is already part of this archived cover; before the 29 October replacement, the homepage displayed the full image at its original 2:3 ratio and hid the old overlaid caption to avoid duplicate lettering. The full formal paper title and accessible cover link remain in HTML.
 
 Source: `cindy-media://blobs/9ebf6197767cbb7972325279edf5c5d70d681eeaaa778e0f27df5bd7ee3265d0.jpg`. SHA-256: `9ebf6197767cbb7972325279edf5c5d70d681eeaaa778e0f27df5bd7ee3265d0`. The original `unification.jpg` is retained and reused unchanged by Cosmology.
 
@@ -55,3 +55,11 @@ Source PNG SHA-256: `e3a80fc4046c3a3d1cd45826daca7b0ca98d6051c6adde9bb07dd83e652
 The selected Art / Cindy Core PNG was exported as a full-size 1664 × 2496 JPEG (quality 92), without cropping, recoloring or retouching. The homepage embeds it once as a data URI shared by collection and reader covers. Its title is already in the artwork, so the former HTML caption and additional gradient are disabled. The standard frame, full 2:3 composition, accessible title, paper metadata and PDF links are retained. `baryon.svg` remains as an unused archive.
 
 Source: `cindy-media://blobs/4911f5919264c4be08e5f946ba0d9a370867d7fcf6f51a19d548f9e4bd4bdcf8.png`. Source PNG SHA-256: `4911f5919264c4be08e5f946ba0d9a370867d7fcf6f51a19d548f9e4bd4bdcf8`. Published JPEG SHA-256: `bd1a035046688cbe3c0f405b1d3805e23f99e928b9aa957c6e02e9155fc35f3a`.
+
+## Unification (29 October 2026)
+
+`unification-mirror-sunrise-20261029.jpg` is the user-selected geometric mirror-room artwork, with repeated sunrise reflections and continuous silver, coral and copper surfaces. It replaces the earlier blue-and-gold wave artwork. This is a decorative metaphor for unification, not a physical diagram or observational evidence.
+
+The selected Art / Cindy Core PNG was exported as a full-size 1664 × 2496 JPEG (quality 92), without cropping, recoloring or retouching. The homepage embeds it once as a data URI shared by collection and reader covers. The artwork contains no lettering, so the existing live HTML ivory serif title is restored. Its main title keeps the original two-line grouping: “Matter, Forces” / “and Spacetime”. The standard frame and full 2:3 composition are retained. The former `unification-wave-field-20261021.jpg` remains archived; the original `unification.jpg` continues to be used by Cosmology.
+
+Source: `cindy-media://blobs/c58f7d337338ff4e4bc5a83706964b9e11c62f9ec0f165bc9acef21bb514c8e9.png`. Source PNG SHA-256: `c58f7d337338ff4e4bc5a83706964b9e11c62f9ec0f165bc9acef21bb514c8e9`. Published JPEG SHA-256: `75968cc5f6d85a9cf2b4cf70b87d14f068d3054d35c643918be2cc3647243271`.
