@@ -29,10 +29,13 @@
             padding: 2.4em 2em;
             background: rgba(255, 252, 242, .4);
         }
+        /* Five characters plus spacing reserve the poem's height before font loading. */
+        .stanza { inline-size: 9.6em; }
         .stanza p {
             font-size: 1.6em;
             line-height: 1.95;
             letter-spacing: .2em;
+            white-space: nowrap;
         }
         .count {
             margin-block-start: 2em;
@@ -41,9 +44,23 @@
             letter-spacing: .15em;
         }
         .count p { font-size: .85em; line-height: 2; }
+        /* A real line box reserves the same column before the count arrives. */
+        #countRem::before { content: '\00a0'; }
+        #countRem { position: relative; }
+        #countValue {
+            position: absolute;
+            inset-block-start: 0;
+            inset-inline-start: 0;
+            white-space: nowrap;
+            transform-origin: top right;
+        }
+        /* Two stamp cells, one gap, and the existing padding and border. */
+        #countLine { min-block-size: calc(2.3em + 9px); }
         .seal2 {
             writing-mode: horizontal-tb;
             display: inline-grid;
+            grid-template-rows: repeat(2, 1.15em);
+            grid-template-columns: repeat(2, 1.15em);
             gap: 1px;
             background: #f7f1e3;
             border: 2px solid #b23a2a;
@@ -54,6 +71,8 @@
             letter-spacing: 0;
             vertical-align: middle;
         }
+        /* Keep the stamp's final footprint while its count is loading. */
+        .seal2[hidden] { visibility: hidden; }
         .seal2 span {
             display: flex;
             align-items: center;
@@ -86,7 +105,7 @@
         <div class="count">
             <p>山径至此</p>
             <p id="countLine">足印凡<span class="seal2" id="countSeal" hidden></span></p>
-            <p id="countRem"></p>
+            <p id="countRem"><span id="countValue"></span></p>
         </div>
         <div class="sig">
             <p>时丙午年夏</p>
@@ -100,10 +119,21 @@
         var sealEl = document.getElementById('countSeal');
         var lineEl = document.getElementById('countLine');
         var remEl = document.getElementById('countRem');
+        var valueEl = document.getElementById('countValue');
         var DIG = '\u96f6\u58f9\u8d30\u53c1\u8086\u4f0d\u9646\u67d2\u634c\u7396'; // 零壹贰叁肆伍陆柒捌玖
 
         function digitsBig(n) {
             return String(n).replace(/[0-9]/g, function (c) { return DIG[+c]; });
+        }
+
+        function fitRemainder() {
+            // Long counts stay inside their reserved column instead of resizing the scroll.
+            valueEl.style.transform = '';
+            var height = valueEl.getBoundingClientRect().height;
+            var available = remEl.getBoundingClientRect().height;
+            if (height > available) {
+                valueEl.style.transform = 'scale(' + (available / height) + ')';
+            }
         }
 
         function buildSeal(n) {
@@ -118,8 +148,6 @@
             while (es.length < 3) es = '0' + es;
             var chars = ['\u67d2', DIG[+es[0]], DIG[+es[1]], DIG[+es[2]]];
             sealEl.innerHTML = '';
-            sealEl.style.gridTemplateRows = 'repeat(2, 1.15em)';
-            sealEl.style.gridTemplateColumns = 'repeat(2, 1.15em)';
             for (var k = 0; k < 4; k++) {
                 var cell = document.createElement('span');
                 cell.textContent = chars[k];
@@ -130,23 +158,30 @@
                 sealEl.appendChild(cell);
             }
             sealEl.hidden = false;
-            remEl.textContent = (r > 0 ? '\u53c8' + digitsBig(r) : '') + '\u679a';
+            valueEl.textContent = (r > 0 ? '\u53c8' + digitsBig(r) : '') + '\u679a';
+            fitRemainder();
         }
 
         var forced = parseInt((location.hash || '').slice(1), 10);
-        if (!isNaN(forced) && forced > 0) {
+        if (Number.isSafeInteger(forced) && forced > 0) {
             buildSeal(forced);
         } else {
             fetch('https://hushaowu.goatcounter.com/counter//hill/.json')
                 .then(function (r) { return r.json(); })
                 .then(function (d) {
-                    var n = parseInt(String(d.count || '0').replace(/[^0-9]/g, ''), 10) + 1;
-                    buildSeal(n);
+                    var n = parseInt(String(d.count || '0').replace(/[^0-9]/g, ''), 10);
+                    if (!Number.isSafeInteger(n) || n < 0 || n >= Number.MAX_SAFE_INTEGER) {
+                        throw new Error('Invalid visitor count');
+                    }
+                    buildSeal(n + 1);
                 })
                 .catch(function () {
                     lineEl.textContent = '\u590d\u6dfb\u8db3\u5370\u4e00\u679a';
                 });
         }
+
+        window.addEventListener('resize', fitRemainder);
+        if (document.fonts) document.fonts.ready.then(fitRemainder);
 
         try {
             var img = new Image();
