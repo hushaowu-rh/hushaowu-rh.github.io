@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-03 — Keep language editions in paper details
+- Restored all eleven homepage resource rows to their original English PDF and DOI links. Chinese PDF and full-text HTML links remain in reader details and standalone paper pages.
+- Removed chapter-video links from paper details and the standalone Mathematics III page.
+
 ## 2026-11-03 — Chinese editions and full-text reading links
 - All eleven papers now expose their matching Chinese editions on the library, reader detail and standalone abstract pages, using the existing Cosmology resource-row layout.
 - Nine papers offer Chinese PDF downloads. Fields and Decay link to their current Chinese HTML full text; seven papers offer both English and Chinese full-text HTML.
