@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-03 — Chinese editions and full-text reading links
+- All eleven papers now expose their matching Chinese editions on the library, reader detail and standalone abstract pages, using the existing Cosmology resource-row layout.
+- Nine papers offer Chinese PDF downloads. Fields and Decay link to their current Chinese HTML full text; seven papers offer both English and Chinese full-text HTML.
+- Added six Chinese PDFs (including Unification's companion proofs) and sixteen self-contained HTML documents, preserving cross-document proof links. Unpublished rewrites and abstract-only pages are not presented as full-text editions.
+
 ## 2026-10-31 — Motion V9 and Fields V6: complete matter carriers
 - ⑥新版沿原版本链发布 Zenodo V9（10.5281/zenodo.23839056），70页英文正文含四节补充推导，承接完整物质载体、运动与位置记录。
 - ⑮发布 Zenodo V6（10.5281/zenodo.23839059），英文正文50页、动力学补充24页、几何补充11页；同步完整载体源与接收、计时和能量收支，以及全面复核修正。
