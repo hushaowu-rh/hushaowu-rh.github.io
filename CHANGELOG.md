@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-08 — Thermalization V15
+- ⑰更新为 Zenodo V15（10.5281/zenodo.24051898）：英文55页、中文53页，同步中英文 PDF 和自包含全文阅读稿。
+- 首页、内嵌详情与独立论文页同步新版摘要、版本和引用元数据；增补完整载体交换、同温背景恢复与驱动循环中的控制功，关键词与 Zenodo 一致。
+- 保留首次发布日期2026-08-05、概念 DOI、现有封面和版式。
+
 ## 2026-11-03 — Keep language editions in paper details
 - Restored all eleven homepage resource rows to their original English PDF and DOI links. Chinese PDF and full-text HTML links remain in reader details and standalone paper pages.
 - Removed chapter-video links from paper details and the standalone Mathematics III page.
