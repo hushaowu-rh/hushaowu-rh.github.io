@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.12.1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>从光出发：四轮推导的整理｜场的机制</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      color: light-dark(#1a1a1a, #fdfdfd);
+      background-color: #fdfdfd;
+      background-color: light-dark(#fdfdfd, #1a1a1a);
+      color-scheme: light dark;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        color-scheme: light only;
+      }
+      html, body, pre, code {
+        background-color: transparent;
+      }
+      body, a, a:visited, blockquote {
+        color: black;
+      }
+      pre, code {
+        padding: 0;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a, a:visited {
+      color: inherit;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid;
+      border-color: #e6e6e6;
+      border-color: light-dark(#e6e6e6, #4c4c4c);
+      color: #606060;
+      color: light-dark(#606060, #b6b6b6);
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid currentColor;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
+    }
+    th {
+      border-top: 1px solid currentColor;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+  :root{color-scheme:light dark;--paper:#f6f5f2;--surface:#fffefa;--ink:#243c50;--muted:#76818a;--line:#c8d3da;--blue:#497d9b;--blue-pale:#e6eef2;--rust:#b9603f;--rust-pale:#f6e8dd;--green:#527d71;--green-pale:#e3eeea;--hair:#e4e6e4}
+  @media(prefers-color-scheme:dark){:root{--paper:#172129;--surface:#1e2b34;--ink:#e4eaf0;--muted:#98a9b5;--line:#4a606e;--blue:#83b4cc;--blue-pale:#304755;--rust:#dfa27a;--rust-pale:#49372e;--green:#8db7a6;--green-pale:#26403a;--hair:#34434d}}
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0 auto;max-width:46rem;padding:1.6rem 1.1rem 3rem;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Noto Sans CJK SC","Microsoft YaHei",sans-serif;font-size:17px;line-height:1.75;word-break:break-word}
+  .eyebrow{font-size:.72rem;letter-spacing:.16em;color:var(--rust);margin:0 0 .5rem}
+  h1{font:500 1.75rem/1.4 "Songti SC","Noto Serif CJK SC",serif;font-size:clamp(1.3rem,6.2vw,1.9rem);letter-spacing:.04em;margin:0 0 .8rem;text-wrap:balance}
+  h1+p{color:var(--muted);font-size:.84rem;line-height:1.65}
+  h2{font-size:1.2rem;line-height:1.45;margin:2.6rem 0 .7rem;padding-top:1.1rem;border-top:1px solid var(--line)}
+  a{color:var(--blue);text-decoration:none;word-break:break-all}
+  strong{font-weight:650}
+  code{font-size:.84em;word-break:break-all;background:var(--blue-pale);padding:.05em .3em;border-radius:.25em}
+  li{margin:.3rem 0}ul,ol{padding-left:1.35rem}
+  math{font-size:1.04em}
+  math[display="block"]{display:block;overflow-x:auto;overflow-y:hidden;max-width:100%;padding:.3rem 0}
+  .eqbox{display:table;max-width:100%;margin:.8rem auto;padding:.25rem .8rem;border:1px solid var(--ink);background:var(--surface)}
+  .eqbox math[display="block"]{padding:.15rem 0}
+  mtable{math-style:normal}
+  mtd{padding-top:.26em;padding-bottom:.26em}
+  .eqwrap{overflow-x:auto;max-width:100%}
+  .fg{margin:1.3rem auto .35rem;max-width:26rem;background:var(--surface);border:1px solid var(--hair);border-radius:14px;padding:.45rem .35rem}
+  .fg svg{display:block;width:100%;height:auto}
+  .fg text{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;font-size:12.5px;fill:var(--ink)}
+  .fg .t-b{font-weight:650;font-size:13.5px}.fg .t-mut{fill:var(--muted)}.fg .t-blue{fill:var(--blue)}.fg .t-rust{fill:var(--rust)}.fg .t-w{fill:#fffefa;font-weight:650;font-style:italic;font-family:Georgia,"Songti SC",serif;font-size:13px}
+  .s-ink{stroke:var(--ink)}.s-blue{stroke:var(--blue)}.s-rust{stroke:var(--rust)}.s-line{stroke:var(--line)}.s-hair{stroke:var(--hair)}.s-mut{stroke:var(--muted)}
+  .f-ink{fill:var(--ink)}.f-blue{fill:var(--blue)}.f-rust{fill:var(--rust)}.f-line{fill:var(--line)}.f-surface{fill:var(--surface)}.f-bluepale{fill:var(--blue-pale)}.f-rustpale{fill:var(--rust-pale)}.f-none{fill:none}
+  .figcap{display:block;text-align:center;color:var(--muted);font-size:.84rem;line-height:1.6;margin:.1rem 0 1.4rem}
+  .legend{display:flex;flex-wrap:wrap;gap:.25rem 1rem;font-size:.8rem;color:var(--muted);margin:.4rem 0 1rem}
+  .legend p{margin:0;display:contents}
+  .lg{display:inline-flex;align-items:center;gap:.4rem;white-space:nowrap}
+  .lg:before{content:"";width:.66rem;height:.66rem;border-radius:50%;flex:none}
+  .chain{margin:1.1rem 0 1.3rem}
+  .node{position:relative;padding:0 0 .8rem 1.75rem}
+  .node p{margin:0}
+  .node:before{content:"";position:absolute;left:.2rem;top:.52em;width:.72rem;height:.72rem;border-radius:50%;z-index:1}
+  .node:after{content:"";position:absolute;left:.5rem;top:1.3em;bottom:-.5em;border-left:2px solid var(--line)}
+  .node:last-child:after{display:none}
+  .done:before,.lg.done:before{background:var(--green)}
+  .cond:before,.lg.cond:before{background:var(--surface);border:3px solid var(--green)}
+  .given:before,.lg.given:before{background:var(--surface);border:2px solid var(--ink)}
+  .adopt:before,.lg.adopt:before{background:var(--surface);border:3px solid var(--blue)}
+  .gap:before,.lg.gap:before{background:var(--surface);border:2px dashed var(--rust)}
+  .later:before,.lg.later:before{background:var(--line)}
+  .done:after,.cond:after{border-left-color:var(--green)}
+  .adopt:after{border-left-color:var(--blue)}
+  .gap:after{border-left:2px dashed var(--rust)}
+  .node:has(+ .gap):after{border-left:2px dashed var(--rust)}
+  .node:has(+ .later):after{border-left:2px solid var(--line)}
+  .tag{display:inline-block;font-size:.7rem;line-height:1.5;padding:0 .45em;margin-right:.35em;border:1px solid currentColor;border-radius:.7em;vertical-align:.08em;white-space:nowrap}
+  .done .tag,.cond .tag{color:var(--green)}.gap .tag{color:var(--rust)}.adopt .tag{color:var(--blue)}.given .tag,.later .tag{color:var(--muted)}
+  .node.gap{margin-bottom:.45rem;padding-bottom:.35rem}
+  .node.gap p{background:var(--rust-pale);border-radius:.4rem;padding:.2rem .55rem}
+  details{margin:1rem 0 1.4rem;border-left:2px solid var(--blue);background:var(--surface);padding:.2rem .9rem;border-radius:0 .5rem .5rem 0}
+  summary{cursor:pointer;color:var(--blue);font-size:.92rem;padding:.35rem 0}
+  details[open] summary{margin-bottom:.3rem}
+  </style>
+</head>
+<body>
+<p style="margin:0 0 1.2em"><a href="mechanism_of_fields.html">← 场的机制</a></p>
+<p class="eyebrow">
+引力场 · 从光出发的四轮 · 2026-11-21 至 11-22
+</p>
+<h1 id="从光出发四轮推导的整理">从光出发：四轮推导的整理</h1>
+<p>2026-11-22 · 小可爱（接续推导线）· 小胡：“把这几轮整理一下” ·
+整理稿，不含新的推导 · 四份核验今天重跑，42/42 ·
+正式稿未改，未改他线文件，未向他线发消息</p>
+<p><strong>起点。</strong> 11-21
+小胡说：广义相对论从度规出发，以公共的度量为起点；我们一直在推的公共几何，就是它设置的那个起点；关键点是光。</p>
+<p>此后四轮，各有一份稿：</p>
+<ul>
+<li>六步稿：光与物质共用一个锥；</li>
+<li>四步稿：同一交换、时变背景、场的速度、电磁系数；</li>
+<li>互补扇区稿：符号、写入、读数；</li>
+<li>五件稿：记录在已有结构里的落点。</li>
+</ul>
+<p>本稿把它们合成一条链，按问题排列。每一步标明等级：给定、精确、条件、采用、断口。</p>
+<h2 id="四句话">四句话</h2>
+<ol type="1">
+<li><strong>起点能成为定理。</strong>
+四条“同一个”之下，光与一切物质共用同一对钟尺
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo>,</mo><mspace width="0.222em"></mspace><mi>B</mi><mo>=</mo><mn>1</mn><mi>/</mi><mi>A</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(A,\ B=1/A)</annotation></semantics></math>。</li>
+<li><strong>场律接不上占据的背景。</strong> 守恒的占据按
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">1/r</annotation></semantics></math>
+分布时，建成的时间必按距离的平方增长，与机制无关。</li>
+<li><strong>能在光锥上建成的是记录。</strong>
+它与一个守恒的密度共轭，相邻两处之差驱动流，钟读的是它。读和写出自同一个接触时，同号相吸，近源钟慢。</li>
+<li><strong>这份记录是相干背景里参照的偏角。</strong> 它与本线 11-04
+以来的链合流；断口是同一批，没有新增。</li>
+</ol>
+<figure class="fg"><svg viewBox="0 0 360 262" role="img" aria-label="位置与轮次的图：光沿锥面每轮跨一格，有质量的物质落在锥内"><polygon class="f-rustpale" opacity=".55" points="180,226 30,76 330,76"/><line class="s-hair" stroke-width=".8" x1="30" y1="76" x2="30" y2="226"/><line class="s-hair" stroke-width=".8" x1="55" y1="76" x2="55" y2="226"/><line class="s-hair" stroke-width=".8" x1="80" y1="76" x2="80" y2="226"/><line class="s-hair" stroke-width=".8" x1="105" y1="76" x2="105" y2="226"/><line class="s-hair" stroke-width=".8" x1="130" y1="76" x2="130" y2="226"/><line class="s-hair" stroke-width=".8" x1="155" y1="76" x2="155" y2="226"/><line class="s-hair" stroke-width=".8" x1="180" y1="76" x2="180" y2="226"/><line class="s-hair" stroke-width=".8" x1="205" y1="76" x2="205" y2="226"/><line class="s-hair" stroke-width=".8" x1="230" y1="76" x2="230" y2="226"/><line class="s-hair" stroke-width=".8" x1="255" y1="76" x2="255" y2="226"/><line class="s-hair" stroke-width=".8" x1="280" y1="76" x2="280" y2="226"/><line class="s-hair" stroke-width=".8" x1="305" y1="76" x2="305" y2="226"/><line class="s-hair" stroke-width=".8" x1="330" y1="76" x2="330" y2="226"/><line class="s-hair" stroke-width=".8" x1="30" y1="201" x2="330" y2="201"/><line class="s-hair" stroke-width=".8" x1="30" y1="176" x2="330" y2="176"/><line class="s-hair" stroke-width=".8" x1="30" y1="151" x2="330" y2="151"/><line class="s-hair" stroke-width=".8" x1="30" y1="126" x2="330" y2="126"/><line class="s-hair" stroke-width=".8" x1="30" y1="101" x2="330" y2="101"/><line class="s-hair" stroke-width=".8" x1="30" y1="76" x2="330" y2="76"/><line class="s-line" stroke-width="1.2" x1="22" y1="226" x2="338" y2="226"/><circle class="f-line" cx="30" cy="226" r="2.3"/><circle class="f-line" cx="55" cy="226" r="2.3"/><circle class="f-line" cx="80" cy="226" r="2.3"/><circle class="f-line" cx="105" cy="226" r="2.3"/><circle class="f-line" cx="130" cy="226" r="2.3"/><circle class="f-line" cx="155" cy="226" r="2.3"/><circle class="f-line" cx="180" cy="226" r="2.3"/><circle class="f-line" cx="205" cy="226" r="2.3"/><circle class="f-line" cx="230" cy="226" r="2.3"/><circle class="f-line" cx="255" cy="226" r="2.3"/><circle class="f-line" cx="280" cy="226" r="2.3"/><circle class="f-line" cx="305" cy="226" r="2.3"/><circle class="f-line" cx="330" cy="226" r="2.3"/><line class="s-rust" stroke-width="1.1" stroke-dasharray="4 4" x1="180" y1="226" x2="30" y2="76"/><line class="s-rust" stroke-width="1.1" stroke-dasharray="4 4" x1="180" y1="226" x2="330" y2="76"/><path class="s-blue f-none" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round" d="M180,226 v-25 h25 v-25 h25 v-25 h25 v-25 h25 v-25 h25 v-25 h25"/><path class="s-blue f-none" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round" opacity=".5" d="M180,226 v-25 h-25 v-25 h-25 v-25 h-25 v-25 h-25 v-25 h-25 v-25 h-25"/><path class="s-ink f-none" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round" d="M180,226 v-25 h25 v-25 v-25 h25 v-25 v-25 v-25 h25"/><circle class="f-blue" cx="330" cy="76" r="3.6"/><circle class="f-blue" opacity=".5" cx="30" cy="76" r="3.6"/><circle class="f-ink" cx="255" cy="76" r="3.6"/><circle class="f-bluepale" cx="180" cy="226" r="13"/><circle class="f-blue" cx="180" cy="226" r="7.5"/><text class="t-blue t-b" x="330" y="64" text-anchor="end">光</text><text class="t-b" x="255" y="64" text-anchor="middle">物质</text><text class="t-rust" x="154" y="109" text-anchor="middle">同一个锥</text><text class="t-mut" x="22" y="64">轮次 ↑</text><text class="t-mut" x="338" y="250" text-anchor="end">地址 →</text><text class="t-mut" x="180" y="250" text-anchor="middle">源</text></svg></figure>
+<p><span class="figcap">图
+1　光与物质由同一组边交换搬运。光每轮跨一格，沿锥面走；有质量的物质边走边维持，落在锥内。</span></p>
+<h2 id="整条链">整条链</h2>
+<div class="legend">
+<p><span class="lg given">给定</span> <span
+class="lg done">已得，精确</span> <span
+class="lg cond">已得，有条件</span> <span class="lg adopt">采用</span>
+<span class="lg gap">断口</span> <span class="lg later">后续</span></p>
+</div>
+<div class="chain">
+<div class="node given">
+<p><span class="tag">给定</span>
+正式稿的三个定义：⑥的位置作用，⑯的端口交换，⑮的接收接触。</p>
+</div>
+<div class="node cond">
+<p><span class="tag">条件</span>
+<strong>同一交换给同一色散，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mi>γ</mi></msub><mo>=</mo><msub><mi>c</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">c_\gamma=c_0</annotation></semantics></math>。</strong>
+光的图案带两个端口指标，由同一组边交换搬运。</p>
+</div>
+<div class="node done">
+<p><span class="tag">精确</span> <strong>接收核与内部结构无关。</strong>
+光与任何物质拿到同一个核。</p>
+</div>
+<div class="node cond">
+<p><span class="tag">条件</span> <strong>起点成立。</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ε</mi><mo>=</mo><mi>μ</mi><mo>=</mo><mi>B</mi><mi>/</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">\varepsilon=\mu=B/A</annotation></semantics></math>，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>A</mi><mo>⋅</mo><msub><mi>H</mi><mtext mathvariant="normal">平直</mtext></msub></mrow><annotation encoding="application/x-tex">H(A)=A\cdot H_{\text{平直}}</annotation></semantics></math>；动态时受同一个因果界约束。</p>
+</div>
+<div class="node done">
+<p><span class="tag">精确</span> <strong>占据型的
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">1/r</annotation></semantics></math>
+场按平方律建成。</strong> 只用守恒，不问机制。</p>
+</div>
+<div class="node done">
+<p><span class="tag">精确</span>
+<strong>同一个两指标对象里有互补的一半</strong>：一个守恒量的密度加它的流，色散与光相同。</p>
+</div>
+<div class="node done">
+<p><span class="tag">精确</span> <strong>势是密度在当地的累计。</strong>
+恒定源开启后是推迟势，光程时间即建成。</p>
+</div>
+<div class="node cond">
+<p><span class="tag">条件</span>
+<strong>钟读累计的记录，才有静态的场；读写同源，符号就定了。</strong></p>
+</div>
+<div class="node cond">
+<p><span class="tag">条件</span> <strong>记录就是参照的偏角。</strong>
+⑮的写入指针是寄存器；围绕同向的参照，保荷边门的两半就是那两条方程；⑮的接收接触自己满足读写互易。</p>
+</div>
+<div class="node adopt">
+<p><span class="tag">采用</span> <strong>钟读角。</strong>
+池方案里是采用的；在“光程时间里建成、按
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">1/r</annotation></semantics></math>
+分布”之下它是必要的。循环怎样实现它没有推。</p>
+</div>
+<div class="node gap">
+<p><span class="tag">断口</span> <strong>参照由什么维持。</strong>
+每址一个单元时不成立（11-18）。</p>
+</div>
+<div class="node gap">
+<p><span class="tag">断口</span> <strong>重数。</strong>
+二阶参数与钟尺的倒数关系都要求每址的重数大；来源没有推。</p>
+</div>
+<div class="node gap">
+<p><span class="tag">断口</span>
+<strong>矢量、方向、张量三部分。</strong>
+单靠这一份记录，辐射只有四极公式的六分之一。</p>
+</div>
+<div class="node gap">
+<p><span class="tag">断口</span> <strong>场速等于光速。</strong>
+自旋的实现里是标定；两指标的实现里自动成立，但正式稿没有那自由的一半。</p>
+</div>
+<div class="node later">
+<p><span class="tag">后续</span> 均匀模走到非线性之后；与⑤的关系。</p>
+</div>
+</div>
+<p>断口不是新增的缺口。它们落在统一进度页的三个断口里：参照的维持与场的速度属于“长期输出”，三个部分与源权属于“机械对应”，重数与标定属于“强度与计时”。</p>
+<h2
+id="一起点光和一切物质为什么共用一个度规">一、起点：光和一切物质为什么共用一个度规？</h2>
+<p><strong>结论：在四条“同一个”之下，这是定理。</strong>（六步稿；四步稿第
+1、2、4 步）</p>
+<p>四条条件都不含可调的数：</p>
+<ol type="1">
+<li><strong>同一交换</strong>：位置交换平移该位置上的整份内容。光的图案带两个端口指标，由同一组边交换搬运。</li>
+<li><strong>同一时程</strong>：光与物质的交换在同一个活动窗内进行，活动份额相同。</li>
+<li><strong>同一接触</strong>：光的图案进入同一个位置控制接触。背景随时间变时，背景经由电磁的正则系数进入。</li>
+<li><strong>同一对象</strong>：⑮第三章的通量—闭路场就是光的图案。</li>
+</ol>
+<p>无场时，色散逐波矢相同：</p>
+<div class="eqwrap"><div class="eqbox"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mi>γ</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>ω</mi><mrow><mi>m</mi><mo>=</mo><mn>0</mn></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo minsize="180%" maxsize="180%" stretchy="true" form="prefix">(</mo><munder><mo>∑</mo><mi>i</mi></munder><msubsup><mi>g</mi><mi>i</mi><mn>2</mn></msubsup><msup><mrow><mi mathvariant="normal">sin</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><msub><mi>k</mi><mi>i</mi></msub><msub><mi>ℓ</mi><mi>i</mi></msub><msup><mo minsize="180%" maxsize="180%" stretchy="true" form="postfix">)</mo><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\boxed{\omega_\gamma(k)=\omega_{m=0}(k)=\Bigl(\sum_ig_i^2\sin^2k_i\ell_i\Bigr)^{1/2}}</annotation></semantics></math></div></div>
+<p>有场时，接收核只作用在工作包与背景包上：</p>
+<div class="eqwrap"><div class="eqbox"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>H</mi><mi>C</mi></msub><mo>=</mo><munder><mo>∑</mo><mrow><mi>y</mi><mo>,</mo><mi>x</mi></mrow></munder><mo stretchy="false" form="prefix">|</mo><mi>y</mi><mo stretchy="false" form="postfix">⟩</mo><mo stretchy="false" form="prefix">⟨</mo><mi>x</mi><mo stretchy="false" form="prefix">|</mo><mi>⊗</mi><msub><mi>K</mi><mrow><mi>y</mi><mi>x</mi></mrow></msub><mo>⊗</mo><msub><mi>S</mi><mi>y</mi></msub><msub><mi>R</mi><mi>B</mi></msub><msub><mi>S</mi><mi>x</mi></msub></mrow><annotation encoding="application/x-tex">\boxed{H_C=\sum_{y,x}|y\rangle\langle x|\otimes K_{yx}\otimes S_yR_BS_x}</annotation></semantics></math></div></div>
+<p>合成之后，等效原理的判据成立，束缚体的能级按
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+变，固有尺寸不变：</p>
+<div class="eqwrap"><div class="eqbox"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable displaystyle="true"><mtr><mtd columnalign="center" style="text-align: center"><mfrac><mi>ε</mi><msub><mi>ε</mi><mn>0</mn></msub></mfrac><mo>=</mo><mfrac><mi>μ</mi><msub><mi>μ</mi><mn>0</mn></msub></mfrac><mo>=</mo><mfrac><mi>B</mi><mi>A</mi></mfrac></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>A</mi><mo>⋅</mo><msub><mi>H</mi><mtext mathvariant="normal">平直</mtext></msub></mtd></mtr></mtable><annotation encoding="application/x-tex">\boxed{\begin{gathered}
+\displaystyle\frac{\varepsilon}{\varepsilon_0}=\frac{\mu}{\mu_0}=\frac BA\\[4pt]
+H(A)=A\cdot H_{\text{平直}}
+\end{gathered}}</annotation></semantics></math></div></div>
+<div class="chain">
+<div class="node given">
+<p><span class="tag">给定</span> ⑥第 2.2 节的位置作用；⑯补充 S15.1
+的端口交换；⑮补充 D6 的接收接触。</p>
+</div>
+<div class="node done">
+<p><span class="tag">精确</span> 两指标对称振幅的传播等于⑮ D1.10
+的旋度作用，横向条件自动成立。</p>
+</div>
+<div class="node done">
+<p><span class="tag">精确</span> ⑮ D1
+的远端搬运就是位置作用落在图案上：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><mi>ν</mi><mi>z</mi><msub><mi>D</mi><mi>x</mi></msub></mrow><annotation encoding="application/x-tex">F=\nu zD_x</annotation></semantics></math>，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ν</mi><mo>=</mo><mn>2</mn><mi>κ</mi><mo>=</mo><mi>g</mi></mrow><annotation encoding="application/x-tex">\nu=2\kappa=g</annotation></semantics></math>，归一因子为一。</p>
+</div>
+<div class="node cond">
+<p><span class="tag">条件</span> 同一交换、同一时程
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>⇒</mo><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mi>γ</mi></msub><mo>=</mo><msub><mi>c</mi><mn>0</mn></msub><mo>=</mo><msub><mi>f</mi><mrow><mi mathvariant="normal">a</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">t</mi></mrow></msub><mi>g</mi><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">c_\gamma=c_0=f_{\mathrm{act}}g\ell</annotation></semantics></math>。</p>
+</div>
+<div class="node done">
+<p><span class="tag">精确</span> 接收核与内部结构无关；光得到
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>h</mi><mi>B</mi></msub><mspace width="0.167em"></mspace><mi>h</mi><msub><mi>K</mi><mi>γ</mi></msub><mi>h</mi></mrow><annotation encoding="application/x-tex">h_B\,hK_\gamma h</annotation></semantics></math>，传播倍率与物质相同。</p>
+</div>
+<div class="node cond">
+<p><span class="tag">条件</span> 乘积型的接收
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>⇒</mo><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math>
+两个电磁系数同乘
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>h</mi><mn>2</mn></msup><annotation encoding="application/x-tex">h^2</annotation></semantics></math>，精细结构常数不随背景变。</p>
+</div>
+<div class="node done">
+<p><span class="tag">精确</span>
+均匀背景的标度恒等式；物质与光受同一个因果界约束。</p>
+</div>
+<div class="node done">
+<p><span class="tag">精确</span> 给定同一对象，两个电磁返回系数由
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>g</mi><mo>,</mo><mi>α</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(g,\alpha)</annotation></semantics></math>
+唯一确定。</p>
+</div>
+<div class="node gap">
+<p><span class="tag">断口</span>
+光图案的加载：把“同一交换”从部署变成定理。</p>
+</div>
+<div class="node gap">
+<p><span class="tag">断口</span>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>/</mi><mi>b</mi></mrow><annotation encoding="application/x-tex">a/b</annotation></semantics></math>
+的数值与⑯耦合的相接。</p>
+</div>
+<div class="node later">
+<p><span class="tag">后续</span> 相关背景下修正的大小；⑥附录 A.1
+在背景里逐项重做。</p>
+</div>
+</div>
+<details>
+<summary>
+展开：各条的精确内容与核验
+</summary>
+<p><strong>同一交换的精确内容（四步稿第 1 步）。</strong> ⑮ D1
+的搬运在一图案扇区精确等于
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ν</mi><mi>z</mi><msub><mi>D</mi><mi>x</mi></msub></mrow><annotation encoding="application/x-tex">\nu zD_x</annotation></semantics></math>。把它还原成逐份通量交换来算，跨一格的矩阵元仍恰为一份，但同时有等范数的泄漏，图案还带静止能。所以零质量的搬运要求位置交换平移整份内容。正式稿里它是部署（“共同路由”）。</p>
+<p><strong>时变背景（四步稿第 2 步）。</strong>
+背景自己被搬运时，接收给出含时的厄米平均作用，</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>H</mi><mo accent="true">‾</mo></mover><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><munder><mo>∑</mo><mrow><mi>y</mi><mo>,</mo><mi>x</mi></mrow></munder><mo stretchy="false" form="prefix">|</mo><mi>y</mi><mo stretchy="false" form="postfix">⟩</mo><mo stretchy="false" form="prefix">⟨</mo><mi>x</mi><mo stretchy="false" form="prefix">|</mo><mi>⊗</mi><msub><mi>K</mi><mrow><mi>y</mi><mi>x</mi></mrow></msub><mspace width="0.167em"></mspace><msub><mi>τ</mi><mrow><mi>y</mi><mi>x</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mo minsize="120%" maxsize="120%" stretchy="true" form="postfix">∥</mo><msub><mi>ρ</mi><mi>T</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><msub><mover><mi>ρ</mi><mo accent="true">‾</mo></mover><mi>T</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><msub><mo minsize="120%" maxsize="120%" stretchy="true" form="postfix">∥</mo><mn>1</mn></msub><mo>≤</mo><mfrac><mrow><mn>2</mn><mo stretchy="false" form="prefix">|</mo><mi>t</mi><mo stretchy="false" form="prefix">|</mo><mspace width="0.167em"></mspace><mo stretchy="false" form="postfix">∥</mo><mi>K</mi><mo stretchy="false" form="postfix">∥</mo></mrow><msqrt><mi>M</mi></msqrt></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">\bar H(t)=\sum_{y,x}|y\rangle\langle x|\otimes K_{yx}\,\tau_{yx}(t),\qquad
+\bigl\|\rho_T(t)-\bar\rho_T(t)\bigr\|_1\le\frac{2|t|\,\|K\|}{\sqrt M}.</annotation></semantics></math></p>
+<p>对光图案作厄米夹层，与正则写法差一项
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>∂</mi><mi>t</mi></msub><mrow><mi mathvariant="normal">ln</mi><mo>&#8289;</mo></mrow><mi>h</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(\partial_t\ln h)</annotation></semantics></math>；⑮第三章的守荷对任意系数精确成立。两种接法在静态背景和空间均匀的时间变化下一致，一般的动态背景下不相容。与守荷相容的接法是背景经由正则系数进入。</p>
+<p><strong>接收核不是乘积时（四步稿命题 2.4）。</strong></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>τ</mi><mrow><mi>y</mi><mi>x</mi></mrow></msub><mo>=</mo><msub><mi>h</mi><mi>B</mi></msub><mspace width="0.167em"></mspace><msub><mi>P</mi><mrow><mi>x</mi><mi>y</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><msub><mi>h</mi><mi>B</mi></msub><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mo stretchy="false" form="prefix">⟨</mo><msub><mn>0</mn><mi>x</mi></msub><msub><mn>1</mn><mi>y</mi></msub><mo stretchy="false" form="prefix">|</mo><msub><mi>ρ</mi><mrow><mi>x</mi><mi>y</mi></mrow></msub><mo stretchy="false" form="prefix">|</mo><msub><mn>1</mn><mi>x</mi></msub><msub><mn>0</mn><mi>y</mi></msub><mo stretchy="false" form="postfix">⟩</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">\tau_{yx}=h_B\,P_{xy}(0,0)+(1-h_B)\,\langle0_x1_y|\rho_{xy}|1_x0_y\rangle .</annotation></semantics></math></p>
+<p>公共性对任意核成立；乘积核保证的是这个公共的核能写成一对标量
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo>,</mo><mi>B</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(A,B)</annotation></semantics></math>。</p>
+<p><strong>电磁的两个系数（四步稿第 4 步）。</strong></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mspace width="0.167em"></mspace><mi>s</mi><mo>=</mo><mn>2</mn><mi>π</mi><mi>α</mi><mspace width="0.167em"></mspace><mover><mi>ν</mi><mo accent="true">‾</mo></mover><mo>,</mo><mspace width="2.0em"></mspace><mi>b</mi><mspace width="0.167em"></mspace><mi>s</mi><mo>=</mo><mfrac><mover><mi>ν</mi><mo accent="true">‾</mo></mover><mrow><mn>8</mn><mi>π</mi><mi>α</mi></mrow></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mfrac><mi>b</mi><mi>a</mi></mfrac><mo>=</mo><mfrac><mn>1</mn><mrow><mo stretchy="false" form="prefix">(</mo><mn>4</mn><mi>π</mi><mi>α</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup></mrow></mfrac><mo>≈</mo><mn>118.9</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">a\,s=2\pi\alpha\,\bar\nu,\qquad b\,s=\frac{\bar\nu}{8\pi\alpha},\qquad\frac ba=\frac1{(4\pi\alpha)^2}\approx118.9 .</annotation></semantics></math></p>
+<p><strong>因果界（六步稿定理 6.1）。</strong> 距离为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>
+的两址之间，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="postfix">∥</mo><msub><mi>P</mi><mi>y</mi></msub><mi>U</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><msub><mi>P</mi><mi>x</mi></msub><mo stretchy="false" form="postfix">∥</mo><mo>≤</mo><msub><mo>∑</mo><mrow><mi>n</mi><mo>≥</mo><mi>d</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>z</mi><mi mathvariant="normal">Λ</mi><msup><mo stretchy="false" form="postfix">)</mo><mi>n</mi></msup><mi>/</mi><mi>n</mi><mi>!</mi></mrow><annotation encoding="application/x-tex">\|P_yU(t,0)P_x\|\le\sum_{n\ge d}(z\Lambda)^n/n!</annotation></semantics></math>，对任意质量的物质与光相同。</p>
+<p><strong>核验。</strong> 六步稿 L1—L12；四步稿 M1—M6、M11。</p>
+</details>
+<h2 id="二场能不能走在光锥上">二、场能不能走在光锥上？</h2>
+<p><strong>结论：累积的守恒占据不能。</strong>（四步稿第 3 步）</p>
+<p>定常时按
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>/</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">a/r</annotation></semantics></math>
+分布的守恒占据，半径
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>
+以内的含量是
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>π</mi><mi>a</mi><msup><mi>R</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">2\pi aR^2</annotation></semantics></math>。源的净注入率有上界
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>J</mi><mi mathvariant="normal">max</mi></msub><annotation encoding="application/x-tex">J_{\max}</annotation></semantics></math>，所以</p>
+<div class="eqwrap"><div class="eqbox"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mtext mathvariant="normal">建</mtext></msub><mo stretchy="false" form="prefix">(</mo><mi>R</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.222em"></mspace><mo>≥</mo><mspace width="0.222em"></mspace><mfrac><mrow><mn>2</mn><mi>π</mi><mi>a</mi><mspace width="0.167em"></mspace><mi>f</mi></mrow><msub><mi>J</mi><mi mathvariant="normal">max</mi></msub></mfrac><mspace width="0.167em"></mspace><msup><mi>R</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\boxed{T_{\text{建}}(R)\ \ge\ \frac{2\pi a\,f}{J_{\max}}\,R^2}</annotation></semantics></math></div></div>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+是已建成的份额。⑮式 (2.12) 的背景输运属于这一类：距离
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+处建到一半要
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.10</mn><mspace width="0.167em"></mspace><msup><mi>r</mi><mn>2</mn></msup><mi>/</mi><mi>c</mi></mrow><annotation encoding="application/x-tex">1.10\,r^2/c</annotation></semantics></math>
+轮。光只要正比于距离的时间。</p>
+<p><strong>所以起点在⑮现有的占据背景上能成立，场律不行。这不是部署的问题，是守恒量的性质。</strong></p>
+<figure class="fg"><svg viewBox="0 0 360 372" role="img" aria-label="上：累积的占据，含量随半径平方增长；下：当地的记录，前沿经过时生成"><defs><radialGradient id="g2a"><stop offset="0" style="stop-color:var(--blue);stop-opacity:.42"/><stop offset="1" style="stop-color:var(--blue);stop-opacity:0"/></radialGradient><marker id="m2k" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path class="f-blue" d="M0,1 L10,5 L0,9 z"/></marker><marker id="m2g" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path class="f-line" d="M0,1 L10,5 L0,9 z"/></marker><clipPath id="c2b"><rect x="0" y="226" width="360" height="118"/></clipPath></defs><text class="t-b" x="16" y="24">累积的占据</text><text class="t-mut" x="16" y="42">扩散地搬运，钟读当前的量</text><circle cx="86" cy="112" r="78" fill="url(#g2a)"/><circle class="f-blue" opacity=".75" cx="13.6" cy="109.8" r="1.5"/><circle class="f-blue" opacity=".75" cx="61.0" cy="67.7" r="1.5"/><circle class="f-blue" opacity=".75" cx="76.1" cy="101.7" r="1.5"/><circle class="f-blue" opacity=".75" cx="115.4" cy="166.4" r="1.5"/><circle class="f-blue" opacity=".75" cx="43.2" cy="114.1" r="1.5"/><circle class="f-blue" opacity=".75" cx="70.4" cy="160.7" r="1.5"/><circle class="f-blue" opacity=".75" cx="127.7" cy="95.6" r="1.5"/><circle class="f-blue" opacity=".75" cx="30.7" cy="105.9" r="1.5"/><circle class="f-blue" opacity=".75" cx="50.7" cy="170.4" r="1.5"/><circle class="f-blue" opacity=".75" cx="35.1" cy="153.5" r="1.5"/><circle class="f-blue" opacity=".75" cx="56.0" cy="144.4" r="1.5"/><circle class="f-blue" opacity=".75" cx="35.4" cy="133.3" r="1.5"/><circle class="f-blue" opacity=".75" cx="68.7" cy="92.7" r="1.5"/><circle class="f-blue" opacity=".75" cx="91.6" cy="140.7" r="1.5"/><circle class="f-blue" opacity=".75" cx="96.1" cy="153.5" r="1.5"/><circle class="f-blue" opacity=".75" cx="82.1" cy="161.5" r="1.5"/><circle class="f-blue" opacity=".75" cx="71.0" cy="116.9" r="1.5"/><circle class="f-blue" opacity=".75" cx="98.8" cy="142.8" r="1.5"/><circle class="f-blue" opacity=".75" cx="88.9" cy="65.8" r="1.5"/><circle class="f-blue" opacity=".75" cx="79.7" cy="180.5" r="1.5"/><circle class="f-blue" opacity=".75" cx="117.5" cy="144.7" r="1.5"/><circle class="f-blue" opacity=".75" cx="51.8" cy="94.7" r="1.5"/><circle class="f-blue" opacity=".75" cx="108.1" cy="124.7" r="1.5"/><circle class="f-blue" opacity=".75" cx="57.5" cy="170.4" r="1.5"/><circle class="f-blue" opacity=".75" cx="66.4" cy="117.2" r="1.5"/><circle class="f-blue" opacity=".75" cx="55.5" cy="147.6" r="1.5"/><circle class="f-blue" opacity=".75" cx="44.5" cy="157.1" r="1.5"/><circle class="f-blue" opacity=".75" cx="30.3" cy="152.6" r="1.5"/><circle class="f-blue" opacity=".75" cx="106.4" cy="145.1" r="1.5"/><circle class="f-blue" opacity=".75" cx="110.2" cy="128.5" r="1.5"/><circle class="f-blue" opacity=".75" cx="129.0" cy="153.2" r="1.5"/><circle class="f-blue" opacity=".75" cx="62.7" cy="113.7" r="1.5"/><circle class="f-blue" opacity=".75" cx="103.3" cy="88.0" r="1.5"/><circle class="f-blue" opacity=".75" cx="89.1" cy="152.8" r="1.5"/><circle class="f-blue" opacity=".75" cx="67.5" cy="125.0" r="1.5"/><circle class="f-blue" opacity=".75" cx="101.2" cy="129.7" r="1.5"/><circle class="f-blue" opacity=".75" cx="64.2" cy="76.5" r="1.5"/><circle class="f-blue" opacity=".75" cx="76.9" cy="97.8" r="1.5"/><circle class="f-blue" opacity=".75" cx="78.6" cy="149.9" r="1.5"/><circle class="f-blue" opacity=".75" cx="108.1" cy="125.3" r="1.5"/><circle class="f-blue" opacity=".75" cx="93.8" cy="147.3" r="1.5"/><circle class="f-blue" opacity=".75" cx="96.0" cy="159.4" r="1.5"/><circle class="f-blue" opacity=".75" cx="54.0" cy="157.1" r="1.5"/><circle class="f-blue" opacity=".75" cx="89.9" cy="62.3" r="1.5"/><circle class="f-blue" opacity=".75" cx="64.9" cy="64.8" r="1.5"/><circle class="f-blue" opacity=".75" cx="30.3" cy="148.6" r="1.5"/><circle class="f-blue" opacity=".75" cx="138.6" cy="131.0" r="1.5"/><circle class="f-blue" opacity=".75" cx="69.7" cy="150.6" r="1.5"/><circle class="f-blue" opacity=".75" cx="151.7" cy="142.4" r="1.5"/><circle class="f-blue" opacity=".75" cx="56.1" cy="71.5" r="1.5"/><circle class="f-blue" opacity=".75" cx="141.8" cy="118.0" r="1.5"/><circle class="f-blue" opacity=".75" cx="112.9" cy="108.1" r="1.5"/><circle class="f-blue" opacity=".75" cx="96.3" cy="150.7" r="1.5"/><circle class="f-blue" opacity=".75" cx="89.8" cy="157.7" r="1.5"/><circle class="f-blue" opacity=".75" cx="148.2" cy="105.5" r="1.5"/><circle class="f-blue" opacity=".75" cx="133.2" cy="123.4" r="1.5"/><circle class="f-blue" opacity=".75" cx="42.8" cy="93.0" r="1.5"/><circle class="f-blue" opacity=".75" cx="115.2" cy="49.2" r="1.5"/><circle class="f-blue" opacity=".75" cx="138.1" cy="120.9" r="1.5"/><circle class="f-blue" opacity=".75" cx="116.3" cy="108.5" r="1.5"/><circle class="f-blue" opacity=".75" cx="72.9" cy="119.8" r="1.5"/><circle class="f-blue" opacity=".75" cx="88.9" cy="96.6" r="1.5"/><circle class="f-blue" opacity=".75" cx="72.5" cy="139.2" r="1.5"/><circle class="f-blue" opacity=".75" cx="57.3" cy="115.0" r="1.5"/><circle class="s-line f-none" stroke-width="1.1" stroke-dasharray="3 4" cx="86" cy="112" r="62"/><line class="s-mut" stroke-width="1" x1="86" y1="112" x2="148" y2="112"/><text class="t-mut" x="120" y="107" text-anchor="middle" font-style="italic">R</text><circle class="f-rust" cx="86" cy="112" r="10"/><text x="196" y="88">含量随半径的平方增长</text><text class="t-rust" x="196" y="112">建成时间 ∝ R²</text><text class="t-mut" x="196" y="136">落后于光，倍数 ∝ R</text><line class="s-hair" stroke-width="1" x1="12" y1="192" x2="348" y2="192"/><text class="t-b" x="16" y="216">当地的记录</text><text class="t-mut" x="150" y="216">相干地搬运，钟读累计的量</text><circle class="s-rust f-none" stroke-width="1.4" cx="86" cy="290" r="166" clip-path="url(#c2b)"/><line class="s-blue" stroke-width="1.7" stroke-linecap="round" marker-end="url(#m2k)" x1="18.5" y1="244.7" x2="33.5" y2="239.3"/><line class="s-blue" stroke-width="1.7" stroke-linecap="round" marker-end="url(#m2k)" x1="49.9" y1="245.6" x2="64.1" y2="238.4"/><line class="s-blue" stroke-width="1.7" stroke-linecap="round" marker-end="url(#m2k)" x1="81.2" y1="246.1" x2="94.8" y2="237.9"/><line class="s-blue" stroke-width="1.7" stroke-linecap="round" marker-end="url(#m2k)" x1="111.8" y1="245.5" x2="126.2" y2="238.5"/><line class="s-blue" stroke-width="1.7" stroke-linecap="round" marker-end="url(#m2k)" x1="142.4" y1="244.6" x2="157.6" y2="239.4"/><line class="s-blue" stroke-width="1.7" stroke-linecap="round" marker-end="url(#m2k)" x1="173.2" y1="243.9" x2="188.8" y2="240.1"/><line class="s-blue" stroke-width="1.7" stroke-linecap="round" marker-end="url(#m2k)" x1="204.2" y1="243.5" x2="219.8" y2="240.5"/><line class="s-line" stroke-width="1.4" stroke-linecap="round" marker-end="url(#m2g)" x1="235.0" y1="242.0" x2="251.0" y2="242.0"/><line class="s-line" stroke-width="1.4" stroke-linecap="round" marker-end="url(#m2g)" x1="266.0" y1="242.0" x2="282.0" y2="242.0"/><line class="s-line" stroke-width="1.4" stroke-linecap="round" marker-end="url(#m2g)" x1="297.0" y1="242.0" x2="313.0" y2="242.0"/><line class="s-line" stroke-width="1.4" stroke-linecap="round" marker-end="url(#m2g)" x1="328.0" y1="242.0" x2="344.0" y2="242.0"/><line class="s-blue" stroke-width="1.7" stroke-linecap="round" marker-end="url(#m2k)" x1="18.7" y1="277.3" x2="33.3" y2="270.7"/><line class="s-blue" stroke-width="1.7" stroke-linecap="round" marker-end="url(#m2k)" x1="51.4" y1="279.7" x2="62.6" y2="268.3"/><line class="s-blue" stroke-width="1.7" stroke-linecap="round" marker-end="url(#m2k)" x1="113.0" y1="279.2" x2="125.0" y2="268.8"/><line class="s-blue" stroke-width="1.7" stroke-linecap="round" marker-end="url(#m2k)" x1="142.6" y1="277.1" x2="157.4" y2="270.9"/><line class="s-blue" stroke-width="1.7" stroke-linecap="round" marker-end="url(#m2k)" x1="173.3" y1="276.1" x2="188.7" y2="271.9"/><line class="s-blue" stroke-width="1.7" stroke-linecap="round" marker-end="url(#m2k)" x1="204.2" y1="275.6" x2="219.8" y2="272.4"/><line class="s-blue" stroke-width="1.7" stroke-linecap="round" marker-end="url(#m2k)" x1="235.1" y1="275.3" x2="250.9" y2="272.7"/><line class="s-line" stroke-width="1.4" stroke-linecap="round" marker-end="url(#m2g)" x1="266.0" y1="274.0" x2="282.0" y2="274.0"/><line class="s-line" stroke-width="1.4" stroke-linecap="round" marker-end="url(#m2g)" x1="297.0" y1="274.0" x2="313.0" y2="274.0"/><line class="s-line" stroke-width="1.4" stroke-linecap="round" marker-end="url(#m2g)" x1="328.0" y1="274.0" x2="344.0" y2="274.0"/><line class="s-blue" stroke-width="1.7" stroke-linecap="round" marker-end="url(#m2k)" x1="18.7" y1="309.3" x2="33.3" y2="302.7"/><line class="s-blue" stroke-width="1.7" stroke-linecap="round" marker-end="url(#m2k)" x1="51.4" y1="311.7" x2="62.6" y2="300.3"/><line class="s-blue" stroke-width="1.7" stroke-linecap="round" marker-end="url(#m2k)" x1="113.0" y1="311.2" x2="125.0" y2="300.8"/><line class="s-blue" stroke-width="1.7" stroke-linecap="round" marker-end="url(#m2k)" x1="142.6" y1="309.1" x2="157.4" y2="302.9"/><line class="s-blue" stroke-width="1.7" stroke-linecap="round" marker-end="url(#m2k)" x1="173.3" y1="308.1" x2="188.7" y2="303.9"/><line class="s-blue" stroke-width="1.7" stroke-linecap="round" marker-end="url(#m2k)" x1="204.2" y1="307.6" x2="219.8" y2="304.4"/><line class="s-blue" stroke-width="1.7" stroke-linecap="round" marker-end="url(#m2k)" x1="235.1" y1="307.3" x2="250.9" y2="304.7"/><line class="s-line" stroke-width="1.4" stroke-linecap="round" marker-end="url(#m2g)" x1="266.0" y1="306.0" x2="282.0" y2="306.0"/><line class="s-line" stroke-width="1.4" stroke-linecap="round" marker-end="url(#m2g)" x1="297.0" y1="306.0" x2="313.0" y2="306.0"/><line class="s-line" stroke-width="1.4" stroke-linecap="round" marker-end="url(#m2g)" x1="328.0" y1="306.0" x2="344.0" y2="306.0"/><line class="s-blue" stroke-width="1.7" stroke-linecap="round" marker-end="url(#m2k)" x1="18.5" y1="340.7" x2="33.5" y2="335.3"/><line class="s-blue" stroke-width="1.7" stroke-linecap="round" marker-end="url(#m2k)" x1="49.9" y1="341.6" x2="64.1" y2="334.4"/><line class="s-blue" stroke-width="1.7" stroke-linecap="round" marker-end="url(#m2k)" x1="81.2" y1="342.1" x2="94.8" y2="333.9"/><line class="s-blue" stroke-width="1.7" stroke-linecap="round" marker-end="url(#m2k)" x1="111.8" y1="341.5" x2="126.2" y2="334.5"/><line class="s-blue" stroke-width="1.7" stroke-linecap="round" marker-end="url(#m2k)" x1="142.4" y1="340.6" x2="157.6" y2="335.4"/><line class="s-blue" stroke-width="1.7" stroke-linecap="round" marker-end="url(#m2k)" x1="173.2" y1="339.9" x2="188.8" y2="336.1"/><line class="s-blue" stroke-width="1.7" stroke-linecap="round" marker-end="url(#m2k)" x1="204.2" y1="339.5" x2="219.8" y2="336.5"/><line class="s-line" stroke-width="1.4" stroke-linecap="round" marker-end="url(#m2g)" x1="235.0" y1="338.0" x2="251.0" y2="338.0"/><line class="s-line" stroke-width="1.4" stroke-linecap="round" marker-end="url(#m2g)" x1="266.0" y1="338.0" x2="282.0" y2="338.0"/><line class="s-line" stroke-width="1.4" stroke-linecap="round" marker-end="url(#m2g)" x1="297.0" y1="338.0" x2="313.0" y2="338.0"/><line class="s-line" stroke-width="1.4" stroke-linecap="round" marker-end="url(#m2g)" x1="328.0" y1="338.0" x2="344.0" y2="338.0"/><circle class="f-rust" cx="86" cy="290" r="10"/><text class="t-rust" x="344" y="234" text-anchor="end">前沿 r = ct</text><text class="t-blue" x="16" y="364">前沿之内：偏角 ∝ 1/r</text><text class="t-mut" x="344" y="364" text-anchor="end">前沿之外：还没变</text></svg></figure>
+<p><span class="figcap">图 2　两种按
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">1/r</annotation></semantics></math>
+分布的量。上：累积的占据，含量随半径的平方增长。下：当地的记录，前沿以光速经过时在当地生成。</span></p>
+<div class="chain">
+<div class="node given">
+<p><span class="tag">给定</span> ⑮前两章修改稿式
+(2.11)—(2.12)：占据的整份交换。</p>
+</div>
+<div class="node done">
+<p><span class="tag">精确</span> 它是扩散：建到一半要
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.10</mn><mspace width="0.167em"></mspace><msup><mi>r</mi><mn>2</mn></msup><mi>/</mi><mi>c</mi></mrow><annotation encoding="application/x-tex">1.10\,r^2/c</annotation></semantics></math>
+轮，支集每轮最多外推一格。</p>
+</div>
+<div class="node done">
+<p><span class="tag">精确</span>
+含量的下界与机制无关：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>≥</mo><mn>2</mn><mi>π</mi><mi>a</mi><mi>f</mi><msup><mi>R</mi><mn>2</mn></msup><mi>/</mi><msub><mi>J</mi><mi mathvariant="normal">max</mi></msub></mrow><annotation encoding="application/x-tex">T\ge2\pi afR^2/J_{\max}</annotation></semantics></math>。</p>
+</div>
+<div class="node done">
+<p><span class="tag">精确</span>
+三类传递的长波：整份交换只衰减；无取向的相干交换
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>≃</mo><mi>θ</mi><mo stretchy="false" form="prefix">|</mo><mi>k</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\omega\simeq\theta|k|^2</annotation></semantics></math>；带取向的一阶交换
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>=</mo><mi>g</mi><mo stretchy="false" form="prefix">|</mo><msub><mi>σ</mi><mi>k</mi></msub><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">\omega=g|\sigma_k|</annotation></semantics></math>。</p>
+</div>
+<div class="node done">
+<p><span class="tag">精确</span>
+两指标对象的互补扇区：与光同一色散，静态解由散度约束给出
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">1/r</annotation></semantics></math>。</p>
+</div>
+</div>
+<details>
+<summary>
+展开：对另一条线的含义与核验
+</summary>
+<p>「数学3」第 97—103 节在⑮的点源部署里得到晚期占据
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>/</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">a/r</annotation></semantics></math>、钟变慢与向内加速。含量下界适用于它：这份场在距离
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+处建成至少要
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>r</mi><mn>2</mn></msup><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>c</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">r^2/(2c)</annotation></semantics></math>
+轮。所以它“先取晚期，再比距离”的极限次序是必需的，不能换成固定时刻比较不同距离。这是我的读法，没有改它的稿。</p>
+<p><strong>核验。</strong> 四步稿 M7—M10、M12；M7、M9 用
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>96</mn><mn>3</mn></msup><annotation encoding="application/x-tex">96^3</annotation></semantics></math>
+的周期格逐模精确求值。</p>
+</details>
+<h2 id="三能走在光锥上的是什么">三、能走在光锥上的是什么？</h2>
+<p><strong>结论：一份当地的记录。</strong>（互补扇区稿）</p>
+<p>互补扇区精确地是一个守恒量的密度加它的流：</p>
+<div class="eqwrap"><div class="eqbox"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable displaystyle="true"><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>∂</mi><mi>t</mi></msub><mi>χ</mi><mo>=</mo><mi>−</mi><munder><mo>∑</mo><mi>a</mi></munder><msub><mi>g</mi><mi>a</mi></msub><msub><mover><mi>∇</mi><mo accent="true">̃</mo></mover><mi>a</mi></msub><msub><mi>F</mi><mi>a</mi></msub><mo>+</mo><mi>s</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>∂</mi><mi>t</mi></msub><msub><mi>F</mi><mi>a</mi></msub><mo>=</mo><mi>−</mi><msub><mi>g</mi><mi>a</mi></msub><msub><mover><mi>∇</mi><mo accent="true">̃</mo></mover><mi>a</mi></msub><mi>χ</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">\boxed{\begin{gathered}
+\displaystyle\partial_t\chi=-\sum_ag_a\tilde\nabla_aF_a+s\\[4pt]
+\partial_tF_a=-g_a\tilde\nabla_a\chi
+\end{gathered}}</annotation></semantics></math></div></div>
+<p>势是密度在当地的累计（上式）。恒定源开启后是推迟势（下式），密度只在前沿上，前沿之后没有累积：</p>
+<div class="eqwrap"><div class="eqbox"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable displaystyle="true"><mtr><mtd columnalign="center" style="text-align: center"><mi>φ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>−</mi><msubsup><mo>∫</mo><mn>0</mn><mi>t</mi></msubsup><mi>χ</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><msup><mi>t</mi><mo>′</mo></msup><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>d</mi><msup><mi>t</mi><mo>′</mo></msup></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>φ</mi><mo>=</mo><mi>−</mi><mfrac><mrow><mi>s</mi><mspace width="0.167em"></mspace><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo>−</mo><mi>r</mi><mi>/</mi><mi>g</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mn>4</mn><mi>π</mi><msup><mi>g</mi><mn>2</mn></msup><mspace width="0.167em"></mspace><mi>r</mi></mrow></mfrac></mtd></mtr></mtable><annotation encoding="application/x-tex">\boxed{\begin{gathered}
+\displaystyle\varphi(x,t)=-\int_0^t\chi(x,t&#39;)\,dt&#39;\\[4pt]
+\displaystyle\varphi=-\frac{s\,(t-r/g)}{4\pi g^2\,r}
+\end{gathered}}</annotation></semantics></math></div></div>
+<p>物质以同一个耦合读写它时，两个符号一起定下，都只含耦合的平方：</p>
+<div class="eqwrap"><div class="eqbox"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable displaystyle="true"><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>E</mi><mn>12</mn></msub><mo>=</mo><mi>−</mi><msup><mi>λ</mi><mn>2</mn></msup><msub><mi>m</mi><mn>1</mn></msub><msub><mi>m</mi><mn>2</mn></msub><mspace width="0.167em"></mspace><mi>G</mi><mo stretchy="false" form="prefix">(</mo><mi>r</mi><mo stretchy="false" form="postfix">)</mo><mo>&lt;</mo><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>A</mi><mo>=</mo><mn>1</mn><mo>−</mo><msup><mi>λ</mi><mn>2</mn></msup><mi>m</mi><mspace width="0.167em"></mspace><mi>G</mi><mo stretchy="false" form="prefix">(</mo><mi>r</mi><mo stretchy="false" form="postfix">)</mo><mo>&lt;</mo><mn>1</mn></mtd></mtr></mtable><annotation encoding="application/x-tex">\boxed{\begin{gathered}
+E_{12}=-\lambda^2m_1m_2\,G(r)&lt;0\\[3pt]
+A=1-\lambda^2m\,G(r)&lt;1
+\end{gathered}}</annotation></semantics></math></div></div>
+<p>按“怎样搬运”和“钟读什么”分，有四种情形：</p>
+<ul>
+<li>扩散的搬运，读当前的占据：占据按
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>/</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">a/r</annotation></semantics></math>，建场按平方律。⑮与「数学3」第
+97—103 节在这里。</li>
+<li>扩散的搬运，读当地留下的存档：「数学3」第 86 节，同样按平方律。</li>
+<li>带取向的相干搬运，读当前的密度：没有静态的场，只留下一次性的相位差。</li>
+<li>带取向的相干搬运，读累计的记录：推迟势，光程时间建成。</li>
+</ul>
+<p><strong>分界：记录是密度的共轭量、其差驱动流，场就在光锥上；记录只是旁观的存档，场就是扩散的。</strong></p>
+<figure class="fg"><svg viewBox="0 0 360 206" role="img" aria-label="物质的钟率随背景单元的偏角变，同一个接触把荷写回背景"><defs><marker id="m3b" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path class="f-blue" d="M0,1 L10,5 L0,9 z"/></marker><marker id="m3r" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path class="f-rust" d="M0,1 L10,5 L0,9 z"/></marker><marker id="m3k" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path class="f-ink" d="M0,1 L10,5 L0,9 z"/></marker></defs><circle class="f-bluepale" cx="84" cy="88" r="44"/><circle class="s-blue f-surface" stroke-width="1.6" cx="84" cy="88" r="35"/><line class="s-line" stroke-width="1.2" stroke-dasharray="3 3" x1="84" y1="88" x2="115" y2="88"/><line class="s-ink" stroke-width="2.2" stroke-linecap="round" marker-end="url(#m3k)" x1="84" y1="88" x2="108.9" y2="71.2"/><path class="s-rust f-none" stroke-width="1.3" d="M101,88 A17,17 0 0 0 98.1,78.5"/><text class="t-rust" x="105" y="84" font-style="italic">ϑ</text><circle class="f-blue" cx="84" cy="88" r="3"/><circle class="f-bluepale" cx="276" cy="88" r="44"/><circle class="s-ink f-surface" stroke-width="1.6" cx="276" cy="88" r="35"/><line class="s-ink" stroke-width="1.1" x1="276.0" y1="63.0" x2="276.0" y2="56.0"/><line class="s-ink" stroke-width="1.1" x1="289.5" y1="64.6" x2="292.0" y2="60.3"/><line class="s-ink" stroke-width="1.1" x1="299.4" y1="74.5" x2="303.7" y2="72.0"/><line class="s-ink" stroke-width="1.1" x1="301.0" y1="88.0" x2="308.0" y2="88.0"/><line class="s-ink" stroke-width="1.1" x1="299.4" y1="101.5" x2="303.7" y2="104.0"/><line class="s-ink" stroke-width="1.1" x1="289.5" y1="111.4" x2="292.0" y2="115.7"/><line class="s-ink" stroke-width="1.1" x1="276.0" y1="113.0" x2="276.0" y2="120.0"/><line class="s-ink" stroke-width="1.1" x1="262.5" y1="111.4" x2="260.0" y2="115.7"/><line class="s-ink" stroke-width="1.1" x1="252.6" y1="101.5" x2="248.3" y2="104.0"/><line class="s-ink" stroke-width="1.1" x1="251.0" y1="88.0" x2="244.0" y2="88.0"/><line class="s-ink" stroke-width="1.1" x1="252.6" y1="74.5" x2="248.3" y2="72.0"/><line class="s-ink" stroke-width="1.1" x1="262.5" y1="64.6" x2="260.0" y2="60.3"/><line class="s-ink" stroke-width="2" stroke-linecap="round" x1="276" y1="88" x2="276" y2="67"/><line class="s-rust" stroke-width="2" stroke-linecap="round" x1="276" y1="88" x2="290" y2="96"/><circle class="f-ink" cx="276" cy="88" r="3.2"/><line class="s-blue" stroke-width="1.8" marker-end="url(#m3b)" x1="134" y1="72" x2="226" y2="72"/><text class="t-blue" x="180" y="64" text-anchor="middle">读：钟率随 ϑ 变</text><path class="s-rust f-none" stroke-width="1.8" marker-end="url(#m3r)" d="M226,104 Q180,130 134,104"/><text class="t-rust" x="180" y="138" text-anchor="middle">写：荷流入背景</text><text class="t-mut" x="84" y="154" text-anchor="middle">背景单元</text><text class="t-mut" x="276" y="154" text-anchor="middle">物质的钟</text><text x="180" y="194" text-anchor="middle">被读的量对 ϑ 的导数，就是写入荷的速率</text></svg></figure>
+<p><span class="figcap">图
+3　读和写出自同一个接触。物质的钟率随参照的偏角变；同一个接触把荷写回背景。</span></p>
+<div class="chain">
+<div class="node done">
+<p><span class="tag">精确</span>
+互补扇区的实形式：守恒的密度加它的流。</p>
+</div>
+<div class="node done">
+<p><span class="tag">精确</span>
+势是密度的当地累计，与密度共轭；恒定源的解是推迟势。</p>
+</div>
+<div class="node done">
+<p><span class="tag">精确</span>
+读当前的密度没有静态的场；对密度或流的局域互易耦合没有单极项。</p>
+</div>
+<div class="node cond">
+<p><span class="tag">条件</span> 钟读累计的记录
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>⇒</mo><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math>
+恰为推迟势。</p>
+</div>
+<div class="node cond">
+<p><span class="tag">条件</span> 读写同源
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>⇒</mo><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math>
+同号相吸，近源钟慢。（下一节：这个条件由接收接触自动满足。）</p>
+</div>
+<div class="node done">
+<p><span class="tag">精确</span> 记录必须驱动流；只存档就回到扩散。</p>
+</div>
+<div class="node cond">
+<p><span class="tag">条件</span> 可用份额由记录调制
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>⇒</mo><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>∂</mi><mi>t</mi><mn>2</mn></msubsup><mi>A</mi><mo>−</mo><msup><mi>c</mi><mn>2</mn></msup><msup><mi>∇</mi><mn>2</mn></msup><mi>A</mi><mo>=</mo><mi>−</mi><msup><mi>λ</mi><mn>2</mn></msup><msub><mi>ρ</mi><mi>m</mi></msub></mrow><annotation encoding="application/x-tex">\partial_t^2A-c^2\nabla^2A=-\lambda^2\rho_m</annotation></semantics></math>，起点的各条结论不变。</p>
+</div>
+</div>
+<details>
+<summary>
+展开：光的静电场为什么相斥，与核验
+</summary>
+<p>⑮第三章里电通量被约束
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mi>N</mi><mo>=</mo><mi>ρ</mi><mi>/</mi><mi>q</mi></mrow><annotation encoding="application/x-tex">DN=\rho/q</annotation></semantics></math>
+强制带上能量，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>H</mi><mi>E</mi></msub><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">H_E&gt;0</annotation></semantics></math>，同号相斥。记录不受约束，它自己调到能量最低，得到
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mo stretchy="false" form="prefix">⟨</mo><mi>s</mi><mo>,</mo><msup><mi>K</mi><mo>+</mo></msup><mi>s</mi><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">-\tfrac12\langle s,K^+s\rangle</annotation></semantics></math>。差别不在
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">1/r</annotation></semantics></math>，在于场是被约束强制的，还是自由响应的。对光子通道，这一半已经被约束交给了电荷。</p>
+<p><strong>核验。</strong> 互补扇区稿 K1—K8；K3、K4 用
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>96</mn><mn>3</mn></msup><annotation encoding="application/x-tex">96^3</annotation></semantics></math>
+的周期格，源在空间上略抹开、在时间上平滑开启。</p>
+</details>
+<h2
+id="四这份记录在已有的结构里是什么">四、这份记录在已有的结构里是什么？</h2>
+<p><strong>结论：相干背景里参照方向的偏角。</strong>（五件稿第 1—5
+节）</p>
+<p>寄存器在正式稿里有。⑮补充 D7.1 的写入保持指针的
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Y</mi><annotation encoding="application/x-tex">Y</annotation></semantics></math>，把指针在面内转过</p>
+<div class="eqwrap"><div class="eqbox"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϑ</mi><mi>x</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>2</mn><mi>g</mi><msubsup><mo>∫</mo><mn>0</mn><mi>t</mi></msubsup><mo stretchy="false" form="prefix">⟨</mo><msub><mi>J</mi><mi>x</mi></msub><mo stretchy="false" form="postfix">⟩</mo><mspace width="0.167em"></mspace><mi>d</mi><msup><mi>t</mi><mo>′</mo></msup></mrow><annotation encoding="application/x-tex">\boxed{\vartheta_x(t)=2g\int_0^t\langle J_x\rangle\,dt&#39;}</annotation></semantics></math></div></div>
+<p>已发表的部署随后把它退相干成占据，再按扩散搬运。</p>
+<p>互补扇区的两条方程，就是保荷边门的两半：荷相位让角累计邻居的荷，交换让角差驱动荷的流。</p>
+<div class="eqwrap"><div class="eqbox"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable displaystyle="true"><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>∂</mi><mi>t</mi></msub><msub><mi>ϑ</mi><mi>k</mi></msub><mo>=</mo><mn>2</mn><mo minsize="120%" maxsize="120%" stretchy="true" form="prefix">[</mo><msub><mi>θ</mi><mi>Y</mi></msub><mi>z</mi><mo>+</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>θ</mi><mi>S</mi></msub><mo>−</mo><msub><mi>θ</mi><mi>Y</mi></msub><mo stretchy="false" form="postfix">)</mo><msub><mi>E</mi><mi>k</mi></msub><mo minsize="120%" maxsize="120%" stretchy="true" form="postfix">]</mo><mspace width="0.167em"></mspace><msub><mi>n</mi><mi>k</mi></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>∂</mi><mi>t</mi></msub><msub><mi>n</mi><mi>k</mi></msub><mo>=</mo><mi>−</mi><mn>2</mn><mspace width="0.167em"></mspace><msub><mi>θ</mi><mi>S</mi></msub><msub><mi>E</mi><mi>k</mi></msub><mspace width="0.167em"></mspace><msub><mi>ϑ</mi><mi>k</mi></msub></mtd></mtr></mtable><annotation encoding="application/x-tex">\boxed{\begin{gathered}
+\partial_t\vartheta_k=2\big[\theta_Yz+(\theta_S-\theta_Y)E_k\big]\,n_k\\[3pt]
+\partial_tn_k=-2\,\theta_SE_k\,\vartheta_k
+\end{gathered}}</annotation></semantics></math></div></div>
+<p>读和写出自同一个接触，这是一条精确的恒等式；⑮的接收接触自己满足它：</p>
+<div class="eqwrap"><div class="eqbox"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mi>d</mi><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo stretchy="false" form="prefix">⟨</mo><msub><mi>Q</mi><mi>x</mi></msub><mo stretchy="false" form="postfix">⟩</mo><mo>=</mo><mi>−</mi><mn>2</mn><mspace width="0.167em"></mspace><mfrac><mi>∂</mi><mrow><mi>∂</mi><msub><mi>ϑ</mi><mi>x</mi></msub></mrow></mfrac><mo stretchy="false" form="prefix">⟨</mo><msub><mi>H</mi><mi>c</mi></msub><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">\boxed{\frac{d}{dt}\langle Q_x\rangle=-2\,\frac{\partial}{\partial\vartheta_x}\langle H_c\rangle}</annotation></semantics></math></div></div>
+<p>强度是读数斜率的平方除以参照的刚度，数值仍是一次标定：</p>
+<div class="eqwrap"><div class="eqbox"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>=</mo><mfrac><mrow><msup><mi>c</mi><mn>4</mn></msup><mi>ℓ</mi></mrow><mrow><mn>4</mn><mi>π</mi><msub><mi>ρ</mi><mi>s</mi></msub></mrow></mfrac><mspace width="0.167em"></mspace><msup><mrow><mi mathvariant="normal">tan</mi><mo>&#8289;</mo></mrow><mn>2</mn></msup><mspace width="-0.167em"></mspace><mfrac><mi mathvariant="normal">Δ</mi><mn>2</mn></mfrac><mo>⋅</mo><mfrac><mi>N</mi><mi>M</mi></mfrac></mrow><annotation encoding="application/x-tex">\boxed{G=\frac{c^4\ell}{4\pi\rho_s}\,\tan^2\!\frac\Delta2\cdot\frac NM}</annotation></semantics></math></div></div>
+<p>读哪根轴，决定场的样子。三种部署各读什么：</p>
+<ul>
+<li>⑮、⑯已发表的部署：整份交换，退相干，读占据。扩散的
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>/</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">a/r</annotation></semantics></math>。</li>
+<li>本线 11-04 的原生 XY
+背景：守恒轴就是可用度，接收读可用度，即读荷。场被屏蔽在原位。</li>
+<li>数学3 的池部署：守恒轴是
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Y</mi><annotation encoding="application/x-tex">Y</annotation></semantics></math>，钟读面内的方向，即读角。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">1/r</annotation></semantics></math>，以场速推迟。</li>
+</ul>
+<div class="chain">
+<div class="node done">
+<p><span class="tag">精确</span>
+⑮的写入指针是线性累计的寄存器。缺的是三件事：相干保留下来，角差驱动流，钟读角。</p>
+</div>
+<div class="node cond">
+<p><span class="tag">条件</span>
+围绕同向的参照线性化（每址重数大时成立），保荷边门的两半对应记录的两条方程；场速
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mi>g</mi></msub><mo>=</mo><mn>2</mn><msqrt><mrow><msub><mi>θ</mi><mi>S</mi></msub><msub><mi>θ</mi><mi>Y</mi></msub><mi>z</mi></mrow></msqrt></mrow><annotation encoding="application/x-tex">c_g=2\sqrt{\theta_S\theta_Yz}</annotation></semantics></math>。</p>
+</div>
+<div class="node done">
+<p><span class="tag">精确</span> 在这个二次型上：读角对任何门角都是
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">1/r</annotation></semantics></math>
+的场；读荷是汤川型，力程乘场速是定数。</p>
+</div>
+<div class="node done">
+<p><span class="tag">精确</span>
+读写互易；源权是保持一次、位移两端各一次，即
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>+</mo><mi mathvariant="bold-italic">𝒑</mi><mo>⋅</mo><mi mathvariant="bold-italic">𝒗</mi></mrow><annotation encoding="application/x-tex">E+\boldsymbol p\cdot\boldsymbol v</annotation></semantics></math>。</p>
+</div>
+<div class="node adopt">
+<p><span class="tag">采用</span>
+钟读角。在第二节的两个条件下它是必要的；循环怎样实现它没有推。</p>
+</div>
+<div class="node gap">
+<p><span class="tag">断口</span>
+参照由什么维持：保荷的返回只留得住三四个格距以内的对齐（11-18）。</p>
+</div>
+<div class="node gap">
+<p><span class="tag">断口</span>
+相邻单元有零点关联时，钟尺不再精确互为倒数（11-04）。</p>
+</div>
+<div class="node gap">
+<p><span class="tag">断口</span>
+场速等于光速在这个实现里是标定（11-16）。</p>
+</div>
+</div>
+<details>
+<summary>
+展开：哪些是这一轮新得的，哪些是旧稿已有的
+</summary>
+<p><strong>新得的</strong>：⑮的写入指针是寄存器；互补扇区与边门两半的逐式对应；读荷时力程与场速的乘积是定数；⑮的接收接触本身满足读写互易；强度公式里夹角、串联、并联的依赖。</p>
+<p><strong>旧稿已有、这里只是接上的</strong>：色散与场速（11-18）；结构定理与“静态场不改变可用度”（11-04）；池上的读写恒等式（11-15
+强度稿）；源权
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>T</mi><mn>00</mn></msup><mo>+</mo><msup><mi>T</mi><mrow><mi>k</mi><mi>k</mi></mrow></msup></mrow><annotation encoding="application/x-tex">T^{00}+T^{kk}</annotation></semantics></math>（11-04、11-15
+总源稿）；<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>=</mo><mi>ℓ</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>π</mi><mi>J</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">G=\ell/(2\pi J)</annotation></semantics></math>（11-04）。</p>
+<p><strong>核验。</strong> 五件稿 Q1—Q6。</p>
+</details>
+<h2 id="五单靠这一份记录够不够">五、单靠这一份记录够不够？</h2>
+<p><strong>结论：不够。</strong>（五件稿第 6—8 节；主体在本线
+11-04、11-12、11-15 的旧稿里已得）</p>
+<p>均匀模，要么漂移，要么力程有限。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">1/r</annotation></semantics></math>
+的无限力程，与均匀的源没有定态，是同一件事：</p>
+<div class="eqwrap"><div class="eqbox"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>A</mi><mo accent="true">̈</mo></mover><mo>=</mo><mi>−</mi><mn>4</mn><mi>π</mi><mi>G</mi><mover><mi>ρ</mi><mo accent="true">‾</mo></mover><mspace width="0.167em"></mspace><mfrac><msubsup><mi>c</mi><mi>g</mi><mn>2</mn></msubsup><msup><mi>c</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">\boxed{\ddot A=-4\pi G\bar\rho\,\frac{c_g^2}{c^2}}</annotation></semantics></math></div></div>
+<div class="eqwrap"><div class="eqbox"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable displaystyle="true"><mtr><mtd columnalign="center" style="text-align: center"><mi>L</mi><mo>=</mo><mfrac><msub><mi>c</mi><mi>g</mi></msub><msqrt><mrow><msub><mi mathvariant="normal">Γ</mi><mi>ϑ</mi></msub><msub><mi mathvariant="normal">Γ</mi><mi>n</mi></msub></mrow></msqrt></mfrac></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn><mo>−</mo><mi>A</mi><mo>=</mo><mfrac><mrow><mn>4</mn><mi>π</mi><mi>G</mi><mover><mi>ρ</mi><mo accent="true">‾</mo></mover><mspace width="0.167em"></mspace><msup><mi>L</mi><mn>2</mn></msup></mrow><msup><mi>c</mi><mn>2</mn></msup></mfrac></mtd></mtr></mtable><annotation encoding="application/x-tex">\boxed{\begin{gathered}
+\displaystyle L=\frac{c_g}{\sqrt{\Gamma_\vartheta\Gamma_n}}\\[4pt]
+\displaystyle 1-A=\frac{4\pi G\bar\rho\,L^2}{c^2}
+\end{gathered}}</annotation></semantics></math></div></div>
+<p>二阶由读数函数定。单个投影的读数给
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>=</mo><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle></mrow><annotation encoding="application/x-tex">\beta=\tfrac12</annotation></semantics></math>，水星每世纪多约七角秒，与观测不合：</p>
+<div class="eqwrap"><div class="eqbox"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>=</mo><mn>1</mn><mo>−</mo><mfrac><mn>1</mn><mrow><mn>2</mn><mi>N</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi mathvariant="normal">Δ</mi><mo stretchy="false" form="postfix">)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">\boxed{\beta=1-\frac1{2N(1-\cos\Delta)}}</annotation></semantics></math></div></div>
+<p>辐射。圆轨道是四极公式的
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>6</mn></mrow><annotation encoding="application/x-tex">1/6</annotation></semantics></math>；脉冲双星的观测与四极公式相合到千分之二：</p>
+<div class="eqwrap"><div class="eqbox"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable displaystyle="true"><mtr><mtd columnalign="center" style="text-align: center"><mi>P</mi><mo>=</mo><mfrac><mi>G</mi><mrow><mn>30</mn><msup><mi>c</mi><mn>5</mn></msup></mrow></mfrac><mo minsize="180%" maxsize="180%" stretchy="true" form="prefix">⟨</mo><msubsup><mi>Q</mi><mrow><mi>i</mi><mi>j</mi></mrow><mrow><mo stretchy="false" form="prefix">(</mo><mn>3</mn><mo stretchy="false" form="postfix">)</mo></mrow></msubsup><msubsup><mi>Q</mi><mrow><mi>i</mi><mi>j</mi></mrow><mrow><mo stretchy="false" form="prefix">(</mo><mn>3</mn><mo stretchy="false" form="postfix">)</mo></mrow></msubsup><mo minsize="180%" maxsize="180%" stretchy="true" form="postfix">⟩</mo></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mrow></mrow><mo>+</mo><mfrac><mrow><mn>4</mn><mi>G</mi></mrow><msup><mi>c</mi><mn>5</mn></msup></mfrac><mo minsize="180%" maxsize="180%" stretchy="true" form="prefix">(</mo><mfrac><mn>4</mn><mn>3</mn></mfrac><mo>−</mo><mi>β</mi><msup><mo minsize="180%" maxsize="180%" stretchy="true" form="postfix">)</mo><mn>2</mn></msup><mo minsize="180%" maxsize="180%" stretchy="true" form="prefix">⟨</mo><mo minsize="120%" maxsize="120%" stretchy="true" form="prefix">(</mo><msubsup><mi>I</mi><mrow><mi>k</mi><mi>k</mi></mrow><mrow><mo stretchy="false" form="prefix">(</mo><mn>3</mn><mo stretchy="false" form="postfix">)</mo></mrow></msubsup><msup><mo minsize="120%" maxsize="120%" stretchy="true" form="postfix">)</mo><mn>2</mn></msup><mo minsize="180%" maxsize="180%" stretchy="true" form="postfix">⟩</mo></mtd></mtr></mtable><annotation encoding="application/x-tex">\boxed{\begin{gathered}
+\displaystyle P=\frac{G}{30c^5}\Big\langle Q^{(3)}_{ij}Q^{(3)}_{ij}\Big\rangle\\[4pt]
+\displaystyle{}+\frac{4G}{c^5}\Big(\frac43-\beta\Big)^2\Big\langle\big(I^{(3)}_{kk}\big)^2\Big\rangle
+\end{gathered}}</annotation></semantics></math></div></div>
+<div class="chain">
+<div class="node done">
+<p><span class="tag">精确</span> 弱场下均匀模的二分；均匀背景下光的红移
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>+</mo><mi>z</mi><mo>=</mo><msub><mi>A</mi><mi>e</mi></msub><mi>/</mi><msub><mi>A</mi><mi>r</mi></msub></mrow><annotation encoding="application/x-tex">1+z=A_e/A_r</annotation></semantics></math>。</p>
+</div>
+<div class="node done">
+<p><span class="tag">精确</span>
+投影读数的二阶；并联不改变它；近日点进动是
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>4</mn><mo>−</mo><mi>β</mi><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">(4-\beta)/3</annotation></semantics></math>
+倍。</p>
+</div>
+<div class="node done">
+<p><span class="tag">精确</span> 标量记录的辐射；圆轨道
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>6</mn></mrow><annotation encoding="application/x-tex">1/6</annotation></semantics></math>，与
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>
+无关。</p>
+</div>
+<div class="node adopt">
+<p><span class="tag">采用</span> 十腿结构（11-12）：钟 +1/6、方向
+−5/3、张量 +5/2，合起来是 1。这里的记录对应其中的钟。</p>
+</div>
+<div class="node gap">
+<p><span class="tag">断口</span>
+重数：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>→</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\beta\to1</annotation></semantics></math>
+要求
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mrow><mi mathvariant="normal">cos</mi><mo>&#8289;</mo></mrow><mi mathvariant="normal">Δ</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">N(1-\cos\Delta)</annotation></semantics></math>
+上千，或者读数是指数的。来源没有推。</p>
+</div>
+<div class="node gap">
+<p><span class="tag">断口</span>
+矢量、方向、张量三部分在“记录”的写法里没有推。矢量部分只能来自约束（11-04）。</p>
+</div>
+<div class="node later">
+<p><span class="tag">后续</span>
+均匀模走到非线性之后；红移式与⑤同形，没有接上。</p>
+</div>
+</div>
+<details>
+<summary>
+展开：范围与核验
+</summary>
+<ul>
+<li>漂移的时间尺度是
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>π</mi><mi>G</mi><mover><mi>ρ</mi><mo accent="true">‾</mo></mover><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">(2\pi G\bar\rho)^{-1/2}</annotation></semantics></math>，密度接近临界值时是哈勃时间的量级。弱场式只在此前成立。红移的符号取决于
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+的历史；弱场、从静止出发时确定的只是
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>A</mi><mo accent="true">̈</mo></mover><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\ddot A&lt;0</annotation></semantics></math>。</li>
+<li>两个弛豫率相等时，力程公式就是数学3
+的“力程等于场速乘背景的恢复时间”。漂移与有限力程是同一个二分的两支。</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>
+的结论限于“线性的记录加投影读数”这一类。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mo>=</mo><mi>π</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\Delta=\pi/2</annotation></semantics></math>
+时即 11-04 稿的
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>β</mi><mi>N</mi></msub><mo>=</mo><mn>1</mn><mo>−</mo><mn>1</mn><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>N</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\beta_N=1-1/(2N)</annotation></semantics></math>。</li>
+<li>辐射里未去迹写法的单极系数，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>=</mo><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle></mrow><annotation encoding="application/x-tex">\beta=\tfrac12</annotation></semantics></math>
+时是
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mstyle displaystyle="false"><mfrac><mn>83</mn><mn>30</mn></mfrac></mstyle><annotation encoding="application/x-tex">\tfrac{83}{30}</annotation></semantics></math>（11-04），<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\beta=1</annotation></semantics></math>
+时是
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mstyle displaystyle="false"><mfrac><mn>13</mn><mn>30</mn></mfrac></mstyle><annotation encoding="application/x-tex">\tfrac{13}{30}</annotation></semantics></math>（11-12）。偏心率
+0.617 时与四极公式之比是 0.193 与 0.330。</li>
+</ul>
+<p><strong>核验。</strong> 五件稿 Q7—Q10。</p>
+</details>
+<h2 id="六现在停在哪里">六、现在停在哪里？</h2>
+<p><strong>推出的（精确）：</strong></p>
+<ul>
+<li>同一组边交换上，光与零质量物质的色散逐波矢相同；</li>
+<li>接收核与内部结构无关；</li>
+<li>物质与光受同一个因果界约束；</li>
+<li>守恒占据的
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">1/r</annotation></semantics></math>
+按平方律建成；</li>
+<li>互补扇区是守恒密度加流，势是当地的累计记录，恒定源的解是推迟势；</li>
+<li>读写互易的恒等式；⑮的写入指针是寄存器，接收接触自带读写；</li>
+<li>均匀模的二分，投影读数的二阶，标量记录的辐射。</li>
+</ul>
+<p><strong>条件（都不含可调的数）：</strong>
+同一交换、同一时程、同一接触、同一对象；钟读累计的记录。</p>
+<p><strong>采用的：</strong>
+钟读角；十腿结构；保荷的边门。它们来自池方案与数学3
+的部署，不是从原作用推出的。</p>
+<p><strong>断口：</strong></p>
+<ol type="1">
+<li>参照由什么维持；</li>
+<li>循环怎样实现“钟读角”；</li>
+<li>每址的重数从哪里来；</li>
+<li>矢量、方向、张量三部分；</li>
+<li>场速等于光速不靠标定；</li>
+<li>光图案的加载，以及
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>/</mi><mi>b</mi></mrow><annotation encoding="application/x-tex">a/b</annotation></semantics></math>
+的数值；</li>
+<li>均匀模走到非线性之后。</li>
+</ol>
+<p><strong>从光这条线多得的。</strong></p>
+<ul>
+<li><strong>必要性。</strong> 光与物质同锥；场若在同一个锥上建成并按
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">1/r</annotation></semantics></math>
+分布，就不能是累积的守恒占据，只能是与守恒密度共轭的记录；读写出自同一个接触，符号就定了。池方案里采用的“池角”，在这几个条件下是必要的结构。</li>
+<li><strong>另一种实现的样子。</strong>
+互补扇区是自由的线性场：不需要参照，场速自动等于光速。它与自旋实现的差别正好落在断口
+1 与 5 上。正式稿里没有它。</li>
+</ul>
+<h2 id="七这四轮里改过的话">七、这四轮里改过的话</h2>
+<ul>
+<li><strong>光与自由物质的长期扩散系数不等，不是同锥的反例。</strong>
+「数学3」的
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">3/2</annotation></semantics></math>
+来自取向矩阵的结构：光有三分之一是不传播的纵向分量。两者的色散相同。</li>
+<li><strong>“两类电磁返回由带荷物质的闭合过程给出”这条路线，在正式稿里没有定义。</strong>
+四步稿撤回了六步稿里的这个设想。</li>
+<li><strong>“同一接触”在动态背景里要改述。</strong>
+与守荷相容的表述是“背景经由正则系数进入”。</li>
+<li><strong>互补扇区稿有三句要改。</strong>
+寄存器在正式稿里有对应物；通道在本线 11-04
+已指认为背景自己的相干；标量辐射 11-04 已算。</li>
+<li><strong>五件稿有一部分是重推。</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>β</mi><mi>N</mi></msub><annotation encoding="application/x-tex">\beta_N</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>6</mn></mrow><annotation encoding="application/x-tex">1/6</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>=</mo><mi>ℓ</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mi>π</mi><mi>J</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">G=\ell/(2\pi J)</annotation></semantics></math>、读写恒等式，旧稿里已有。写互补扇区稿和四步稿时没有回查
+11-04 的五篇稿。</li>
+</ul>
+<h2 id="八与其他线">八、与其他线</h2>
+<ul>
+<li><strong>「数学3」。</strong> 它第 93
+节的两个前提，对应这里的同一交换与同一接触。它第 97—103 节的
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>/</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">a/r</annotation></semantics></math>
+是占据型的场，受平方律约束。它第 86
+节的记录是存档型的，搬运是扩散。</li>
+<li><strong>「形成质量」。</strong>
+它用同一个接收门得到“换一种材料，整个
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math>
+都相同”；接收核与内部结构无关是它的一般形式。</li>
+<li><strong>「总缺口」。</strong>
+它的双比用的是不断出生、退役的总体钟。这里的结论针对单个质量块与束缚体，不覆盖那种钟。</li>
+<li><strong>统一进度页没有改。</strong>
+它由页面维护线维护；本稿的断口都落在它已有的三个断口里。</li>
+</ul>
+<h2 id="九文件与核验">九、文件与核验</h2>
+<ul>
+<li><strong>六步稿</strong>
+<code>study/gravity_light_common_cone_six_steps_2026-11-21.md</code>，核验
+L1—L12，提交 29a7922b1。</li>
+<li><strong>四步稿</strong>
+<code>study/gravity_light_field_four_steps_2026-11-22.md</code>，核验
+M1—M12，提交 da92e50ae。</li>
+<li><strong>互补扇区稿</strong>
+<code>study/gravity_complementary_sector_record_2026-11-22.md</code>，核验
+K1—K8，提交 b74b99496。</li>
+<li><strong>五件稿</strong>
+<code>study/gravity_record_remaining_items_2026-11-22.md</code>，核验
+Q1—Q10，提交 44c9f5d85。</li>
+</ul>
+<p>四份核验脚本只用
+numpy，今天依次重跑：12/12、12/12、8/8、10/10。各稿的依据见各稿末尾；标准物理的结果在四份稿里都只作对照。</p>
+<p>本页由
+<code>study/build_gravity_light_line_summary_2026_11_22.py</code> 从这份
+Markdown 生成，图在构建脚本里。图是结构示意，不是计算数据。</p>
+</body>
+</html>
